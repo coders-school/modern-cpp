@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <thread>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
@@ -49,14 +50,26 @@ void printCollectionElements(const Collection& collection)
     }
 }
 
+void printArea(std::string name, double area)
+{
+    std::cout << std::this_thread::get_id() << " - " << name << ": " << area << std::endl;
+}
+
 void printAreas(const Collection& collection)
 {
+    std::vector<std::thread> threadPool;
     for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
     {
         if(*it != NULL)
         {
-            cout << (*it)->getArea() << std::endl;
+            std::thread th(printArea, (*it)->getName(), (*it)->getArea());
+            threadPool.push_back(std::move(th));
+//            cout << (*it)->getName() << ": " << (*it)->getArea() << std::endl;
         }
+    }
+    for(unsigned int i = 0; i < threadPool.size(); i++)
+    {
+        threadPool[i].join();
     }
 }
 
@@ -67,12 +80,12 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
     if(*iter != NULL)
     {
-        cout << "First shape matching predicate: " << info << endl;
+        cout << std::endl << "First shape matching predicate: " << info << endl;
         (*iter)->print();
     }
     else
     {
-        cout << "There is no shape matching predicate " << info << endl;
+        cout << std::endl << "There is no shape matching predicate " << info << endl;
     }
 }
 
@@ -89,12 +102,12 @@ int main()
 
     printCollectionElements(shapes);
 
-    cout << "Areas before sort: " << std::endl;
+    cout << std::endl << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
     std::sort(shapes.begin(), shapes.end(), sortByArea);
 
-    cout << "Areas after sort: " << std::endl;
+    cout << std::endl << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
     Square* square = new Square(4.0);

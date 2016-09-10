@@ -10,6 +10,7 @@ public:
 
     double getArea();
     double getPerimeter();
+    std::string getName() const;
     void print();
 
 private:

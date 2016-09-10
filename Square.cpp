@@ -19,9 +19,14 @@ double Square::getPerimeter()
     return 4 * getX();
 }
 
+std::string Square::getName() const
+{
+    return "Square";
+}
+
 void Square::print()
 {
-    std::cout << "Square:      x: " << getX() << std::endl
-              << "          area: " << getArea() << std::endl
-              << "     perimeter: " << getPerimeter() << std::endl;
+    std::cout << getName() << ":    x: " << getX()
+              << ", area: " << getArea()
+              << ", perimeter: " << getPerimeter() << std::endl;
 }

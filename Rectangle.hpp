@@ -12,6 +12,7 @@ public:
     double getPerimeter() const;
     double getX() const;
     double getY() const;
+    std::string getName() const;
     void print() const;
 
 private:
