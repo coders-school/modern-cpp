@@ -52,24 +52,23 @@ void printCollectionElements(const Collection& collection)
 
 void printArea(std::string name, double area)
 {
-    std::cout << std::this_thread::get_id() << " - " << name << ": " << area << std::endl;
+    std::cout << "thread_id: " << std::this_thread::get_id() << " - " << name << ": " << area << std::endl;
 }
 
 void printAreas(const Collection& collection)
 {
-    std::vector<std::thread> threadPool;
+    std::vector<std::thread> threads;
     for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
     {
         if(*it != NULL)
         {
             std::thread th(printArea, (*it)->getName(), (*it)->getArea());
-            threadPool.push_back(std::move(th));
-//            cout << (*it)->getName() << ": " << (*it)->getArea() << std::endl;
+            threads.push_back(std::move(th));
         }
     }
-    for(unsigned int i = 0; i < threadPool.size(); i++)
+    for(unsigned int i = 0; i < threads.size(); i++)
     {
-        threadPool[i].join();
+        threads[i].join();
     }
 }
 
