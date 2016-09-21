@@ -88,6 +88,52 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+
+class BlockingQueue
+{
+public:
+    BlockingQueue() = default;
+
+    void push(Shape* shape)
+    {
+        // TODO
+    }
+
+    Shape* pop()
+    {
+        // TODO
+        return NULL;
+    }
+};
+
+BlockingQueue g_queue;
+
+void runQueue()
+{
+    bool running = true;
+    while(running)
+    {
+        Shape * shape = g_queue.pop();
+        if(shape == NULL)
+        {
+            std::cout << "Queue received NULL, finishing loop" << std::endl;
+            break;
+        }
+        else
+        {
+            std::cout << "Shape on queue: " << shape->getName() << std::endl;
+        }
+    }
+}
+
+void pushShapesToQueue(Collection const& shapes)
+{
+    for(int i = 0; i < shapes.size(); ++i)
+    {
+        g_queue.push(shapes[i]);
+    }
+}
+
 int main()
 {
     Collection shapes;
@@ -114,6 +160,11 @@ int main()
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+
+    std::thread queueThread(runQueue);
+    pushShapesToQueue(shapes);
+
+    queueThread.join();
 
     return 0;
 }
