@@ -92,8 +92,6 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 class BlockingQueue
 {
 public:
-    BlockingQueue() = default;
-
     void push(Shape* shape)
     {
         // TODO
