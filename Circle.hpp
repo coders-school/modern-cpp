@@ -11,7 +11,6 @@ public:
     double getArea() const;
     double getPerimeter() const;
     double getRadius() const;
-    std::string getName() const;
     void print() const;
 
 private:

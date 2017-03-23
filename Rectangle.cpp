@@ -32,15 +32,10 @@ double Rectangle::getY() const
     return y_;
 }
 
-std::string Rectangle::getName() const
-{
-    return "Rectangle";
-}
-
 void Rectangle::print() const
 {
-    std::cout << getName() << ": x: " << getX()
-              << ", y: " << getY()
-              << ", area: " << getArea()
-              << ", perimeter: " << getPerimeter() << std::endl;
+    std::cout << "Rectangle:   x: " << getX() << std::endl
+              << "             y: " << getY() << std::endl
+              << "          area: " << getArea() << std::endl
+              << "     perimeter: " << getPerimeter() << std::endl;
 }

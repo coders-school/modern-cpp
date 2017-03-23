@@ -26,14 +26,9 @@ double Circle::getRadius() const
     return r_;
 }
 
-std::string Circle::getName() const
-{
-    return "Circle";
-}
-
 void Circle::print() const
 {
-    std::cout << getName() << ":    radius: " << getRadius()
-              << ", area: " << getArea()
-              << ", perimeter: " << getPerimeter() << std::endl;
+    std::cout << "Circle: radius: " << getRadius() << std::endl
+              << "          area: " << getArea() << std::endl
+              << "     perimeter: " << getPerimeter() << std::endl;
 }

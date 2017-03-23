@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 class Shape
 {
 public:
@@ -9,6 +7,5 @@ public:
 
     virtual double getArea() const = 0;
     virtual double getPerimeter() const = 0;
-    virtual std::string getName() const;
     virtual void print() const;
 };
