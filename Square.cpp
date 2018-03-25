@@ -5,7 +5,7 @@ Square::Square(double x)
     : Rectangle(x, x)
 {}
 
-double Square::getArea() const
+double Square::getArea() const noexcept
 {
     return getX() * getX();
 }
