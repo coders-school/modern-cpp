@@ -5,8 +5,9 @@
 class Rectangle : public Shape
 {
 public:
+    Rectangle() = delete;
     Rectangle(double x, double y);
-    Rectangle(const Rectangle & other);
+    Rectangle(const Rectangle & other) = default;
 
     double getArea() const;
     double getPerimeter() const;
@@ -15,8 +16,6 @@ public:
     void print() const;
 
 private:
-    Rectangle();
-
     double x_;
     double y_;
 };
