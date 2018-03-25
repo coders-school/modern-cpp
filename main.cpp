@@ -11,7 +11,7 @@ using namespace std;
 
 using Collection = vector<Shape*>;
 
-bool sortByArea(Shape* first, Shape* second)
+auto sortByArea(Shape* first, Shape* second)
 {
     if(first == nullptr || second == nullptr)
     {
@@ -40,7 +40,7 @@ bool areaLessThan10(Shape* s)
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it = collection.cbegin(); it != collection.cend(); ++it)
     {
         if(*it != nullptr)
         {
@@ -51,11 +51,11 @@ void printCollectionElements(const Collection& collection)
 
 void printAreas(const Collection& collection)
 {
-    for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(const auto & it : collection)
     {
-        if(*it != nullptr)
+        if(it != nullptr)
         {
-            cout << (*it)->getArea() << std::endl;
+            cout << it->getArea() << std::endl;
         }
     }
 }
@@ -64,7 +64,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
                                      bool (*predicate)(Shape* s),
                                      std::string info)
 {
-    Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
+    auto iter = std::find_if(collection.cbegin(), collection.cend(), predicate);
     if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
@@ -97,7 +97,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    Square* square = new Square(4.0);
+    auto square = new Square(4.0);
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
