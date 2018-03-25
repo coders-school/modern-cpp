@@ -89,14 +89,15 @@ int main()
 {
     constexpr int x = fibonacci(45);
     cout << x;
-    Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
-    shapes.push_back(nullptr);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
+    Collection shapes = {
+        new Circle(2.0),
+        new Circle(3.0),
+        nullptr,
+        new Circle(4.0),
+        new Rectangle(10.0, 5.0),
+        new Square(3.0),
+        new Circle(4.0),
+    };
 
     printCollectionElements(shapes);
 
