@@ -3,7 +3,11 @@
 #include <iostream>
 
 Circle::Circle(double r)
-    : r_(r)
+    : Circle(r, Color::BLUE)
+{}
+
+Circle::Circle(double r, Color c)
+    : Shape(c), r_(r)
 {}
 
 double Circle::getArea() const noexcept

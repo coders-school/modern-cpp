@@ -91,7 +91,7 @@ int main()
     constexpr int x = fibonacci(45);
     cout << x;
     Collection shapes = {
-        make_shared<Circle>(2.0),
+        make_shared<Circle>(2.0, Color::GREEN),
         make_shared<Circle>(3.0),
         nullptr,
         make_shared<Circle>(4.0),
