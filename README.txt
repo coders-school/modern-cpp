@@ -33,7 +33,7 @@ It should be >= 5.0
     Add a new method `double getPi()` in Circle class, which returns a PI number. Mark it as deprecated.
 10. noexcept:
     Mark some getArea() and getPerimeter() methods as noexcept
-11. contexpr:
+11. constexpr:
     Write a function that calculates n-th Fibonacci's number. Do not mark it constexpr.
     Add in first line of main() computing 45-th Fibonacci's number. Measure the time of program execution (time ./modern_cpp)
     Mark fibonacci function as constexpr, compile the program and measure the time of execution once again.
@@ -44,14 +44,14 @@ It should be >= 5.0
     Print the alignment.
 13. uniform initialization:
     Use initializer_list to initialize the collection.
-14. move semantics:
-    Add move constructors and move assignment operators to all shapes.
-    Mark them as noexcept
-    Move some shapes into the collection
-15. smart pointer
+14. smart pointer
     Use valgrind to check and identify memory leaks.
     Replace raw pointers with shared_ptrs.
     Add a new unique_ptr to Circle and find a way to add it to the collection
+15. move semantics:
+    Add move constructors and move assignment operators to all shapes.
+    Mark them as noexcept
+    Move some shapes into the collection
 16. delegating constructors:
     Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for Color.
     Delegate a call in old constructor to the new one.
