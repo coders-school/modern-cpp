@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <memory>
+#include <functional>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
@@ -35,7 +36,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info)
 {
     auto iter = std::find_if(collection.cbegin(), collection.cend(), predicate);
@@ -93,7 +94,7 @@ int main()
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
-    findFirstShapeMatchingPredicate(shapes, [](shared_ptr<Shape> s)
+    findFirstShapeMatchingPredicate(shapes, [](auto s)
     {
         if(s)
         {
@@ -102,16 +103,16 @@ int main()
         return false;
     }, "perimeter bigger than 20");
 
-    auto areaLessThan10 = [](shared_ptr<Shape> s)
+    auto areaLessThanX = [x = 10](auto s)
     {
         if(s)
         {
-            return (s->getArea() < 10);
+            return (s->getArea() < x);
         }
         return false;
     };
 
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
     return 0;
 }
