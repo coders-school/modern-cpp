@@ -13,6 +13,5 @@ public:
     void print();
 
 private:
-    double getY(); // should not have Y dimension
     Square();
 };

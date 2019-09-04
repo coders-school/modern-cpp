@@ -6,14 +6,15 @@
 #include "Rectangle.hpp"
 #include "Square.hpp"
 #include "Circle.hpp"
+#include <math.h>
 
 using namespace std;
 
-typedef vector<Shape*> Collection;
+using Collection = vector<Shape*>;
 
 bool sortByArea(Shape* first, Shape* second)
 {
-    if(first == NULL || second == NULL)
+    if(first == nullptr || second == nullptr)
     {
         return false;
     }
@@ -40,23 +41,19 @@ bool areaLessThan10(Shape* s)
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it : collection)
     {
-        if(*it != NULL)
-        {
-            (*it)->print();
-        }
+        if(it != nullptr)
+            it->print();
     }
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it : collection)
     {
-        if(*it != NULL)
-        {
-            cout << (*it)->getArea() << std::endl;
-        }
+        if(it != nullptr)
+            cout << it->getArea() << std::endl;
     }
 }
 
@@ -64,8 +61,8 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
                                      bool (*predicate)(Shape* s),
                                      std::string info)
 {
-    Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if(*iter != NULL)
+    auto iter = std::find_if(collection.begin(), collection.end(), predicate);
+    if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
         (*iter)->print();
@@ -76,12 +73,27 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+int fibo(int number)
+{
+    if (number == 1 || number == 0)
+    {
+        return number;
+    }
+    return (fibo(number-1) + fibo(number -2));
+}
+
 int main()
 {
+    //static_assert(M_PI == 3.14, "wrong"); //zadanie 1
+
+    int n = fibo(4);
+    std::cout<< n;
+    Circle a(1);    
+    
     Collection shapes;
     shapes.push_back(new Circle(2.0));
     shapes.push_back(new Circle(3.0));
-    shapes.push_back(NULL);
+    shapes.push_back(nullptr);
     shapes.push_back(new Circle(4.0));
     shapes.push_back(new Rectangle(10.0, 5.0));
     shapes.push_back(new Square(3.0));
@@ -97,12 +109,13 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    Square* square = new Square(4.0);
+    auto square = new Square(4.0);
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
-
+    
     return 0;
 }
+
 
