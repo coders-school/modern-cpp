@@ -9,6 +9,19 @@ Square::Square(const Square &other)
     : Rectangle(other.getX(), other.getX())
 {}
 
+Square::Square(Square&& other) : Rectangle(0.0, 0.0)
+{
+}
+
+Square& Square::operator=(Square&& other)
+{
+    if (this != &other)
+    {
+    }
+    return *this;
+}
+
+
 double Square::getArea()
 {
     return getX() * getX();

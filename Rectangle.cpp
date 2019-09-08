@@ -12,6 +12,27 @@ Rectangle::Rectangle(const Rectangle &other)
     y_ = other.getY();
 }
 
+Rectangle::Rectangle(Rectangle&& other) : x_(0.0), y_(0.0)
+{
+    x_ = other.x_;
+    y_ = other.y_;
+    other.x_ = 0.0;
+    other.y_ = 0.0;
+}
+
+Rectangle& Rectangle::operator=(Rectangle&& other)
+{
+    if (this != &other)
+    {
+        x_ = other.x_;
+        y_ = other.y_;
+        other.x_ = 0.0;
+        other.y_ = 0.0;
+    }
+    return *this;
+}
+
+
 double Rectangle::getArea() const
 {
     return x_ * y_;

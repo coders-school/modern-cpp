@@ -7,21 +7,25 @@
 #include "Square.hpp"
 #include "Circle.hpp"
 #include <math.h>
+#include <memory>
+#include <initializer_list>
 
 using namespace std;
 
-using Collection = vector<Shape*>;
+using Collection = vector<std::shared_ptr<Shape>>;
 
-bool sortByArea(Shape* first, Shape* second)
+bool sortByArea(std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
 {
-    if(first == nullptr || second == nullptr)
-    {
-        return false;
-    }
-    return (first->getArea() < second->getArea());
+    [=](bool){
+        if(first == nullptr || second == nullptr)
+        {
+            return false;
+        }
+        return (first->getArea() < second->getArea());
+    };
 }
 
-bool perimeterBiggerThan20(Shape* s)
+bool perimeterBiggerThan20(std::shared_ptr<Shape> s)
 {
     if(s)
     {
@@ -30,7 +34,7 @@ bool perimeterBiggerThan20(Shape* s)
     return false;
 }
 
-bool areaLessThan10(Shape* s)
+bool areaLessThan10(std::shared_ptr<Shape> s)
 {
     if(s)
     {
@@ -58,7 +62,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(Shape* s),
+                                     bool (*predicate)(std::shared_ptr<Shape> s),
                                      std::string info)
 {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -73,7 +77,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
-int fibo(int number)
+constexpr int fibo(int number)
 {
     if (number == 1 || number == 0)
     {
@@ -86,19 +90,14 @@ int main()
 {
     //static_assert(M_PI == 3.14, "wrong"); //zadanie 1
 
-    int n = fibo(4);
+    int n = fibo(45);
     std::cout<< n;
-    Circle a(1);    
-    
-    Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
-    shapes.push_back(nullptr);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
+    alignas(2) Circle a(1);    
+    std::cout<< "\n" << sizeof(a) << std::endl;
+    static_assert(alignof(a) == 2);
 
+    Collection shapes = std::initializer_list<std::shared_ptr<Shape>>{new Circle(2.0), new Circle(3.0), nullptr, new Circle(4.0), new Rectangle(10.0, 5.0), new Square(3.0), new Circle(4.0)};
+   
     printCollectionElements(shapes);
 
     cout << "Areas before sort: " << std::endl;
@@ -109,8 +108,11 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto square = new Square(4.0);
+    std::shared_ptr<Shape> square(new Square(4.0));
     shapes.push_back(square);
+
+    std::unique_ptr<Shape> a1(new Circle(9.0));
+    shapes.push_back(std::move(a1));
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
