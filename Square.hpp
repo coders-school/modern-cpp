@@ -17,4 +17,5 @@ public:
 
 private:
     Square() = delete;
+    double x_;
 };

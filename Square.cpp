@@ -7,12 +7,16 @@ Square::Square(double x)
 
 Square::Square(Square&& other) : Rectangle(0.0, 0.0)
 {
+    x_ = other.x_;
+    other.x_ = 0.0;
 }
 
 Square& Square::operator=(Square&& other)
 {
     if (this != &other)
     {
+        x_ = other.x_;
+        other.x_ = 0.0;
     }
     return *this;
 }
