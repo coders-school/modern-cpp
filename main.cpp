@@ -14,34 +14,19 @@ using namespace std;
 
 using Collection = vector<std::shared_ptr<Shape>>;
 
-bool sortByArea(std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
-{
-    [=](bool){
-        if(first == nullptr || second == nullptr)
-        {
-            return false;
-        }
-        return (first->getArea() < second->getArea());
-    };
-}
-
-bool perimeterBiggerThan20(std::shared_ptr<Shape> s)
+auto perimeterBiggerThan20 = [&](std::shared_ptr<Shape> s)
 {
     if(s)
-    {
         return (s->getPerimeter() > 20);
-    }
     return false;
-}
+};
 
-bool areaLessThan10(std::shared_ptr<Shape> s)
+auto areaLessThanX = [&](std::shared_ptr<Shape> s, int X=10)
 {
     if(s)
-    {
-        return (s->getArea() < 10);
-    }
+        return (s->getArea() < X);
     return false;
-}
+};
 
 void printCollectionElements(const Collection& collection)
 {
@@ -62,10 +47,10 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(std::shared_ptr<Shape> s),
+                                     auto& lambda,
                                      std::string info)
 {
-    auto iter = std::find_if(collection.begin(), collection.end(), predicate);
+    auto iter = std::find_if(collection.begin(), collection.end(), lambda);
     if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
@@ -96,14 +81,27 @@ int main()
     std::cout<< "\n" << sizeof(a) << std::endl;
     static_assert(alignof(a) == 2);
 
-    Collection shapes = std::initializer_list<std::shared_ptr<Shape>>{new Circle(2.0), new Circle(3.0), nullptr, new Circle(4.0), new Rectangle(10.0, 5.0), new Square(3.0), new Circle(4.0)};
+    Collection shapes = {
+        std::make_shared<Circle>(2.0),
+        std::make_shared<Circle>(3.0),
+        std::shared_ptr<Shape>(nullptr),
+        std::make_shared<Circle>(4.0),
+        std::make_shared<Rectangle>(10.0, 5.0),
+        std::make_shared<Square>(3.0),
+        std::make_shared<Circle>(4.0)
+                        };
    
     printCollectionElements(shapes);
 
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
-    std::sort(shapes.begin(), shapes.end(), sortByArea);
+    std::sort(shapes.begin(), shapes.end(), 
+        [&](auto& first, auto& second)->bool{
+            if (first == nullptr || second == nullptr)
+                return false;
+            return first->getArea() < second-> getArea();
+    });
 
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
@@ -115,7 +113,7 @@ int main()
     shapes.push_back(std::move(a1));
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
     
     return 0;
 }
