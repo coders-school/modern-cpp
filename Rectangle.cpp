@@ -6,12 +6,6 @@ Rectangle::Rectangle(double x, double y)
       y_(y)
 {}
 
-Rectangle::Rectangle(const Rectangle &other)
-{
-    x_ = other.getX();
-    y_ = other.getY();
-}
-
 Rectangle::Rectangle(Rectangle&& other) : x_(0.0), y_(0.0)
 {
     x_ = other.x_;

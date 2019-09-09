@@ -6,7 +6,7 @@ class Circle final : public Shape
 {
 public:
     Circle(double r);
-    Circle(const Circle & other);
+    Circle(const Circle & other) = default;
     Circle(Circle&& other);
     Circle& operator=(Circle&& other);
 

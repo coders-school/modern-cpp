@@ -6,11 +6,6 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(const Circle & other)
-{
-    r_ = other.getRadius();
-}
-
 Circle::Circle(Circle&& other) : r_(0.0)
 {
     r_ = other.r_;

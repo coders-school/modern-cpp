@@ -5,10 +5,6 @@ Square::Square(double x)
     : Rectangle(x, x)
 {}
 
-Square::Square(const Square &other)
-    : Rectangle(other.getX(), other.getX())
-{}
-
 Square::Square(Square&& other) : Rectangle(0.0, 0.0)
 {
 }
