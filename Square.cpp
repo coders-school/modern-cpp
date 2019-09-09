@@ -5,13 +5,13 @@ Square::Square(double x)
     : Rectangle(x, x)
 {}
 
-Square::Square(Square&& other) : Rectangle(0.0, 0.0)
+Square::Square(Square&& other) noexcept : Rectangle(0.0, 0.0)
 {
     x_ = other.x_;
     other.x_ = 0.0;
 }
 
-Square& Square::operator=(Square&& other)
+Square& Square::operator=(Square&& other) noexcept
 {
     if (this != &other)
     {

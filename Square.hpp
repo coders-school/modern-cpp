@@ -7,8 +7,8 @@ class Square : public Rectangle
 public:
     Square(double x);
     Square(const Square & other) = default;
-    Square(Square&& other);
-    Square& operator=(Square&& other);
+    Square(Square&& other) noexcept;
+    Square& operator=(Square&& other) noexcept;
 
     double getArea();
     double getPerimeter();

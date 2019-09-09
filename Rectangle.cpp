@@ -6,7 +6,7 @@ Rectangle::Rectangle(double x, double y)
       y_(y)
 {}
 
-Rectangle::Rectangle(Rectangle&& other) : x_(0.0), y_(0.0)
+Rectangle::Rectangle(Rectangle&& other) noexcept : x_(0.0), y_(0.0)
 {
     x_ = other.x_;
     y_ = other.y_;
@@ -14,7 +14,7 @@ Rectangle::Rectangle(Rectangle&& other) : x_(0.0), y_(0.0)
     other.y_ = 0.0;
 }
 
-Rectangle& Rectangle::operator=(Rectangle&& other)
+Rectangle& Rectangle::operator=(Rectangle&& other) noexcept
 {
     if (this != &other)
     {

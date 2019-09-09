@@ -6,13 +6,13 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(Circle&& other) : r_(0.0)
+Circle::Circle(Circle&& other) noexcept : r_(0.0)
 {
     r_ = other.r_;
     other.r_ = 0.0;
 }
 
-Circle& Circle::operator=(Circle&& other)
+Circle& Circle::operator=(Circle&& other) noexcept
 {
     if (this != &other)
     {

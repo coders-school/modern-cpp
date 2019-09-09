@@ -7,8 +7,8 @@ class Circle final : public Shape
 public:
     Circle(double r);
     Circle(const Circle & other) = default;
-    Circle(Circle&& other);
-    Circle& operator=(Circle&& other);
+    Circle(Circle&& other) noexcept;
+    Circle& operator=(Circle&& other) noexcept;
 
     double getArea() const override;
     double getPerimeter() const override;
