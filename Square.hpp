@@ -12,8 +12,9 @@ public:
 
     double getArea();
     double getPerimeter();
+    double getY() const = delete;
     void print();
 
 private:
-    Square();
+    Square() = delete;
 };

@@ -18,7 +18,7 @@ public:
     void print() const override;
 
 private:
-    Circle(); // doesn't allow to call default constructor
+    Circle() = delete; // doesn't allow to call default constructor
 
     double r_;
 };

@@ -17,7 +17,7 @@ public:
     void print() const override;
 
 private:
-    Rectangle();
+    Rectangle() = delete;
 
     double x_;
     double y_;
