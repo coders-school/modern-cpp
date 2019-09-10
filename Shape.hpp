@@ -10,6 +10,5 @@ public:
     virtual double getPerimeter() const = 0;
     virtual void print() const;
 
-private:
     Color color;
 };
