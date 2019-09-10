@@ -1,11 +1,10 @@
 #pragma once
-
 #include "Shape.hpp"
 
 class Circle final : public Shape
 {
 public:
-    Circle(double r);
+    Circle(double r, Color color=Color::RED);
     Circle(const Circle & other) = default;
     Circle(Circle&& other) noexcept;
     Circle& operator=(Circle&& other) noexcept;

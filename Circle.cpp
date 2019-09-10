@@ -2,7 +2,7 @@
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r)
+Circle::Circle(double r, Color color)
     : r_(r)
 {}
 

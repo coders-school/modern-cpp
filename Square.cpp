@@ -2,10 +2,10 @@
 #include <iostream>
 
 Square::Square(double x)
-    : Rectangle(x, x)
+    : Rectangle(x, x, Color::RED)
 {}
 
-Square::Square(Square&& other) noexcept : Rectangle(0.0, 0.0)
+Square::Square(Square&& other) noexcept : Rectangle(0.0, 0.0, Color::RED)
 {
     x_ = other.x_;
     other.x_ = 0.0;

@@ -5,7 +5,7 @@
 class Rectangle : public Shape
 {
 public:
-    Rectangle(double x, double y);
+    Rectangle(double x, double y, Color color = Color::RED);
     Rectangle(const Rectangle & other) = default;
     Rectangle(Rectangle&& other) noexcept;
     Rectangle& operator=(Rectangle&& other) noexcept;
