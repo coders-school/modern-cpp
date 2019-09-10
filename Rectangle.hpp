@@ -1,22 +1,24 @@
 #pragma once
 
-#include "Shape.hpp"
+#include "Square.hpp"
 
-class Rectangle : public Shape
+class Rectangle : public Square
 {
 public:
+    Rectangle() = delete;
     Rectangle(double x, double y);
-    Rectangle(const Rectangle & other);
+    Rectangle(const Rectangle & other) = default;
+    Rectangle(const Rectangle && other) noexcept;
 
-    double getArea() const;
-    double getPerimeter() const;
-    double getX() const;
+    double getArea() const noexcept override;
+    double getPerimeter() const noexcept override;
     double getY() const;
-    void print() const;
+    void print() const noexcept override;
 
+    Rectangle& operator=(Rectangle && other) noexcept = default;
 private:
-    Rectangle();
+    
 
-    double x_;
+    
     double y_;
 };

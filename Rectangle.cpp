@@ -2,29 +2,19 @@
 #include <iostream>
 
 Rectangle::Rectangle(double x, double y)
-    : x_(x),
+    : Square(x, Color::RED), 
       y_(y)
+      
 {}
 
-Rectangle::Rectangle(const Rectangle &other)
+double Rectangle::getArea() const noexcept
 {
-    x_ = other.getX();
-    y_ = other.getY();
+    return this->getX() * y_;
 }
 
-double Rectangle::getArea() const
+double Rectangle::getPerimeter() const noexcept
 {
-    return x_ * y_;
-}
-
-double Rectangle::getPerimeter() const
-{
-    return 2 * (x_ + y_);
-}
-
-double Rectangle::getX() const
-{
-    return x_;
+    return 2 * (this->getX() + y_);
 }
 
 double Rectangle::getY() const
@@ -32,7 +22,7 @@ double Rectangle::getY() const
     return y_;
 }
 
-void Rectangle::print() const
+void Rectangle::print() const noexcept
 {
     std::cout << "Rectangle:   x: " << getX() << std::endl
               << "             y: " << getY() << std::endl

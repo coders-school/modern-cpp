@@ -1,27 +1,29 @@
 #include "Square.hpp"
 #include <iostream>
 
-Square::Square(double x)
-    : Rectangle(x, x)
+Square::Square(double x,  const Color & color)
+    : Shape(color), 
+      x_(x)
 {}
 
-Square::Square(const Square &other)
-    : Rectangle(other.getX(), other.getX())
-{}
-
-double Square::getArea()
+double Square::getArea() const noexcept
 {
-    return getX() * getX();
+    return x_ * x_;
 }
 
-double Square::getPerimeter()
+double Square::getPerimeter() const noexcept
 {
-    return 4 * getX();
+    return 4 * x_;
 }
 
-void Square::print()
+double Square::getX() const
 {
-    std::cout << "Square:      x: " << getX() << std::endl
+    return x_;
+}
+
+void Square::print() const noexcept
+{
+    std::cout << "Square:      x: " << x_ << std::endl
               << "          area: " << getArea() << std::endl
               << "     perimeter: " << getPerimeter() << std::endl;
 }

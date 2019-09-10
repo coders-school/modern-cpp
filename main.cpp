@@ -7,101 +7,152 @@
 #include "Square.hpp"
 #include "Circle.hpp"
 
-using namespace std;
+#include "memory"
 
-typedef vector<Shape*> Collection;
+using  Collection = std::vector<std::shared_ptr<Shape>>;
 
-bool sortByArea(Shape* first, Shape* second)
+template<class TShape, class ... Args>
+std::shared_ptr<TShape> make_shape(Args&& ... args) {
+    return std::make_shared<TShape>(std::forward<Args>(args)...);
+}
+
+auto sortByArea(std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
 {
-    if(first == NULL || second == NULL)
+    return [](std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
     {
+        if(first == nullptr || second == nullptr)
+        {
+            return false;
+        }
+            
+        return (first->getArea() < second->getArea());
+    };
+}
+
+auto perimeterBiggerThan20(std::shared_ptr<Shape> s)
+{
+    return [](const std::shared_ptr<Shape>& s)
+    {
+        if(s)
+        {
+            return (s->getPerimeter() > 20);
+        }
         return false;
-    }
-    return (first->getArea() < second->getArea());
+    };
 }
 
-bool perimeterBiggerThan20(Shape* s)
+auto areaLessThanX(const int & value)
 {
-    if(s)
+    return [&value](std::shared_ptr<Shape> s)
     {
-        return (s->getPerimeter() > 20);
-    }
-    return false;
-}
-
-bool areaLessThan10(Shape* s)
-{
-    if(s)
-    {
-        return (s->getArea() < 10);
-    }
-    return false;
+        if(s)
+        {
+            return (s->getArea() < value);
+        }
+        return false;
+    };
 }
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it : collection)
     {
-        if(*it != NULL)
+        if(it != nullptr)
         {
-            (*it)->print();
+            it->print();
         }
     }
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it : collection)
     {
-        if(*it != NULL)
+        if(it != nullptr)
         {
-            cout << (*it)->getArea() << std::endl;
+            std::cout << it->getArea() << std::endl;
         }
     }
 }
 
+template<class Predicate>
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(Shape* s),
+                                     Predicate predicate,
                                      std::string info)
 {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if(*iter != NULL)
+    if(*iter != nullptr)
     {
-        cout << "First shape matching predicate: " << info << endl;
+        std::cout << "First shape matching predicate: " << info << std::endl;
         (*iter)->print();
     }
     else
     {
-        cout << "There is no shape matching predicate " << info << endl;
+        std::cout << "There is no shape matching predicate " << info << std::endl;
     }
+}
+
+constexpr int Fibonacci(unsigned int fibNumber) 
+{
+    if(fibNumber == 0) {
+        return 1;
+    }
+    if(fibNumber <= 2) {
+        return 1;
+    }
+    return Fibonacci(fibNumber - 1) + Fibonacci(fibNumber - 2);
 }
 
 int main()
 {
-    Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
-    shapes.push_back(NULL);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
+    std::cout << "alignment " << alignof(Circle) << std::endl;
+
+    auto uptr = std::make_unique<Circle>(5.0);
+
+    Collection shapes = {
+        std::shared_ptr<Circle>(new Circle(2.0)),
+        std::shared_ptr<Circle>(new Circle(3.0)),
+        nullptr,
+        std::move(uptr),
+        std::shared_ptr<Circle>(new Circle(4.0)),
+        std::shared_ptr<Rectangle>(new Rectangle(10.0, 5.0)),
+        std::shared_ptr<Square>(new Square(3.0)),
+        std::shared_ptr<Circle>(new Circle(4.0)),
+        make_shape<Rectangle>(12.0, 6.0)
+    
+    };
 
     printCollectionElements(shapes);
 
-    cout << "Areas before sort: " << std::endl;
+    std::cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
     std::sort(shapes.begin(), shapes.end(), sortByArea);
 
-    cout << "Areas after sort: " << std::endl;
+    std::cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    Square* square = new Square(4.0);
+    auto square = std::shared_ptr<Circle>(new Circle(4.0));
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX(10), "area less than 10");
+    
+
+    //std::cout << Fibonacci(45) << std::endl;
+
+    /*
+    no constexpr
+    real    0m14,079s
+    user    0m13,939s
+    sys     0m0,060s
+    
+    constexpr - before function declaration
+    real    0m0,003s
+    user    0m0,003s
+    sys     0m0,000s
+    
+    */
 
     return 0;
 }
