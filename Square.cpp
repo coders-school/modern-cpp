@@ -4,22 +4,27 @@
 Square::Square(double x)
     : Rectangle(x, x)
 {}
-
-Square::Square(const Square &other)
+Square::Square(Square && other) noexcept
     : Rectangle(other.getX(), other.getX())
 {}
 
-double Square::getArea()
+Square &Square::operator= (Square&& object) noexcept
+{
+    //x_=object.getX();  <-- ???
+    return *this;
+}
+
+double Square::getArea() const noexcept
 {
     return getX() * getX();
 }
 
-double Square::getPerimeter()
+double Square::getPerimeter() const
 {
     return 4 * getX();
 }
 
-void Square::print()
+void Square::print()const
 {
     std::cout << "Square:      x: " << getX() << std::endl
               << "          area: " << getArea() << std::endl

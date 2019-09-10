@@ -6,56 +6,48 @@
 #include "Rectangle.hpp"
 #include "Square.hpp"
 #include "Circle.hpp"
+#include <memory>
 
 using namespace std;
 
-typedef vector<Shape*> Collection;
+//typedef vector<Shape*> Collection;        //zad3
+using Collection = vector<Shape*> ;          //zad3
 
-bool sortByArea(Shape* first, Shape* second)
-{
-    if(first == NULL || second == NULL)
-    {
-        return false;
-    }
-    return (first->getArea() < second->getArea());
-}
+auto sortByArea = [] (Shape* first, Shape* second)
+                    { if(first == nullptr || second == nullptr)return false;
+                    return (first->getArea() < second->getArea());};
 
-bool perimeterBiggerThan20(Shape* s)
-{
-    if(s)
-    {
-        return (s->getPerimeter() > 20);
-    }
-    return false;
-}
+auto perimeterBiggerThan20 = [](Shape* s)
+                             {if(s) return (s->getPerimeter() > 20);
+                             return false;};
 
-bool areaLessThan10(Shape* s)
-{
-    if(s)
-    {
-        return (s->getArea() < 10);
-    }
-    return false;
-}
+auto areaLessThan10= [](Shape* s)
+                     {if(s) return (s->getArea() < 10);
+                     return false;};
+
+auto areaLessThanX= [](int x = 10, Shape* s)        //<-- shoule be int x = 10 declarated here?
+                     {if(s) return (s->getArea() < x);
+                     return false;};
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for(auto it : collection)   //zad6
     {
-        if(*it != NULL)
+        if(it != nullptr)
         {
-            (*it)->print();
+            (it)->print();
         }
     }
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
+
+    for(auto it : collection)   //zad6
     {
-        if(*it != NULL)
+        if(it != nullptr)
         {
-            cout << (*it)->getArea() << std::endl;
+            cout << (it)->getArea() << std::endl;
         }
     }
 }
@@ -65,7 +57,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
                                      std::string info)
 {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if(*iter != NULL)
+    if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
         (*iter)->print();
@@ -76,16 +68,30 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+constexpr size_t FibonacciNumber (int number) //zad 11
+{
+    if(number == 1 or number == 2)
+        return 1;
+    else
+        return FibonacciNumber(number-1)+ FibonacciNumber(number-2);
+}
+
+
 int main()
 {
-    Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
-    shapes.push_back(NULL);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
+    std::cout<<FibonacciNumber(45)<<std::endl;
+
+    Circle obj(10);
+    std::cout<<"Alignof Circle: "<<alignof(obj)<<std::endl;
+    Circle new_obj(std::shared_ptr<Circle> obj);
+    Collection shapes = {new Circle(2.0), 
+                        // std::shared_ptr<Circle> (new double(2.0)),  <-- cam I use it in construcotr?
+                         new Circle(3.0), 
+                         nullptr, 
+                         new Circle(4.0), 
+                         new Rectangle(10.0, 5.0), 
+                         new Square(3.0), 
+                         new Circle(4.0)};
 
     printCollectionElements(shapes);
 
