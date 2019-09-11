@@ -8,7 +8,6 @@
 #include "Circle.hpp"
 #include <math.h>
 #include <memory>
-#include <initializer_list>
 
 using namespace std;
 
@@ -65,10 +64,14 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 constexpr int fibo(int number)
 {
     if (number == 1 || number == 0)
-    {
         return number;
-    }
     return (fibo(number-1) + fibo(number -2));
+}
+
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args)
+{
+   return std::make_shared<DerivedType>(std::forward<Arguments>(args)...);
 }
 
 int main()
@@ -88,7 +91,9 @@ int main()
         std::make_shared<Circle>(4.0),
         std::make_shared<Rectangle>(10.0, 5.0),
         std::make_shared<Square>(3.0),
-        std::make_shared<Circle>(4.0)
+        std::make_shared<Circle>(4.0),
+        make_shape<Circle>(9.9),
+        make_shape<Rectangle>(1.1, 2.2)
                         };
    
     printCollectionElements(shapes);
@@ -117,5 +122,4 @@ int main()
     
     return 0;
 }
-
 
