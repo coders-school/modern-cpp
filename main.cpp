@@ -79,13 +79,13 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 int main()
 {
     Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
+    shapes.push_back(new Circle(2.0, Color::R));
+    shapes.push_back(new Circle(3.0, Color::G));
     shapes.push_back(NULL);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
+    shapes.push_back(new Circle(4.0, Color::B));
+    shapes.push_back(new Rectangle(10.0, 5.0, Color::R));
+    shapes.push_back(new Square(3.0, Color::G));
+    shapes.push_back(new Circle(4.0, Color::B));
 
     printCollectionElements(shapes);
 
@@ -97,7 +97,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    Square* square = new Square(4.0);
+    Square* square = new Square(4.0, Color::B);
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
