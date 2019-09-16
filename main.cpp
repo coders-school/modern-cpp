@@ -41,22 +41,22 @@ bool areaLessThan10(Shape* s)
 
 void printCollectionElements(const Collection& collection)
 {
-    for(auto it = collection.begin(); it != collection.end(); ++it)
+    for(const auto & elements : collection)
     {
-        if(*it != nullptr)
+        if(elements != nullptr)
         {
-            (*it)->print();
+            elements->print();
         }
     }
 }
 
 void printAreas(const Collection& collection)
 {
-    for(auto it = collection.begin(); it != collection.end(); ++it)
+    for(const auto & elements : collection)
     {
-        if(*it != nullptr)
+        if(elements != nullptr)
         {
-            cout << (*it)->getArea() << std::endl;
+            cout << elements->getArea() << std::endl;
         }
     }
 }
