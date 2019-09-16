@@ -77,6 +77,13 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+constexpr unsigned calculateFibonacciNumber(unsigned n)
+{
+    if (n<2)
+        return n;
+    return (calculateFibonacciNumber(n-2) + calculateFibonacciNumber(n-1));
+}
+
 int main()
 {
     Collection shapes;
@@ -103,6 +110,17 @@ int main()
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+
+    // calculateFibonacciNumber(45);
+    // piotr@mintVm:~/git/modern_cpp/build$ time ./modern_cpp
+    // >> constexpr unsigned calculateFibonacciNumber(unsigned n) <<:
+    // real	0m0,001s
+    // user	0m0,001s
+    // sys	0m0,000s
+    // >> unsigned calculateFibonacciNumber(unsigned n) <<:
+    // real	0m5,942s
+    // user	0m5,924s
+    // sys	0m0,000s
 
     return 0;
 }
