@@ -12,6 +12,8 @@ public:
     double getArea() const override;
     double getPerimeter() const override;
     double getRadius() const;
+    [[deprecated]]
+    double getPi() const;
     void print() const override;
 
 private:
