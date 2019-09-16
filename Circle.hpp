@@ -2,12 +2,17 @@
 
 #include "Shape.hpp"
 
-class alignas(2) Circle final : public Shape
+// alignas(2) -> can't be set to less than default alignment
+class alignas(8) Circle final : public Shape
 {
 public:
     Circle() = delete;
+    Circle(const Circle&) = default;
+    Circle(Circle&&) noexcept = default;
     Circle(double r, Color c);
-    Circle(const Circle & other);
+
+    Circle& operator= (const Circle&) = default;
+    Circle& operator= (Circle&&) noexcept = default;
 
     double getArea() const noexcept override;
     double getPerimeter() const noexcept override;

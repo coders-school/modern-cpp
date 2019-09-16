@@ -8,8 +8,6 @@ Rectangle::Rectangle(double x, double y, Color c)
     color_ = c;
 }
 
-Rectangle::Rectangle(const Rectangle &other) = default;
-
 double Rectangle::getArea() const noexcept
 {
     return x_ * y_;

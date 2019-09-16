@@ -87,7 +87,9 @@ constexpr unsigned calculateFibonacciNumber(unsigned n)
 
 int main()
 {
-    auto uniquePtr1 = std::make_unique<Circle>(1.1, Color::B);
+    auto uniquePtr1 = std::make_unique<Rectangle>(1.0, 2.0, Color::R);
+    auto uniquePtr2 = std::make_unique<Square>(3.0, Color::G);
+    auto uniquePtr3 = std::make_unique<Circle>(1.0, Color::B);
     
     Collection shapes {
         std::shared_ptr<Circle>(new Circle(2.0, Color::R)),
@@ -97,9 +99,14 @@ int main()
         std::shared_ptr<Rectangle>(new Rectangle(10.0, 5.0, Color::R)),
         std::shared_ptr<Square>(new Square(3.0, Color::G)),
         std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
-        std::move(uniquePtr1)
+        std::shared_ptr<Rectangle>(std::move(uniquePtr1)),
+        std::shared_ptr<Square>(std::move(uniquePtr2)),
+        std::shared_ptr<Circle>(std::move(uniquePtr3))
     };
 
+    if ( !(uniquePtr1 && uniquePtr2 && uniquePtr3 && uniquePtr3) )
+        std::cout << "Move succeed!\n";
+    
     printCollectionElements(shapes);
 
     cout << "Areas before sort: " << std::endl;
@@ -132,10 +139,6 @@ int main()
         // alignof(Circle): 128
     // >> class alignas(2) Circle final : public Shape <<:
         // alignof(Circle): 8
-
-    std::shared_ptr<int> spint1 = std::make_shared<int>(4);
-    std::cout << *spint1 << '\n';
-    std::cout << spint1.use_count();
     
     return 0;
 }

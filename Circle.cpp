@@ -10,8 +10,6 @@ Circle::Circle(double r, Color c)
     color_ = c;
 }
 
-Circle::Circle(const Circle & other) = default;
-
 double Circle::getArea() const noexcept
 {
     return M_PI * r_ * r_;

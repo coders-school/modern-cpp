@@ -5,8 +5,6 @@ Square::Square(double x, Color c)
     : Rectangle(x, x, c)
 {}
 
-Square::Square(const Square &other) = default;
-
 double Square::getArea() const noexcept
 {
     return getX() * getX();
