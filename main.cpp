@@ -122,6 +122,11 @@ int main()
     // user	0m5,924s
     // sys	0m0,000s
 
+    std::cout << "alignof(Circle): " << alignof(Circle) << '\n';
+    // >> class alignas(128) Circle final : public Shape <<:
+        // alignof(Circle): 128
+    // >> class alignas(2) Circle final : public Shape <<:
+        // alignof(Circle): 8
+    
     return 0;
 }
-
