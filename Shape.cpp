@@ -10,4 +10,3 @@ Color Shape::getColor() const
 {
     return color_;
 }
-

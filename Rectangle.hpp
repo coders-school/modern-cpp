@@ -5,6 +5,7 @@
 class Rectangle : public Shape
 {
 public:
+    Rectangle() = delete;
     Rectangle(double x, double y, Color c);
     Rectangle(const Rectangle & other);
 
@@ -15,8 +16,6 @@ public:
     void print() const;
 
 private:
-    Rectangle();
-
     double x_;
     double y_;
 };

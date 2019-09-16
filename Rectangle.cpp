@@ -8,12 +8,7 @@ Rectangle::Rectangle(double x, double y, Color c)
     color_ = c;
 }
 
-Rectangle::Rectangle(const Rectangle &other)
-{
-    x_ = other.getX();
-    y_ = other.getY();
-    color_ = other.getColor();
-}
+Rectangle::Rectangle(const Rectangle &other) = default;
 
 double Rectangle::getArea() const
 {

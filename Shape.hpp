@@ -10,6 +10,7 @@ enum class Color
 class Shape
 {
 public:
+    Shape() = default;
     virtual ~Shape() {}
 
     virtual double getArea() const = 0;

@@ -5,9 +5,7 @@ Square::Square(double x, Color c)
     : Rectangle(x, x, c)
 {}
 
-Square::Square(const Square &other)
-    : Rectangle(other.getX(), other.getX(), other.getColor())
-{}
+Square::Square(const Square &other) = default;
 
 double Square::getArea()
 {

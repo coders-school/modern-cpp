@@ -10,10 +10,7 @@ Circle::Circle(double r, Color c)
     color_ = c;
 }
 
-Circle::Circle(const Circle & other)
-{
-    r_ = other.getRadius();
-}
+Circle::Circle(const Circle & other) = default;
 
 double Circle::getArea() const
 {
