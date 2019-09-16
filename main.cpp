@@ -13,6 +13,12 @@ using namespace std;
 using Collection = vector<std::shared_ptr<Shape>>;
 using SPtrShape = std::shared_ptr<Shape>;
 
+template<class DerivedType, class ... Arguments>
+std::shared_ptr<DerivedType> make_shape(Arguments&& ... args)
+{
+    return std::make_shared<DerivedType>(std::forward<Arguments>(args)...);
+}
+
 auto sortByArea = [](SPtrShape first, SPtrShape second)
 {
     if (first == nullptr || second == nullptr)
@@ -89,7 +95,7 @@ int main()
     auto uniquePtr1 = std::make_unique<Rectangle>(1.0, 2.0, Color::G);
     auto uniquePtr2 = std::make_unique<Square>(3.0, Color::G);
     auto uniquePtr3 = std::make_unique<Circle>(1.0, Color::B);
-    
+
     Collection shapes {
         std::shared_ptr<Circle>(new Circle(2.0, Color::R)),
         std::shared_ptr<Circle>(new Circle(3.0, Color::G)),
@@ -100,7 +106,10 @@ int main()
         std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
         std::shared_ptr<Rectangle>(std::move(uniquePtr1)),
         std::shared_ptr<Square>(std::move(uniquePtr2)),
-        std::shared_ptr<Circle>(std::move(uniquePtr3))
+        std::shared_ptr<Circle>(std::move(uniquePtr3)),
+        make_shape<Rectangle>(0.5, 3.0, Color::B),
+        make_shape<Square>(3.0, Color::G),
+        make_shape<Circle>(1.0, Color::G)
     };
 
     if ( !(uniquePtr1 && uniquePtr2 && uniquePtr3 && uniquePtr3) )
