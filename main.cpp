@@ -86,14 +86,15 @@ constexpr unsigned calculateFibonacciNumber(unsigned n)
 
 int main()
 {
-    Collection shapes;
-    shapes.push_back(new Circle(2.0, Color::R));
-    shapes.push_back(new Circle(3.0, Color::G));
-    shapes.push_back(nullptr);
-    shapes.push_back(new Circle(4.0, Color::B));
-    shapes.push_back(new Rectangle(10.0, 5.0, Color::R));
-    shapes.push_back(new Square(3.0, Color::G));
-    shapes.push_back(new Circle(4.0, Color::B));
+    Collection shapes {
+        new Circle(2.0, Color::R),
+        new Circle(3.0, Color::G),
+        nullptr,
+        new Circle(4.0, Color::B),
+        new Rectangle(10.0, 5.0, Color::R),
+        new Square(3.0, Color::G),
+        new Circle(4.0, Color::B)
+    };
 
     printCollectionElements(shapes);
 
