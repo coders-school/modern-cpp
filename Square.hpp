@@ -9,8 +9,8 @@ public:
     Square(double x, Color c);
     Square(const Square & other);
 
-    double getArea();
-    double getPerimeter();
-    void print();
+    double getArea() const override;
+    double getPerimeter() const override;
+    void print() const override;
     double getY() const = delete;
 };
