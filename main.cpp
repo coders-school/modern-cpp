@@ -10,34 +10,32 @@
 #include "Circle.hpp"
 
 using namespace std;
-
 using Collection = vector<std::shared_ptr<Shape>>;
+using SPtrShape = std::shared_ptr<Shape>;
 
-bool sortByArea(std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
+auto sortByArea = [](SPtrShape first, SPtrShape second)
 {
-    if(first == nullptr || second == nullptr)
-    {
+    if (first == nullptr || second == nullptr)
         return false;
-    }
     return (first->getArea() < second->getArea());
-}
+};
 
-bool perimeterBiggerThan20(std::shared_ptr<Shape> s)
+auto perimeterBiggerThan20 = [](SPtrShape s)
 {
-    if(s)
-    {
+    if (s)
         return (s->getPerimeter() > 20);
-    }
     return false;
-}
+};
 
-bool areaLessThan10(std::shared_ptr<Shape> s)
+auto areaLessThanX(const unsigned x)
 {
-    if(s)
+    // cannot use &x: l-val reference to r-value
+    return [x](SPtrShape s)
     {
-        return (s->getArea() < 10);
-    }
-    return false;
+        if (s)
+            return (s->getArea() < x);
+        return false;
+    };
 }
 
 void printCollectionElements(const Collection& collection)
@@ -62,8 +60,9 @@ void printAreas(const Collection& collection)
     }
 }
 
+template<class Predicate>
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(std::shared_ptr<Shape> s),
+                                     Predicate predicate,
                                      std::string info)
 {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -121,7 +120,7 @@ int main()
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX(10), "area less than 10");
 
     // calculateFibonacciNumber(45);
     // piotr@mintVm:~/git/modern_cpp/build$ time ./modern_cpp
