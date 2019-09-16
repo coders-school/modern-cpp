@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <functional>
+#include <memory>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
@@ -10,9 +11,9 @@
 
 using namespace std;
 
-using Collection = vector<Shape*>;
+using Collection = vector<std::shared_ptr<Shape>>;
 
-bool sortByArea(Shape* first, Shape* second)
+bool sortByArea(std::shared_ptr<Shape> first, std::shared_ptr<Shape> second)
 {
     if(first == nullptr || second == nullptr)
     {
@@ -21,7 +22,7 @@ bool sortByArea(Shape* first, Shape* second)
     return (first->getArea() < second->getArea());
 }
 
-bool perimeterBiggerThan20(Shape* s)
+bool perimeterBiggerThan20(std::shared_ptr<Shape> s)
 {
     if(s)
     {
@@ -30,7 +31,7 @@ bool perimeterBiggerThan20(Shape* s)
     return false;
 }
 
-bool areaLessThan10(Shape* s)
+bool areaLessThan10(std::shared_ptr<Shape> s)
 {
     if(s)
     {
@@ -62,7 +63,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(Shape* s),
+                                     bool (*predicate)(std::shared_ptr<Shape> s),
                                      std::string info)
 {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -86,14 +87,17 @@ constexpr unsigned calculateFibonacciNumber(unsigned n)
 
 int main()
 {
+    auto uniquePtr1 = std::make_unique<Circle>(1.1, Color::B);
+    
     Collection shapes {
-        new Circle(2.0, Color::R),
-        new Circle(3.0, Color::G),
+        std::shared_ptr<Circle>(new Circle(2.0, Color::R)),
+        std::shared_ptr<Circle>(new Circle(3.0, Color::G)),
         nullptr,
-        new Circle(4.0, Color::B),
-        new Rectangle(10.0, 5.0, Color::R),
-        new Square(3.0, Color::G),
-        new Circle(4.0, Color::B)
+        std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
+        std::shared_ptr<Rectangle>(new Rectangle(10.0, 5.0, Color::R)),
+        std::shared_ptr<Square>(new Square(3.0, Color::G)),
+        std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
+        std::move(uniquePtr1)
     };
 
     printCollectionElements(shapes);
@@ -106,7 +110,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto* square = new Square(4.0, Color::B);
+    auto square = std::shared_ptr<Square>(new Square(4.0, Color::B));
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
@@ -128,6 +132,10 @@ int main()
         // alignof(Circle): 128
     // >> class alignas(2) Circle final : public Shape <<:
         // alignof(Circle): 8
+
+    std::shared_ptr<int> spint1 = std::make_shared<int>(4);
+    std::cout << *spint1 << '\n';
+    std::cout << spint1.use_count();
     
     return 0;
 }
