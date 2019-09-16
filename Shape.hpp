@@ -19,5 +19,5 @@ public:
     Color getColor() const;
 
 protected:
-    Color color_;
+    Color color_ = Color::R;
 };

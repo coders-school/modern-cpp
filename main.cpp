@@ -87,7 +87,7 @@ constexpr unsigned calculateFibonacciNumber(unsigned n)
 
 int main()
 {
-    auto uniquePtr1 = std::make_unique<Rectangle>(1.0, 2.0, Color::R);
+    auto uniquePtr1 = std::make_unique<Rectangle>(1.0, 2.0, Color::G);
     auto uniquePtr2 = std::make_unique<Square>(3.0, Color::G);
     auto uniquePtr3 = std::make_unique<Circle>(1.0, Color::B);
     
@@ -96,7 +96,7 @@ int main()
         std::shared_ptr<Circle>(new Circle(3.0, Color::G)),
         nullptr,
         std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
-        std::shared_ptr<Rectangle>(new Rectangle(10.0, 5.0, Color::R)),
+        std::shared_ptr<Rectangle>(new Rectangle(10.0, 5.0, Color::B)),
         std::shared_ptr<Square>(new Square(3.0, Color::G)),
         std::shared_ptr<Circle>(new Circle(4.0, Color::B)),
         std::shared_ptr<Rectangle>(std::move(uniquePtr1)),

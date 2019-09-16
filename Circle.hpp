@@ -9,6 +9,7 @@ public:
     Circle() = delete;
     Circle(const Circle&) = default;
     Circle(Circle&&) noexcept = default;
+    Circle(double r);
     Circle(double r, Color c);
 
     Circle& operator= (const Circle&) = default;

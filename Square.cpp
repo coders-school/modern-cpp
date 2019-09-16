@@ -1,9 +1,15 @@
 #include "Square.hpp"
 #include <iostream>
 
-Square::Square(double x, Color c)
-    : Rectangle(x, x, c)
+Square::Square(double x)
+    : Rectangle(x, x)
 {}
+
+Square::Square(double x, Color c)
+    : Square(x)
+{
+    color_ = c;
+}
 
 double Square::getArea() const noexcept
 {

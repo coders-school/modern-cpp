@@ -8,6 +8,7 @@ public:
     Rectangle() = delete;
     Rectangle(const Rectangle&) = default;
     Rectangle(Rectangle&&) noexcept = default;
+    Rectangle(double x, double y);
     Rectangle(double x, double y, Color c);
 
     Rectangle& operator= (const Rectangle&) = default;
