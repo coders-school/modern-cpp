@@ -9,8 +9,8 @@ public:
     Circle(double r, Color c);
     Circle(const Circle & other);
 
-    double getArea() const override;
-    double getPerimeter() const override;
+    double getArea() const noexcept override;
+    double getPerimeter() const noexcept override;
     double getRadius() const;
     [[deprecated]]
     double getPi() const;

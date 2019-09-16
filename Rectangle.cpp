@@ -10,12 +10,12 @@ Rectangle::Rectangle(double x, double y, Color c)
 
 Rectangle::Rectangle(const Rectangle &other) = default;
 
-double Rectangle::getArea() const
+double Rectangle::getArea() const noexcept
 {
     return x_ * y_;
 }
 
-double Rectangle::getPerimeter() const
+double Rectangle::getPerimeter() const noexcept
 {
     return 2 * (x_ + y_);
 }

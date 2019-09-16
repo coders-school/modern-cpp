@@ -7,12 +7,12 @@ Square::Square(double x, Color c)
 
 Square::Square(const Square &other) = default;
 
-double Square::getArea() const
+double Square::getArea() const noexcept
 {
     return getX() * getX();
 }
 
-double Square::getPerimeter() const
+double Square::getPerimeter() const noexcept
 {
     return 4 * getX();
 }
