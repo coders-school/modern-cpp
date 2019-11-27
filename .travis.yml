@@ -1,0 +1,24 @@
+sudo: required
+language: cpp
+dist: xenial
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; sudo apt-get update -qq ; fi
+  
+install: 
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install -qq g++-8 ; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90; fi
+
+os:
+  - linux
+  - osx
+
+compiler:
+  - g++
+  - clang
+
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - ./modern_cpp
