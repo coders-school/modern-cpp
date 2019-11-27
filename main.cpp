@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <memory>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
@@ -9,63 +10,49 @@
 
 using namespace std;
 
-typedef vector<Shape*> Collection;
+typedef vector<shared_ptr<Shape>> Collection;
 
-bool sortByArea(Shape* first, Shape* second)
+bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
 {
-    if(first == NULL || second == NULL)
-    {
+    if(first == nullptr || second == nullptr)
         return false;
-    }
     return (first->getArea() < second->getArea());
 }
 
-bool perimeterBiggerThan20(Shape* s)
+bool perimeterBiggerThan20(shared_ptr<Shape> s)
 {
     if(s)
-    {
         return (s->getPerimeter() > 20);
-    }
     return false;
 }
 
-bool areaLessThan10(Shape* s)
+bool areaLessThan10(shared_ptr<Shape> s)
 {
     if(s)
-    {
         return (s->getArea() < 10);
-    }
     return false;
 }
 
 void printCollectionElements(const Collection& collection)
 {
     for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
-    {
-        if(*it != NULL)
-        {
+        if(*it)
             (*it)->print();
-        }
-    }
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<Shape*>::const_iterator it = collection.begin(); it != collection.end(); ++it)
-    {
-        if(*it != NULL)
-        {
+    for(vector<shared_ptr<Shape>>::const_iterator it = collection.begin(); it != collection.end(); ++it)
+        if(*it)
             cout << (*it)->getArea() << std::endl;
-        }
-    }
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(Shape* s),
+                                     bool (*predicate)(shared_ptr<Shape> s),
                                      std::string info)
 {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if(*iter != NULL)
+    if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
         (*iter)->print();
@@ -79,14 +66,13 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 int main()
 {
     Collection shapes;
-    shapes.push_back(new Circle(2.0));
-    shapes.push_back(new Circle(3.0));
-    shapes.push_back(NULL);
-    shapes.push_back(new Circle(4.0));
-    shapes.push_back(new Rectangle(10.0, 5.0));
-    shapes.push_back(new Square(3.0));
-    shapes.push_back(new Circle(4.0));
-
+    shapes.push_back(make_shared<Circle>(2.0));
+    shapes.push_back(make_shared<Circle>(3.0));
+    shapes.push_back(nullptr);
+    shapes.push_back(make_shared<Circle>(4.0));
+    shapes.push_back(make_shared<Rectangle>(10.0, 5.0));
+    shapes.push_back(make_shared<Square>(3.0));
+    shapes.push_back(make_shared<Circle>(4.0));
     printCollectionElements(shapes);
 
     cout << "Areas before sort: " << std::endl;
@@ -97,7 +83,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    Square* square = new Square(4.0);
+    auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
