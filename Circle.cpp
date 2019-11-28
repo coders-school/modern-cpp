@@ -6,11 +6,6 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(const Circle & other)
-{
-    r_ = other.getRadius();
-}
-
 double Circle::getArea() const
 {
     return M_PI * r_ * r_;
@@ -25,6 +20,8 @@ double Circle::getRadius() const
 {
     return r_;
 }
+
+static_assert(M_PI != 3.14, "Hello");
 
 void Circle::print() const
 {
