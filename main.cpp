@@ -3,35 +3,18 @@
 #include <algorithm>
 #include <string>
 #include <memory>
+#include <functional>
+
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
 #include "Circle.hpp"
+#include <map>
 
 using namespace std;
 
 typedef vector<shared_ptr<Shape>> Collection;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
-    if(first == nullptr || second == nullptr)
-        return false;
-    return (first->getArea() < second->getArea());
-}
-
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getPerimeter() > 20);
-    return false;
-}
-
-bool areaLessThan10(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getArea() < 10);
-    return false;
-}
 
 void printCollectionElements(const Collection& collection)
 {
@@ -48,7 +31,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape> s)> predicate,
                                      std::string info)
 {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -78,7 +61,11 @@ int main()
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
-    std::sort(shapes.begin(), shapes.end(), sortByArea);
+    std::sort(shapes.begin(), shapes.end(), [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
+        if (first == nullptr || second == nullptr)
+            return false;
+        return (first->getArea() < second->getArea());
+    });
 
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
@@ -86,8 +73,29 @@ int main()
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
-    findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(
+		shapes, 
+		[](shared_ptr<Shape> s) {
+		    if (s)
+			    return (s->getPerimeter() > 20);
+		    return false;
+	    }, 
+		"perimeter bigger than 20");
+
+    findFirstShapeMatchingPredicate(
+		shapes, 
+		[x = 10](shared_ptr<Shape> s)
+		{
+			if (s)
+				return (s->getArea() < x);
+			return false;
+		},
+		"area less than 10");
+
+	cout << "alignof(Circle): " << alignof(Circle) << endl;
+
+	auto shape = make_shape<Circle>(10, Color::Green);
+	shape->print();
 
     return 0;
 }
