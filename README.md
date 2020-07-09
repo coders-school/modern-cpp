@@ -62,26 +62,23 @@ It should be >= 7.0
     Add in-class field initialization for all shapes to safely use inherited constructor.
 11. SFINAE
     Write a function that allows inserting only subclasses of Shape to the collection. Other parameter types should not compile. Use SFINAE. Find proper type_traits.
-
-## Post-work
-
-1. attributes:
+12. attributes:
     Add a new method `double getPi()` in `Circle` class, which returns a PI number. Mark it as deprecated.
-2. `noexcept`:
+13. `noexcept`:
     Mark some `getArea()` and `getPerimeter()` methods as `noexcept`
-3. `alignas`, `alignof`
+14. `alignas`, `alignof`
     Change the alignment of the `Circle` class to 128.
     Print the alignment in `main()` function.
     Change the alignment to 2.
     Print the alignment.
-4. delegating constructors:
+15. delegating constructors:
     Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for Color.
     Delegate a call in the old constructor to the new one.
-5. lambda functions:
+16. lambda functions:
     Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
     Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
     Use `std::function` to solve the problem.
-6. variadic templates:
+17. variadic templates:
     Write a factory method which should work like `std::make_shared`.
     It should have below signature:
 
