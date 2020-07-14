@@ -78,7 +78,10 @@ It should be >= 7.0
     Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
     Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
     Use `std::function` to solve the problem.
-17. variadic templates:
+17. structured bindings:
+    Create an `std::map<shared_ptr<Shape>, double>` that will hold a shape and it's perimeter.
+    Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
+18. variadic templates:
     Write a factory method which should work like `std::make_shared`.
     It should have below signature:
 
