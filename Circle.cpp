@@ -11,6 +11,10 @@ Circle::Circle(const Circle & other)
     r_ = other.getRadius();
 }
 
+double Circle::getPi() const {
+    return 3;
+}
+
 double Circle::getArea() const
 {
     return M_PI * r_ * r_;

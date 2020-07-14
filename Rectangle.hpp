@@ -8,8 +8,8 @@ public:
     Rectangle(double x, double y);
     Rectangle(const Rectangle & other);
 
-    double getArea() const;
-    double getPerimeter() const;
+    double getArea() const noexcept;
+    double getPerimeter() const noexcept;
     double getX() const;
     double getY() const;
     void print() const;

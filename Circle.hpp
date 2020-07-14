@@ -2,11 +2,14 @@
 
 #include "Shape.hpp"
 
-class Circle : public Shape
+class alignas(128) Circle : public Shape
 {
 public:
     Circle(double r);
     Circle(const Circle & other);
+
+    [[deprecated("Please use M_PI instead")]]
+    double getPi() const;
 
     double getArea() const;
     double getPerimeter() const;
