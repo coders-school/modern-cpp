@@ -1,20 +1,21 @@
 #pragma once
+#include <math.h>
 
 #include "Shape.hpp"
 
-class Circle : public Shape
+class Circle final : public Shape
 {
 public:
-    Circle(double r);
-    Circle(const Circle & other);
+    using Shape::Shape;
+    Circle() = delete;
+    explicit Circle(double r);
+    Circle(const Circle & other) = default;
 
-    double getArea() const;
-    double getPerimeter() const;
+    double getArea() const override;
+    double getPerimeter() const override;
     double getRadius() const;
-    void print() const;
+    void print() const override;
 
 private:
-    Circle(); // doesn't allow to call default constructor
-
-    double r_;
+    double r_ = 0.0;
 };
