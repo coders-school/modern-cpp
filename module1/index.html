@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Modern C++</title>
+
+        <meta name="description" content="C++11, C++14 and C++17 presentation">
+        <meta name="author" content="Lukasz Ziobron">
+
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/reveal.css">
+        <link rel="stylesheet" href="../css/theme/coders.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides">
+
+                <section>
+                    <section data-background="#111111">
+
+                        <h1>Modern C++ #1</h1>
+                        <h2>Basic features</h2>
+                        <a href="https://coders.school">
+                            <img width="500" data-src="../img/coders_school_logo.png" alt="Coders School" class="plain">
+                        </a>
+                        <h3>Łukasz Ziobroń</h3>
+                        <h3>Kamil Szatkowski</h3>
+
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+
+                        ## Agenda
+
+                        1. <!-- .element: class="fragment fade-in" --> intro (30’)
+                        1. <!-- .element: class="fragment fade-in" --> <code>static_assert</code> (15’)
+                        1. <!-- .element: class="fragment fade-in" --> <code>nullptr</code> (10’)
+                        1. <!-- .element: class="fragment fade-in" --> scoped enums (30’)
+                        1. <!-- .element: class="fragment fade-in" --> ☕️ break (15’)
+                        1. <!-- .element: class="fragment fade-in" --> <code>auto</code> keyword and range-based for loop (1h)
+                        1. <!-- .element: class="fragment fade-in" --> ☕️ break (10’)
+                        1. <!-- .element: class="fragment fade-in" --> <code>using</code> alias (15’)
+                        1. <!-- .element: class="fragment fade-in" --> uniform initialization (40’)
+                        1. <!-- .element: class="fragment fade-in" --> 🍝 lunch break (50’)
+                        1. <!-- .element: class="fragment fade-in" --> new keywords: <code>default</code>, <code>delete</code>, <code>final</code>, <code>override</code> (1h)
+                        1. <!-- .element: class="fragment fade-in" --> recap (15’)
+
+                        </textarea>
+                    </section>
+                </section>
+
+                <section data-markdown="00_intro.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="pretest.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="standards.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="static_assert.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="nullptr.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="scoped_enum.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="00_coffee_break.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="auto.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="00_coffee_break.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="using.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="uniform_initialization.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="00_lunch_break.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="default_delete_final_override.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="recap.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="pretest_answers.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-background="../img/coders_school_logo.png" data-background-size="80%">
+                    <h1>Thank you 🙂</h1>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="../js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                    width: 1200,
+                    height: 750,
+                    slideNumber: true,
+                    hash: true,
+                    pdfSeparateFragments: false,
+                    dependencies: [
+                            { src: '../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                            { src: '../plugin/markdown/marked.js' },
+                            { src: '../plugin/markdown/markdown.js' },
+                            { src: '../plugin/notes/notes.js', async: true }
+                    ]
+            });
+    </script>
+    </body>
+</html>

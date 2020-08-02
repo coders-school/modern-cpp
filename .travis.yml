@@ -17,8 +17,8 @@ compiler:
   - clang
 
 script:
-  - mkdir build
-  - cd build
+  - mkdir shapes/build
+  - cd shapes/build
   - cmake ..
   - make
-  - ./modern_cpp
+  - ./shapes
