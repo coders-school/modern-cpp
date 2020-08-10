@@ -13,7 +13,7 @@ it means that you are manually managing resources and <span class="fragment high
 It will ensure correctness in every context.
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Rule of 5
 
@@ -28,7 +28,7 @@ Rule of 5 = Rule of 3 + optimizations
 From C++11 use Rule of 5.
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Rule of 0
 
@@ -41,7 +41,7 @@ If you use RAII handlers (like smart pointers), all the copy and move operations
 Eg. when you have unique_ptr as your class member, copy operations of your class will be automatically blocked, but move operations will be supported.
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Task
 

@@ -12,7 +12,7 @@ Mention as many keywords / topics from this session as you can
 * <!-- .element: class="fragment fade-in" --> Perfect forwarding
 * <!-- .element: class="fragment fade-in" --> Copy elision, RVO
 
----
+___
 
 ## Post-work
 

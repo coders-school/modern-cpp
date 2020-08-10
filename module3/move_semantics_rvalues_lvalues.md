@@ -5,7 +5,7 @@
 * Better optimization by avoiding redundant copies
 * improved safety by keeping only one instance
 
----
+___
 
 ## New syntax elements
 
@@ -15,7 +15,7 @@
 * <!-- .element: class="fragment fade-in" --> <code>std::move()</code> auxilary function
 * <!-- .element: class="fragment fade-in" --> <code>std::forward()</code> auxilary function
 
----
+___
 
 ## r-value and l-value
 
@@ -29,7 +29,7 @@ A{5, 3};                // r-value
 foo();                  // r-value
 ```
 
----
+___
 
 ## r-value and l-value
 
@@ -38,7 +38,7 @@ foo();                  // r-value
 * <!-- .element: class="fragment fade-in" --> r-value object does not have a name (usually) or address
 * <!-- .element: class="fragment fade-in" --> r-value object is temporary, in the next line it will not be accessible
 
----
+___
 
 ## r-value and l-value references
 
@@ -61,7 +61,7 @@ A const ca{20, 40};
 A const&& rrc = ca;     // const r-value reference to const l-value, ERROR
 ```
 
----
+___
 
 ## r-value or l-value?
 
@@ -73,7 +73,7 @@ std::move(a);                   <span class="fragment">// r-value</span>
 int && a = 4;                   <span class="fragment">// 4 is r-value</span>
 </code></pre>
 
----
+___
 
 ## r-value reference is... l-value?
 
@@ -84,7 +84,7 @@ int && a = 4;                   <span class="fragment">// 4 is r-value</span>
 * <!-- .element: class="fragment fade-in" --> name <code>a</code> itself is an l-value (has an address, can be referenced lated)
 * <!-- .element: class="fragment fade-in" --> but let's not think about it now 😉
 
----
+___
 
 <!-- .slide: data-background-iframe="https://en.cppreference.com/w/cpp/language/value_category" data-background-interactive -->
 

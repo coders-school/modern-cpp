@@ -19,7 +19,7 @@ class X : public Base {
 };
 ```
 
----
+___
 
 ## Implementation of move semantic
 
@@ -34,7 +34,7 @@ class X : public Base {
 };
 ```
 
----
+___
 
 ## Task
 

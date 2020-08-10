@@ -3,7 +3,7 @@
 * <!-- .element: class="fragment fade-in" --> omits copy and move constructors
 * <!-- .element: class="fragment fade-in" --> results in zero-copy pass-by-value semantics
 
----
+___
 
 ## Mandatory copy elision from C++17
 
@@ -25,7 +25,7 @@ Do not try to "optimize" code by writing `return std::move(sth);`. It may preven
 [Copy elision on cppreference.com](https://en.cppreference.com/w/cpp/language/copy_elision)
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## RVO and NRVO
 
@@ -53,7 +53,7 @@ T bar()
 [RVO and NRVO on cpp-polska.pl](https://cpp-polska.pl/post/zarzadzanie-zasobami-w-c-3-rvo-nrvo-i-obowiazkowe-rvo-w-c17)
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Knowledge check 🤯
 
@@ -75,7 +75,7 @@ Which of above functions will be called by below snippets?
 * <code>foo(std::move(4));</code>
   * r (move is redundant) <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Knowledge check 🤯
 
@@ -98,7 +98,7 @@ Which of above functions will be called by below snippets?
 * <code>foo(std::move(a));</code>
   * r <!-- .element: class="fragment fade-in" --> 
 
----
+___
 
 ## Knowledge check 🤯
 
@@ -118,7 +118,7 @@ What will happen now?
 * <code>foo(std::move(a));</code>
   * r <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Pre-test answers
 

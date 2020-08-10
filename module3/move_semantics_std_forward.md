@@ -23,7 +23,7 @@ int main() {
 }
 ```
 
----
+___
 
 ## `std::forward`
 
@@ -56,7 +56,7 @@ void use(T&& t) {           // pass t as r-value if r-value was passed,
 In other words: `std::forward()` restores original reference type.
 <!-- .element: class="fragment fade-in" --> 
 
----
+___
 
 ## Knowledge check 🙂
 

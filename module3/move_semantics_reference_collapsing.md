@@ -20,7 +20,7 @@ void f(int&& & item);  // passing int&& as a param -> f(int&)
 * <!-- .element: class="fragment fade-in" --> <code>T&& &</code> -> <code>T&</code>
 * <!-- .element: class="fragment fade-in" --> <code>T&& &&</code> -> <code>T&&</code>
 
----
+___
 
 ## Interface bloat
 

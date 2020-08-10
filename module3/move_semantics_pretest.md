@@ -23,7 +23,7 @@ What will happen in each case? Which example will compile and display "OK"?
 Tell me when you are ready
 <!-- .element: class="fragment fade-in" -->
 
----
+___
 
 ## Pre-test
 

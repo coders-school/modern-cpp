@@ -21,7 +21,7 @@ c.insert(std::move(str));   // rvalue -> insert(string&&)
                             // moves str into container, str is no longer used
 ```
 
----
+___
 
 ## Properties of move semantics
 
