@@ -1,12 +1,10 @@
-# Testowanie
+# Nowoczesny C++
 
 <a href="https://coders.school">
     <img width="500" data-src="coders_school_logo.png" src="coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
 ## [Moduł 1](module1/)
-
-### [Intro](module1/00_intro.md)
 
 ### [Pre-test](module1/pretest.md)
 
@@ -18,15 +16,11 @@
 
 ### [Scoped `enum`](module1/scoped_enum.md)
 
-### [Coffee break](module1/00_coffee_break.md)
-
 ### [`auto` keyword](module1/auto.md)
 
 ### [`using` alias](module1/using.md)
 
 ### [Uniform initialization](module1/uniform_initialization.md)
-
-### [Lunch break](module1/00_lunch_break.md)
 
 ### [`default`, `delete`, `final`, `override`](module1/default_delete_final_override.md)
 
@@ -36,15 +30,11 @@
 
 ## [Moduł 2](module2/)
 
-### [Intro](module2/00_intro.md)
-
 ### [Pre-test](module2/pretest.md)
 
 ### [Attributes](module2/modern_cpp_attributes.md)
 
 ### [`constexpr`](module2/modern_cpp_constexpr.md)
-
-### [Coffee break](module2/00_coffee_break.md)
 
 ### [`noexcept`](module2/modern_cpp_noexcept.md)
 
@@ -54,8 +44,6 @@
 
 ### [Lambda expressions](module2/modern_cpp_lambda.md)
 
-### [Lunch break](module2/00_lunch_break.md)
-
 ### [Other features](module2/modern_cpp_other.md)
 
 ### [Recap](module2/modern_cpp_recap.md)
@@ -63,8 +51,6 @@
 ### [Pre-test answers](module2/pretest_answers.md)
 
 ## [Moduł 3](module3/)
-
-### [Intro](module3/move_semantics_intro.md)
 
 ### [Pre-test](module3/move_semantics_pretest.md)
 
