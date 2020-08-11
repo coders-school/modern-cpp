@@ -19,30 +19,3 @@ void f(int&& & item);  // passing int&& as a param -> f(int&)
 * <!-- .element: class="fragment fade-in" --> <code>T& &&</code> -> <code>T&</code>
 * <!-- .element: class="fragment fade-in" --> <code>T&& &</code> -> <code>T&</code>
 * <!-- .element: class="fragment fade-in" --> <code>T&& &&</code> -> <code>T&&</code>
-
-___
-
-## Interface bloat
-
-Trying to optimize for every possible use case may lead to an interface bloat
-
-```cpp
-class Gadget;
-void f(const Gadget&)     { std::cout << "const Gadget&\n"; }
-void f(Gadget&)           { std::cout << "Gadget&\n"; }
-void f(Gadget&&)          { std::cout << "Gadget&&\n"; }
-void use(const Gadget& g) { f(g); }            // calls f(const Gadget&)
-void use(Gadget& g)       { f(g); }            // calls f(Gadget&)
-void use(Gadget&& g)      { f(std::move(g)); } // calls f(Gadget&&)
-
-int main() {
-    const Gadget cg;
-    Gadget g;
-    use(cg);       // calls use(const Gadget&) then calls f(const Gadget&)
-    use(g);        // calls use(Gadget&) then calls f(Gadget&)
-    use(Gadget()); // calls use(Gadget&&) then calls f(Gadget&&)
-}
-```
-
-Task: Try to improve the `use()` function to catch more types of reference to have less overloads.
-<!-- .element: class="fragment fade-in" -->

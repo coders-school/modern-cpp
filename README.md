@@ -56,7 +56,7 @@
 
 ### [r-value and l-value](module3/move_semantics_rvalues_lvalues.md)
 
-### [Usage and properties of move semantics](module3/move_semantics_move_assignment_operator.md)
+### [Usage and properties of move semantics](module3/move_semantics_usage.md)
 
 ### [Implementation of move semantic](module3/move_semantics_implementation.md)
 
@@ -69,5 +69,7 @@
 ### [`std::forward`](module3/move_semantics_std_forward.md)
 
 ### [Copy elision](module3/move_semantics_copy_elision.md)
+
+### [Knowledge check](module3/move_semantics_knowledge_check.md)
 
 ### [Recap](module3/move_semantics_recap.md)
