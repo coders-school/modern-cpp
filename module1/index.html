@@ -9,19 +9,19 @@
         <meta name="description" content="C++11, C++14 and C++17 presentation">
         <meta name="author" content="Lukasz Ziobron">
 
-        <link rel="stylesheet" href="../css/reset.css">
-        <link rel="stylesheet" href="../css/reveal.css">
-        <link rel="stylesheet" href="../css/theme/coders.css" id="theme">
+        <link rel="stylesheet" href="../../css/reset.css">
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/coders.css" id="theme">
 
         <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="../lib/css/monokai.css">
+        <link rel="stylesheet" href="../../lib/css/monokai.css">
 
         <!-- Printing and PDF exports -->
         <script>
             var link = document.createElement('link');
             link.rel = 'stylesheet';
             link.type = 'text/css';
-            link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+            link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
             document.getElementsByTagName('head')[0].appendChild(link);
         </script>
     </head>
@@ -29,39 +29,36 @@
 
         <div class="reveal">
             <div class="slides">
+                <section data-background="#111111">
 
-                <section>
-                    <section data-background="#111111">
+                    <h1>Modern C++ #1</h1>
+                    <h2>Basic features</h2>
+                    <a href="https://coders.school">
+                        <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
+                    </a>
+                    <h3>Łukasz Ziobroń</h3>
+                    <h3>Kamil Szatkowski</h3>
 
-                        <h1>Modern C++ #1</h1>
-                        <h2>Basic features</h2>
-                        <a href="https://coders.school">
-                            <img width="500" data-src="../img/coders_school_logo.png" alt="Coders School" class="plain">
-                        </a>
-                        <h3>Łukasz Ziobroń</h3>
-                        <h3>Kamil Szatkowski</h3>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
 
-                    </section>
-                    <section data-markdown>
-                        <textarea data-template>
+                    ## Agenda
 
-                        ## Agenda
+                    * <!-- .element: class="fragment fade-in" --> intro (30’)
+                    * <!-- .element: class="fragment fade-in" --> <code>static_assert</code> (15’)
+                    * <!-- .element: class="fragment fade-in" --> <code>nullptr</code> (10’)
+                    * <!-- .element: class="fragment fade-in" --> scoped enums (30’)
+                    * <!-- .element: class="fragment fade-in" --> ☕️ break (15’)
+                    * <!-- .element: class="fragment fade-in" --> <code>auto</code> keyword and range-based for loop (1h)
+                    * <!-- .element: class="fragment fade-in" --> ☕️ break (10’)
+                    * <!-- .element: class="fragment fade-in" --> <code>using</code> alias (15’)
+                    * <!-- .element: class="fragment fade-in" --> uniform initialization (40’)
+                    * <!-- .element: class="fragment fade-in" --> 🍝 lunch break (50’)
+                    * <!-- .element: class="fragment fade-in" --> new keywords: <code>default</code>, <code>delete</code>, <code>final</code>, <code>override</code> (1h)
+                    * <!-- .element: class="fragment fade-in" --> recap (15’)
 
-                        1. <!-- .element: class="fragment fade-in" --> intro (30’)
-                        1. <!-- .element: class="fragment fade-in" --> <code>static_assert</code> (15’)
-                        1. <!-- .element: class="fragment fade-in" --> <code>nullptr</code> (10’)
-                        1. <!-- .element: class="fragment fade-in" --> scoped enums (30’)
-                        1. <!-- .element: class="fragment fade-in" --> ☕️ break (15’)
-                        1. <!-- .element: class="fragment fade-in" --> <code>auto</code> keyword and range-based for loop (1h)
-                        1. <!-- .element: class="fragment fade-in" --> ☕️ break (10’)
-                        1. <!-- .element: class="fragment fade-in" --> <code>using</code> alias (15’)
-                        1. <!-- .element: class="fragment fade-in" --> uniform initialization (40’)
-                        1. <!-- .element: class="fragment fade-in" --> 🍝 lunch break (50’)
-                        1. <!-- .element: class="fragment fade-in" --> new keywords: <code>default</code>, <code>delete</code>, <code>final</code>, <code>override</code> (1h)
-                        1. <!-- .element: class="fragment fade-in" --> recap (15’)
-
-                        </textarea>
-                    </section>
+                    </textarea>
                 </section>
 
                 <section data-markdown="00_intro.md"
@@ -125,14 +122,14 @@
                          data-separator-notes="^Note:">
                 </section>
 
-                <section data-background="../img/coders_school_logo.png" data-background-size="80%">
+                <section data-background="../coders_school_logo.png" data-background-size="80%">
                     <h1>Thank you 🙂</h1>
                 </section>
             </div>
 
         </div>
 
-        <script src="../js/reveal.js"></script>
+        <script src="../../js/reveal.js"></script>
 
         <script>
             // More info about config & dependencies:
@@ -145,11 +142,11 @@
                     hash: true,
                     pdfSeparateFragments: false,
                     dependencies: [
-                            { src: '../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
-                            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                            { src: '../plugin/markdown/marked.js' },
-                            { src: '../plugin/markdown/markdown.js' },
-                            { src: '../plugin/notes/notes.js', async: true }
+                            { src: '../../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                            { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                            { src: '../../plugin/markdown/marked.js' },
+                            { src: '../../plugin/markdown/markdown.js' },
+                            { src: '../../plugin/notes/notes.js', async: true }
                     ]
             });
     </script>

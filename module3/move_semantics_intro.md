@@ -58,9 +58,7 @@ ___
 
 ## Contract
 
-<ul>
-    <li class="fragment fade-in">🎰 Vegas rule</li>
-    <li class="fragment fade-in">🗣 Discussion, not a lecture</li>
-    <li class="fragment fade-in">☕️ Additional breaks on demand</li>
-    <li class="fragment fade-in">⌚️ Be on time</li>
-</ul>
+* 🎰 Vegas rule
+* 🗣 Discussion, not a lecture
+* ☕️ Additional breaks on demand
+* ⌚️ Be on time

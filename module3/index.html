@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Move semantics - Coders School</title>
+
+        <meta name="description" content="C++11, C++14 and C++17 presentation">
+        <meta name="author" content="Lukasz Ziobron">
+
+        <link rel="stylesheet" href="../../css/reset.css">
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/coders.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!--
+                    Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
+                    For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
+                    
+                    Usage:
+                    Install dependencies
+
+                    $ npm install
+                    Serve the presentation and monitor source files for changes
+
+                    $ npm start
+                    Open http://localhost:8000 to view your presentation
+
+                    You can change the port by using npm start -- --port=8001.
+                -->
+
+                <section data-background="#111111">
+
+                    <h1>Modern C++ #3</h1>
+                    <h2>Advanced features</h2>
+                    <a href="https://coders.school">
+                        <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
+                    </a>
+                    <h3>Łukasz Ziobroń</h3>
+                    <h3>Kamil Szatkowski</h3>
+
+                </section>
+
+                <section data-markdown>
+                    <textarea data-template>
+
+                    ## Agenda
+
+                    * <!-- .element: class="fragment fade-in" --> intro & testing setup (30”)
+                    * <!-- .element: class="fragment fade-in" --> r-values and l-values (20”)
+                    * <!-- .element: class="fragment fade-in" --> move constructor and move assignment operator (20”)
+                    * <!-- .element: class="fragment fade-in" --> implementation of move semantics - remote coding dojo (1h)
+                    * <!-- .element: class="fragment fade-in" --> rule of 0, 3, 5 (15”)
+                    * <!-- .element: class="fragment fade-in" --> <code>std::move()</code> (20”)
+                    * <!-- .element: class="fragment fade-in" --> forwarding reference (20”)
+                    * <!-- .element: class="fragment fade-in" --> reference collapsing (20”)
+                    * <!-- .element: class="fragment fade-in" --> <code>std::forward()</code> and perfect forwarding (45”)
+                    * <!-- .element: class="fragment fade-in" --> copy elision, RVO (return value optimisation) (30”)
+                    * <!-- .element: class="fragment fade-in" --> recap (20”)
+
+                    </textarea>
+                </section>
+
+                <section data-markdown="move_semantics_intro.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_pretest.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_rvalues_lvalues.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_usage.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_implementation.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_rules.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                
+                <section data-markdown="move_semantics_std_move.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                
+                <section data-markdown="move_semantics_reference_collapsing.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                
+                <section data-markdown="move_semantics_std_forward.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                
+                <section data-markdown="move_semantics_copy_elision.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                
+                <section data-markdown="move_semantics_knowledge_check.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="move_semantics_recap.md" data-separator-vertical="^___"
+                    data-separator-notes="^Note:">
+                </section>
+                <section data-background="#111111">
+
+                    <h1>Coders School</h1>
+                    <img width="400" data-src="../logo.png" alt="Coders School" class="plain">
+
+                </section>
+            </div>
+        </div>
+
+        <script src="../../js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                width: 1200,
+                height: 750,
+                slideNumber: true,
+                hash: true,
+                pdfSeparateFragments: false,
+                dependencies: [
+                    { src: '../../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../plugin/markdown/marked.js' },
+                    { src: '../../plugin/markdown/markdown.js' },
+                    { src: '../../plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>
