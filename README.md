@@ -6,7 +6,35 @@
 
 ## [Moduł 1](module1/)
 
-### [Pre-test](module1/pretest.md)
+### [Test wstępny](module1/01_pretest.pl.md)
+
+### [Standardy C++](module1/02_standards.pl.md)
+
+### [`static_assert`](module1/03_static_assert.pl.md)
+
+### [`nullptr`](module1/04_nullptr.pl.md)
+
+### [Silne typy wyliczeniowe `enum`](module1/05_scoped_enum.pl.md)
+
+### [słowo kluczowe `auto`](module1/06_auto.pl.md)
+
+### [`using` alias typu](module1/07_using.pl.md)
+
+### [Jednolita inicjalizacja](module1/08_uniform_initialization.pl.md)
+
+### [`default`, `delete`, `final`, `override`](module1/09_default_delete_final_override.pl.md)
+
+### [Podsumowanie](module1/10_recap.pl.md)
+
+### [Odpowiedzi z testu wstępnego](module1/11_pretest_answers.pl.md)
+
+___
+
+# Modern C++
+
+## [Module 1](module1/index.en.html)
+
+### [Pre-test](module1/01_pretest.en.md)
 
 ### [C++ standards](module1/standards.md)
 
