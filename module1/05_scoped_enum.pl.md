@@ -43,7 +43,7 @@ int d = static_cast<int>(Languages::ENGLISH);   // dozwolona tylko jawna konwers
 ```
 <!-- .element: class="fragment fade-in" -->
 
-**Uzasadnienie**: Silniejsze i mniej podatne na błędy typy wyliczenia.
+Silniejsze i mniej podatne na błędy typy wyliczenia.
 <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> Wprowadzony w C++11
@@ -54,7 +54,7 @@ int d = static_cast<int>(Languages::ENGLISH);   // dozwolona tylko jawna konwers
 
 ___
 
-## `enum` typ bazowy
+## typ bazowy `enum`
 
 ```cpp
 #include <iostream>

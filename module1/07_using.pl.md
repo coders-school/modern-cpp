@@ -19,10 +19,10 @@ using SocketContainer = std::vector<std::shared_ptr<Socket>>;
 ```
 <!-- .element: class="fragment fade-in" -->
 
-**Uzasadnienie**: Bardziej intuicyjne tworzenie aliasów.
+Bardziej intuicyjne tworzenie aliasów.
 <!-- .element: class="fragment fade-in" -->
 
-Alias ​​typu to nazwa odnosząca się do wcześniej zdefiniowanego typu. Można go utworzyć za pomocą `typedef`.
+Alias to nazwa odnosząca się do wcześniej zdefiniowanego typu. Można go utworzyć za pomocą `typedef`.
 Z C++11 należy tworzyć aliasy typu za pomocą słowa kluczowego `using`.
 <!-- .element: class="fragment fade-in" -->
 

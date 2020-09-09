@@ -19,7 +19,7 @@ std::set<std::string> collection;
 auto it = collection.begin(); // it jest typu std::set<std::string>::iterator
 ```
 
-**Uzasadnienie**: Nieważne (ale silnie zdefiniowane) typy, mniej pisania, mniej refaktoryzacji.
+Nieważne (ale silnie zdefiniowane) typy, mniej pisania, mniej refaktoryzacji.
 <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> Kompilator może automatycznie wywnioskować typ zmiennej podczas inicjalizacji
@@ -64,7 +64,7 @@ auto& g2 = items;   // g2 : Gadget(&)[10] - referencja do
 
 int func(double) { return 10; }
 auto f1 = func;     // f1 : int (*)(double)
-auto& f2 = func ;   // f2: int (&)(double)
+auto& f2 = func;    // f2: int (&)(double)
 ```
 
 * <!-- .element: class="fragment fade-in" --> Referencja oznacza ten sam obiekt o takich samych właściwościach
@@ -90,9 +90,9 @@ Wprowadzono, aby umożliwić definicję typu zwracanego z funkcji lambda.
 <!-- .element: class="fragment fade-in" -->
 
 ___
-<!-- .slide: style="font-size: 0.9em" -->
+<!-- .slide: style="font-size: 0.85em" -->
 
-### Dedukcji typu zwracanego przez funkcję
+### Dedukcja typu zwracanego przez funkcję
 
 ```cpp
 auto multiply(int x, int y) {
@@ -134,7 +134,7 @@ std::cout << '\n';
 
 ___
 
-### Wygenerowany kod dla zakresu na podstawie pętli for
+### Wygenerowany kod na podstawie zakresowej pętli for
 
 ```cpp
 {
@@ -157,7 +157,7 @@ Umieść auto tam, gdzie uważasz, że jest dobre.
 
 Tam, gdzie to możliwe, używaj pętli zakresowych.
 
-### Zabawmy się :)
+### Pobawmy się :)
 <!-- .element: class="fragment fade-in" -->
 
 Połącz się z moim VSC i jednocześnie edytuj mój program.

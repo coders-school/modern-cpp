@@ -2,7 +2,7 @@
 
 # Test wstępny
 
-## Answers
+## Odpowiedzi
 
 ___
 
@@ -20,7 +20,7 @@ const auto v = &i;
 
 ___
 
-## 2. Które z poniższych inicjalizacji są poprawne w C ++ 14?
+## 2. Które z poniższych inicjalizacji są poprawne w C++14?
 
 ```cpp
 struct P { int a, b };
@@ -40,12 +40,12 @@ ___
 
 1. <!-- .element: class="fragment highlight-green" --> domyślny konstruktor
 1. <!-- .element: class="fragment highlight-green" --> konstruktor kopiujący
-1. <!-- .element: class="fragment highlight-green" --> przenieś konstruktora
-1. <!-- .element: class="fragment highlight-green" --> operator przypisania kopii
-1. <!-- .element: class="fragment highlight-green" --> operator przypisania przeniesienia
-1. <!-- .element: class="fragment highlight-green" --> burzyciel
-1. <!-- .element: class="fragment highlight-green" --> darmowa funkcja
-1. <!-- .element: class="fragment highlight-green" --> metoda klasowa
+1. <!-- .element: class="fragment highlight-green" --> konstruktor przenoszący
+1. <!-- .element: class="fragment highlight-green" --> kopiujący operator przypisania
+1. <!-- .element: class="fragment highlight-green" --> przenoszący operator przypisania
+1. <!-- .element: class="fragment highlight-green" --> destruktor
+1. <!-- .element: class="fragment highlight-green" --> wolna funkcja
+1. <!-- .element: class="fragment highlight-green" --> metoda klasy
 1. <!-- .element: class="fragment highlight-red" --> obiekt elementu klasy
 
 ___
@@ -62,11 +62,11 @@ ___
 
 ## Praca domowa
 
-Zajrzyj do `README.md` plik z repozytorium modern_cpp. Możesz wykonać wszystkie zadania i zgłosić pull request, jeśli chcesz, żebym sprawdził twoją pracę domową.
+Zajrzyj do pliku `README.md` z repozytorium modern_cpp. Możesz wykonać wszystkie zadania i zgłosić pull request, jeśli chcesz, żebym sprawdził twoją pracę domową.
 
 ___
 
-## Sprzężenie zwrotne
+## Feedback
 
 * Co można poprawić w tym szkoleniu?
 * Co było dla Ciebie najbardziej wartościowe?

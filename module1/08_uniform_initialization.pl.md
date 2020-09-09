@@ -10,14 +10,14 @@ int a;          <span class="fragment">// niezdefiniowana wartość</span>
 int b(5);       <span class="fragment">// bezpośrednia inicjalizacja, b = 5</span>
 int c = 10;     <span class="fragment">// inicjalizacja przez kopię, c = 10</span>
 int d = int();  <span class="fragment">// domyślna inicjalizacja, d = 0</span>
-int e();        <span class="fragment">// deklaracja funkcji - "most vexing parse"</span>
+int e();        <span class="fragment">// deklaracja funkcji! - "most vexing parse"</span>
 <!-- nie mam pojęcia jak to przetłumaczyć :x (można dosłownie, ale chyba lepiej zostawić oryginał w takim przypadku) -->
 
 int values[] = { 1, 2, 3, 4 };  <span class="fragment">// inicjalizacja zbiorcza agregatów</span>
-int array[] = { 1, 2, 3.5 };    <span class="fragment">// C++98 - ok, niejawna konwersja typu</span>
+int array[] = { 1, 2, 3.5 };    <span class="fragment">// C++98 - ok, niejawna konwersja zawężająca typ</span>
 
 struct P { int a, b; };
-P p = { 20, 40 };                  <span class="fragment">// inicjalizacja zbiorcza POD</span>
+P p = { 20, 40 };                  <span class="fragment">// inicjalizacja klamrowa POD</span>
 
 std::complex&lt;double> c(4.0, 2.0);  <span class="fragment">// inicjalizacja klasy</span>
 
@@ -32,21 +32,21 @@ ___
 
 <pre><code class="cpp" data-trim data-line-numbers data-noescape>
 int a;          <span class="fragment">// wciąż niezdefiniowana wartość</span>
-int b{5};       <span class="fragment">// inicjalizacja zbiorcza, b = 5</span>
-int c{};        <span class="fragment">// inicjalizacja zbiorcza, c = 0</span>
+int b{5};       <span class="fragment">// inicjalizacja klamrowa, b = 5</span>
+int c{};        <span class="fragment">// inicjalizacja klamrowa, c = 0</span>
 
 int values[] = { 1, 2, 3, 4 };  <span class="fragment">// inicjalizacja zbiorcza agregatów</span>
 int array[] = { 1, 2, 3.5 };    <span class="fragment">// C++11: error - niejawna konwersja typu</span>
 
 struct P { int a, b; };
-P p = { 20, 40 };               <span class="fragment">// inicjalizacja zbiorcza POD</span>
+P p = { 20, 40 };               <span class="fragment">// inicjalizacja klamrowa POD</span>
 
-std::complex&lt;double> c{4.0, 2.0};   <span class="fragment">// inicjalizacja zbiorcza wywołuje odpowiedni konstruktor</span>
+std::complex&lt;double> c{4.0, 2.0};   <span class="fragment">// inicjalizacja klamrowa wywołuje odpowiedni konstruktor</span>
 
-std::vector&lt;std::string> names = { "John", "Jane" };  <span class="fragment">// inicjalizacja zbiorcza wektora</span>
+std::vector&lt;std::string> names = { "John", "Jane" };  <span class="fragment">// inicjalizacja klamrowa wektora</span>
 </code></pre>
 
-**Uzasadnienie**: eliminacja problematycznych przypadków inicjalizacji z C++98, inicjalizacja kontenerów STL, ma jeden uniwersalny sposób inicjalizacji.
+Eliminacja problematycznych przypadków inicjalizacji z C++98, inicjalizacja kontenerów STL, ma jeden uniwersalny sposób inicjalizacji.
 <!-- .element: class="fragment fade-in" -->
 
 ___

@@ -68,6 +68,7 @@ ___
 Uwaga:
 Zasada Vegas: co dzieje się w Vegas, to zostaje w Vegas.
 Jeśli chcesz poskarżyć się na pracodawcę, nikomu nie powiem.
+<!-- .element: class="fragment fade-in" -->
 
 ___
 

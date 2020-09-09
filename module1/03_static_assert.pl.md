@@ -20,7 +20,7 @@ void swap(T& a, T& b)
 ```
 <!-- .element: class="fragment fade-in" -->
 
-**Uzasadnienie**: Zapobieganie kompilacji na warunkach zdefiniowanych przez użytkownika (zwykle określonych typów).
+Zapobiega kompilacji na warunkach zdefiniowanych przez użytkownika (zwykle określonych typów).
 <!-- .element: class="fragment fade-in" -->
 
 Wykonuje sprawdzanie asercji w czasie kompilacji. Zwykle używany z biblioteką `<type_traits>`.

@@ -14,7 +14,7 @@ const auto v = &i;
 1. `const int`
 1. `const int&`
 1. `const int*`
-1. inne
+1. inny
 
 ___
 
@@ -38,10 +38,10 @@ ___
 
 1. domyślny konstruktor
 1. konstruktor kopiujący
-1. konstruktor ruchu
-1. operator przypisania kopii
-1. operator przypisania ruchu
-1. destructor
-1. darmowa funkcja
-1. metoda klasowa
-1. obiekt członka klasy
+1. konstruktor przenoszący
+1. kopiujący operator przypisania
+1. przenoszący operator przypisania
+1. destruktor
+1. wolna funkcja
+1. metoda klasy
+1. obiekt elementu klasy
