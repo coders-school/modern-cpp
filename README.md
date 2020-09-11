@@ -26,7 +26,29 @@
 
 ### [Podsumowanie](module1/10_recap.pl.md)
 
-### [Odpowiedzi z testu wstępnego](module1/11_pretest_answers.pl.md)
+### [Odpowiedzi do testu wstępnego](module1/11_pretest_answers.pl.md)
+
+## [Moduł 2](module2/index.pl.html)
+
+### [Test wstępny](module2/pretest.pl.md)
+
+### [Atrybuty](module2/modern_cpp_attributes.pl.md)
+
+### [`constexpr`](module2/modern_cpp_constexpr.pl.md)
+
+### [`noexcept`](module2/modern_cpp_noexcept.pl.md)
+
+### [Wyrównanie struktur danych](module2/modern_cpp_dsa.pl.md)
+
+### [Structured bindings](module2/modern_cpp_structure_bindings.pl.md)
+
+### [Wyrażenia lambda](module2/modern_cpp_lambda.pl.md)
+
+### [Inne funkcjonalności](module2/modern_cpp_other.pl.md)
+
+### [Podsumowanie](module2/modern_cpp_recap.pl.md)
+
+### [Odpowiedzi do testu wstępnego](module2/pretest_answers.pl.md)
 
 ___
 
@@ -56,7 +78,7 @@ ___
 
 ### [Pre-test answers](module1/pretest_answers.md)
 
-## [Moduł 2](module2/)
+## [Module 2](module2/index.en.html)
 
 ### [Pre-test](module2/pretest.md)
 
@@ -78,7 +100,7 @@ ___
 
 ### [Pre-test answers](module2/pretest_answers.md)
 
-## [Moduł 3](module3/)
+## [Module 3](module3/index.en.html)
 
 ### [Pre-test](module3/move_semantics_pretest.md)
 
