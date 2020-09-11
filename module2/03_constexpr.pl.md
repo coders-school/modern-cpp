@@ -3,43 +3,44 @@
 
 ___
 
-## `constexpr` słowo kluczowe
+## Słowo kluczowe `constexpr`
 
-<p> <strong> Uzasadnienie </strong>: szybsze binarne środowisko wykonawcze dzięki przeniesieniu niektórych obliczeń w czasie kompilacji. </p>
-<p><code>constexpr</code> jest wyrażeniem, które można ocenić w czasie kompilacji i może pojawić się w <a href="https://en.cppreference.com/w/cpp/language/constant_expression">stałe wyrażenia</a>. Możemy mieć: </p>
+Szybsze binarne środowisko wykonawcze dzięki przeniesieniu niektórych obliczeń w czasie kompilacji.
 
-* <!-- .element: class="fragment fade-in" --> zmienna constexpr
-* <!-- .element: class="fragment fade-in" --> funkcja constexpr
-* <!-- .element: class="fragment fade-in" --> Konstruktor constexpr
-* <!-- .element: class="fragment fade-in" --> constexpr lambda (domyślnie z C ++ 17)
-* <!-- .element: class="fragment fade-in" --> constexpr if (do C ++ 17)
+`constexpr` jest wyrażeniem, które można ocenić w czasie kompilacji i może pojawić się jako wyrażenie stałe ([constant expression](https://en.cppreference.com/w/cpp/language/constant_expression)). Możemy mieć:
+
+* <!-- .element: class="fragment fade-in" --> zmienną constexpr
+* <!-- .element: class="fragment fade-in" --> funkcję constexpr
+* <!-- .element: class="fragment fade-in" --> konstruktor constexpr
+* <!-- .element: class="fragment fade-in" --> lambdę constexpr (domyślnie z C++17)
+* <!-- .element: class="fragment fade-in" --> constexpr if (do C++17)
 
 ___
 
-## `constexpr` zmienne
+## zmienne `constexpr`
 
 ```cpp
-int a = 10;             // variable
-const int b = 20;       // constant
-const double c = 20;    // constant
-constexpr int d = 30;   // constant at compile-time
+int a = 10;             // zmienna
+const int b = 20;       // stała
+const double c = 20;    // stała
+constexpr int d = 30;   // stała podczas procesu kompilacji
 
-constexpr auto e = a;   // error: initializer is not a contant expression
-constexpr auto f = b;   // OK for integral, C++03 compatibility exception
-constexpr auto g = c;   // error: initializer is not a contant expression
+constexpr auto e = a;   // error: inicjator nie jest wyrażeniem stałym
+constexpr auto f = b;   // OK dla typu int, wyjątek dla wstecznej kompatybilności z C++03
+constexpr auto g = c;   // error: inicjator nie jest wyrażeniem stałym
 constexpr auto h = d;   // OK
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> <code>constexpr</code> zmienną należy natychmiast zainicjować stałym wyrażeniem. <code>const</code> nie trzeba inicjować wyrażeniem stałym.
-* <!-- .element: class="fragment fade-in" --> <code>constexpr</code> zmienna musi być <a href="https://en.cppreference.com/w/cpp/named_req/LiteralType">LiteralType</a>
+* <!-- .element: class="fragment fade-in" --> Zmienną <code>constexpr</code> należy natychmiast zainicjować stałym wyrażeniem. <code>const</code> nie trzeba inicjować wyrażeniem stałym.
+* <!-- .element: class="fragment fade-in" --> Zmienna <code>constexpr</code> musi być typu <a href="https://en.cppreference.com/w/cpp/named_req/LiteralType">LiteralType</a>
 
 ___
 
-## `constexpr` Funkcje
+## Funkcje `constexpr`
 
 ```cpp
-constexpr int factorial11(int n) {  // C++11 compatible
+constexpr int factorial11(int n) {  // kompatybilne z C++11
 {
     return (n == 0) ? 1 : n * factorial11(n-1);
 }
@@ -53,25 +54,26 @@ constexpr int factorial14(int n) {  // C++14
 }
 ```
 
-<p class = "fragment"><code>constexpr</code> funkcja może być oceniana zarówno w czasie kompilacji, jak iw czasie wykonywania. Ocena w czasie kompilacji może wystąpić, gdy wynik jest przypisany do <code>constexpr</code> zmienna i argumenty mogą być oceniane w czasie kompilacji. </p>
+Funkcja `constexpr` może być oceniana zarówno w czasie kompilacji, jak i w czasie wykonywania. Ocena w czasie kompilacji może wystąpić, gdy wynik jest przypisany do zmiennej `constexpr` i argumenty mogą być oceniane w czasie kompilacji.
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
-<h2><code>constexpr</code> ograniczenia funkcji </h2>
-<p> W C ++ 11 <code>constexpr</code> funkcje były bardzo ograniczone - tylko 1 instrukcja powrotu (nie zwracająca void). Od C ++ 14 jedynymi ograniczeniami jest ta funkcja nie może: </p>
-<ul>
-    <li class = "fragment"> zawierają <code>static</code> lub <code>thread_local</code> zmienne </li>
-    <li class = "fragment"> zawierają niezainicjowane zmienne </li>
-    <li class = "fragment"> call non <code>constexpr</code> funkcja </li>
-    <li class = "fragment"> użyj typów nieliteralnych </li>
-    <li class = "fragment"> bądź wirtualny (do C ++ 20) </li>
-    <li class = "fragment"> użyj bloków kodu asm (do C ++ 20) </li>
-    <li class = "fragment"> mają blokowanie try-catch lub wyjątki rzutów (do C ++ 20) </li>
-</ul>
+## Ograniczenia funkcji `constexpr`
+
+W C++11 `constexpr` funkcje były bardzo ograniczone - tylko 1 instrukcja powrotu (nie zwracająca void). Od C++14 jedyne ograniczenia mówią, że funkcja nie może:
+
+* <!-- .element: class="fragment fade-in" --> zawierać zmiennych <code>static</code> lub <code>thread_local</code>
+* <!-- .element: class="fragment fade-in" --> zawierać niezainicjowanych zmiennych
+* <!-- .element: class="fragment fade-in" --> wywołać funkcji bez <code>constexpr</code>
+* <!-- .element: class="fragment fade-in" --> używać typów nieliteralnych
+* <!-- .element: class="fragment fade-in" --> być wirtualna (do C++20)
+* <!-- .element: class="fragment fade-in" --> używać bloków kodu asm (do C++20)
+* <!-- .element: class="fragment fade-in" --> zawierać bloków try-catch lub rzucać wyjątkami (do C++20)
 
 ___
 
-<h2><code>constexpr</code> konstruktor </h2>
+## `constexpr` konstruktor
 
 ```cpp
 struct Point
@@ -87,15 +89,16 @@ struct Point
 constexpr Point a = { 1, 2 };
 ```
 
-<p> klasa <code>Point</code> może być używany w obliczeniach constexpr, np. w funkcjach constexpr. To jest typ dosłowny. Konstruktor Constexpr ma takie same ograniczenia jak funkcja constexpr i klasa nie może mieć wirtualnej klasy bazowej. </p>
+Klasa `Point` może być używana w obliczeniach `constexpr`, np. w funkcjach `constexpr`. Jest to typ literalny. Konstruktor `constexpr` ma takie same ograniczenia jak funkcja `constexpr` i klasa nie może mieć wirtualnej klasy bazowej.
 
 ___
 
-<h2><code>constexpr</code> lambda </h2>
-<p> Od C ++ 17 wszystkie funkcje lambda są domyślnie oznaczane niejawnie jako constexpr, jeśli to możliwe. <code>constexpr</code> słowo kluczowe może być również użyte jawnie. </p>
+## `constexpr` lambda
+
+Od C++17 wszystkie funkcje lambda są domyślnie oznaczane niejawnie jako `constexpr`, jeśli to możliwe. Słowo kluczowe `constexpr` może być również użyte jawnie.
 
 ```cpp
-auto squared = [](auto x) {             // implicitly constexpr
+auto squared = [](auto x) {             // niejawny constexpr
     return x * x;
 };
 
@@ -108,7 +111,7 @@ auto squared = [](auto x) constexpr {   // OK
 
 ___
 
-<h2><code>constexpr if</code></h2>
+## `constexpr if`
 
 ```cpp
 if constexpr (a < 0)
@@ -119,12 +122,13 @@ else
     doSomethingElse();
 ```
 
-<p><code>constexpr if</code> wybiera tylko jeden blok instrukcji, w zależności od tego, który warunek jest spełniony. Warunek i inne bloki nie są kompilowane w postaci binarnej. Warunek musi być wyrażeniem stałym. </p>
+`constexpr if` wybiera tylko jeden blok instrukcji, w zależności od tego, który warunek jest spełniony. Warunek i inne bloki nie są kompilowane w postaci binarnej. Warunek musi być wyrażeniem stałym. </p>
 
 ___
 
-<h2><code>constexpr if</code> w SFINAE </h2>
-<p><code>constexpr if</code> pozwala na uproszczenie kodu szablonu używanego przez idiom SFINAE. </p>
+## `constexpr if` w idiomie SFINAE
+
+`constexpr if` pozwala na uproszczenie kodu szablonu używanego przez idiom SFINAE.
 
 ```cpp
 template<class T>;   // C++17
@@ -152,12 +156,12 @@ auto compute(T x) -> enable_if<!std::is_scalar<T>::value, int>::type {
 
 ___
 
-## Ćwiczenie
+## Zadanie
 
-Napisz funkcję obliczającą n-tą liczbę Fibonacciego. Nie zaznaczaj tego `constexpr`.
+Napisz funkcję obliczającą n-tą liczbę Fibonacciego. Nie zaznaczaj jej jako `constexpr`.
 
 W pierwszej linii `main()` dodaj obliczenie 45-tej liczby Fibonacciego. Zmierz czas wykonania programu (`time ./modern_cpp`)
 
 Zaznacz funkcję Fibonacciego jako `constexpr`, skompiluj program i jeszcze raz zmierz czas wykonania.
 
-Jeśli nie widzisz dużej różnicy, przypisz wynik do zmiennej constexpr.
+Jeśli nie widzisz dużej różnicy, przypisz wynik do zmiennej `constexpr`.

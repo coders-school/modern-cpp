@@ -24,9 +24,9 @@ const int b = 20;       // constant
 const double c = 20;    // constant
 constexpr int d = 30;   // constant at compile-time
 
-constexpr auto e = a;   // error: initializer is not a contant expression
+constexpr auto e = a;   // error: initializer is not a constant expression
 constexpr auto f = b;   // OK for integral, C++03 compatibility exception
-constexpr auto g = c;   // error: initializer is not a contant expression
+constexpr auto g = c;   // error: initializer is not a constant expression
 constexpr auto h = d;   // OK
 ```
 <!-- .element: class="fragment fade-in" -->

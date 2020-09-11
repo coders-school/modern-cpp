@@ -3,30 +3,30 @@
 
 ___
 
-## `noexcept` słowo kluczowe
+## Słowo kluczowe `noexcept`
 
-**Racjonalne uzasadnienie**: gwarancja bezpieczeństwa wyjątków bez rzucania, mniej kodu generowanego do obsługi wyjątków, dodatkowa optymalizacja kompilatora </p>
+Gwarancja bezpieczeństwa nie wyrzucania wyjątków, mniej kodu generowanego do obsługi wyjątków, dodatkowa optymalizacja kompilatora.
 
-Określa, czy funkcja będzie zgłaszać wyjątki, czy nie. Jeśli wyjątek zostanie wyrzucony z `noexcept` funkcjonować, `std::terminate` jest nazywany.
+Określa, czy funkcja będzie zgłaszać wyjątki, czy nie. Jeśli wyjątek zostanie wyrzucony z funkcji `noexcept`, zostanie wywołany `std::terminate`.
 <!-- .element: class="fragment fade-in" -->
 
 ```c++
 void bar() noexcept(true) {}
 void baz() noexcept { throw 42; }
-// noexcept is the same as noexcept(true)
+// noexcept - to samo co noexcept(true)
 
 int main() {
-    bar(); // fine
-    baz(); // compiles, but calls std::terminate
+    bar(); // ok
+    baz(); // kompiluje się, ale wywołuje std::terminate
 }
 ```
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
-## `noexcept` operator
+## Operator `noexcept`
 
-Plik `noexcept` Operator wykonuje kontrolę w czasie kompilacji, która zwraca wartość true, jeśli wyrażenie zostało zadeklarowane, aby nie zgłaszać żadnych wyjątków. Zwraca wartość bool.
+Operator `noexcept` wykonuje kontrolę w czasie kompilacji, która zwraca wartość true, jeśli wyrażenie zostało zadeklarowane, aby nie zgłaszać żadnych wyjątków. Zwraca wartość bool.
 
 ```cpp
 void may_throw();
@@ -43,17 +43,17 @@ int main() {
 
 ___
 
-## `noexcept` słowo kluczowe
+## Słowo kluczowe `noexcept`
 
-Ponieważ specyfikacja wyjątków C ++ 17 jest częścią systemu typów. Poniższe funkcje są funkcjami dwóch różnych typów:
+Ponieważ specyfikacja wyjątków C++17 jest częścią systemu typów, poniższe funkcje są funkcjami dwóch różnych typów:
 
 - `void f() noexcept(true);`
 - `void f() noexcept(false);`
 
-Ta zmiana wzmacnia system typów, np. zezwalając interfejsom API na wymaganie niewyrzucających wywołań zwrotnych.
+Ta zmiana wzmacnia system typów, np. zezwalając interfejsom API na wymaganie funkcji niewyrzucających wyjątków.
 
 ___
 
-## Ćwiczenie
+## Zadanie
 
-znak `getArea()` i `getPerimeter()` metody w `Rectangle` tak jak `noexcept`.
+Oznacz metody `getArea()` i `getPerimeter()` w klasie `Rectangle` jako `noexcept`.

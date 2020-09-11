@@ -2,7 +2,7 @@
 
 # Test wstępny
 
-## Answers
+## Odpowiedzi
 
 ___
 
@@ -20,13 +20,13 @@ ___
 
 ___
 
-## Po teście
+## Test końcowy
 
-Link do posttestu zostanie wysłany do Ciebie w przyszłym tygodniu :)
+Link do testu końcowego zostanie wysłany do Ciebie w przyszłym tygodniu :)
 
 ___
 
-## Sprzężenie zwrotne
+## Feedback
 
 * Co można poprawić w tym szkoleniu?
 * Co było dla Ciebie najbardziej wartościowe?

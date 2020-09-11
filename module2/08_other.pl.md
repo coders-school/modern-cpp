@@ -3,7 +3,7 @@
 
 ___
 
-## Zagnieżdżone definicje przestrzeni nazw (C ++ 17)
+## Zagnieżdżone definicje przestrzeni nazw (C++17)
 
 Możesz zagnieżdżać przestrzenie nazw w następujący sposób:
 
@@ -24,31 +24,33 @@ namespace A {
   }
 }
 ```
-<!-- Sentence which was here befor haven't felt right for me, so I've changed it. -->
+
 ___
 
-## Odliczenie argumentów szablonu klasy (C ++ 17)
+## Dedukcja argumentów szablonu klasy (C++17)
 
-Z szablonu klasy C ++ 17 można wywnioskować argumenty automatycznie. Automatyczne odejmowanie argumentów szablonów było dostępne wcześniej tylko dla funkcji szablonów.
+Z szablonu klasy C++17 można wywnioskować argumenty automatycznie. Automatyczna dedukcja argumentów szablonów była dostępna wcześniej tylko dla funkcji szablonów.
 
 ```c++
-std::pair p(1, 'x'); // C++17: OK, C++14: error: missing
-                     //template arguments before p
+std::pair p(1, 'x'); // C++17: OK, C++14: error: brakuje
+                     // argumentów szablonu przed p
 std::pair<int, std::string> p(1, 'x'); // C++14: OK
 auto p = std::make_pair(1, 'x'); // C++17: OK, C++14: OK
 ```
 
 ___
 
-## Instrukcje wyboru z inicjatorem (C ++ 17)
+## Instrukcje wyboru z inicjatorem (C++17)
 
-Nowe wersje `if` i `switch` instrukcje dla C ++:
+Nowe wersje `if` i `switch` dla C++:
 
-### `if (init; condition)`
+___
+
+## `if (init; condition)`
 
 ```cpp
 status_code foo() { // C++14
-    { //variable c scope
+    { // zakres zmiennej c
         status_code c = bar();
         if (c != SUCCESS) {
             return c;
@@ -57,10 +59,6 @@ status_code foo() { // C++14
     // ...
 }
 ```
-
-___
-
-## `switch (init; condition)`
 
 ```cpp
 status_code foo() { // C++17
@@ -73,7 +71,7 @@ status_code foo() { // C++17
 
 ___
 
-## Instrukcje wyboru z inicjatorem (C ++ 17)
+## `switch (init; condition)`
 
 ```c++
 {
@@ -96,4 +94,4 @@ ___
 
 ## Przegląd
 
-[Przegląd nowoczesnych funkcji C ++](https://github.com/AnthonyCalandra/modern-cpp-features#stdfilesystem)
+[Przegląd nowoczesnych funkcji C++](https://github.com/AnthonyCalandra/modern-cpp-features#stdfilesystem)

@@ -7,8 +7,8 @@ ___
 
 ___
 
-## C ++ dziwactwa
+## Dziwactwa C++
 
 * Lambda - trzeba dodać `mutable` na wypadek, gdybyś miał `[=]` na liście przechwytywania i chcesz zmodyfikować przechwycone elementy
 * Lambda - `unique_ptr` na liście przechwytywania `a=std::move(a)`
-* Spróbuj zaznaczyć tyle funkcji, ile `constexpr` jak to możliwe
+* Spróbuj zaznaczyć tyle funkcji jako `constexpr` jak to możliwe
