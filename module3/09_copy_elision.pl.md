@@ -1,18 +1,18 @@
-## Skopiuj elision
+## Copy elision
 
 * <!-- .element: class="fragment fade-in" --> pomija konstruktory kopiowania i przenoszenia
-* <!-- .element: class="fragment fade-in" --> daje w wyniku semantykę przekazywania wartości zerowej kopii
+* <!-- .element: class="fragment fade-in" --> daje w wyniku semantykę przekazywania przez wartość bez kopiowania
 
 ___
 
-## Obowiązkowa elekcja kopii z C ++ 17
+## Copy elision obowiązkowe od C++17
 
 ```cpp
 T f() {
     return T();
 }
-f();             // only one call to default c-tor of T
-T x = T(T(f())); // only one call to default c-tor of T, to initialize x
+f();             // tylko jedno wywołanie konstruktora domyślnego T
+T x = T(T(f())); // tylko jedno wywołanie konstruktora domyślnego T, aby zainicjować x
 ```
 <!-- .element: class="fragment fade-in" -->
 
@@ -22,7 +22,7 @@ T x = T(T(f())); // only one call to default c-tor of T, to initialize x
 Nie próbuj „optymalizować” kodu pisząc `return std::move(sth);`. Może to uniemożliwić optymalizacje.
 <!-- .element: class="fragment fade-in" -->
 
-[Skopiuj elision na cppreference.com](https://en.cppreference.com/w/cpp/language/copy_elision)
+[Copy elision na cppreference.com](https://en.cppreference.com/w/cpp/language/copy_elision)
 <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -37,8 +37,8 @@ T f() {
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> NRVO = nazwane RVO
-* <!-- .element: class="fragment fade-in" --> RVO jest obowiązkowe od C ++ 17, NRVO nie
+* <!-- .element: class="fragment fade-in" --> NRVO = Nazwane RVO
+* <!-- .element: class="fragment fade-in" --> RVO jest obowiązkowe od C++17, NRVO nie
 
 ```cpp
 T bar()
@@ -46,7 +46,7 @@ T bar()
     T t1{1};
     T t2{2};
     return (std::time(nullptr) % 2) ? t1 : t2;
-}  // don't know which object will be elided
+}  // nie wiadomo, który obiekt będzie zwrócony
 ```
 <!-- .element: class="fragment fade-in" -->
 

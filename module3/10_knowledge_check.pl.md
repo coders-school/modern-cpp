@@ -1,6 +1,6 @@
-## Sprawdzian wiedzy 🙂
+## Sprawdzenie wiedzy 🙂
 
-### Odliczenie za typ szablonu
+### Dedukcja typu szablonu
 
 <pre><code class="cpp" data-trim data-noescape>
 template &lt;typename T&gt;
@@ -26,7 +26,7 @@ int main() {
 
 ___
 
-## Sprawdzian wiedzy 🤯
+## Sprawdzenie wiedzy 🤯
 
 ```cpp
 void foo(int && a);         // r
@@ -35,7 +35,7 @@ void foo(int & a);          // l
 int a = 5;
 ```
 
-Która z powyższych funkcji zostanie wywołana przez poniższe fragmenty?
+Która z powyższych funkcji zostanie wywołana przez poniższe fragmenty kodu?
 
 * <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->
@@ -44,11 +44,11 @@ Która z powyższych funkcji zostanie wywołana przez poniższe fragmenty?
 * <code>foo(std::move(a));</code>
   * r <!-- .element: class="fragment fade-in" -->
 * <code>foo(std::move(4));</code>
-  * r (ruch jest zbędny) <!-- .element: class="fragment fade-in" -->
+  * r (przenoszenie jest zbędne) <!-- .element: class="fragment fade-in" -->
 
 ___
 
-## Sprawdzian wiedzy 🤯
+## Sprawdzenie wiedzy 🤯
 
 ```cpp
 template <typename T>
@@ -63,15 +63,15 @@ int a = 5;
 Która z powyższych funkcji zostanie wywołana przez poniższe fragmenty?
 
 * <code>foo(4);</code>
-  * r <!-- .element: class="fragment fade-in" --> 
+  * r <!-- .element: class="fragment fade-in" -->
 * <code>foo(a);</code>
-  * l <!-- .element: class="fragment fade-in" --> 
+  * l <!-- .element: class="fragment fade-in" -->
 * <code>foo(std::move(a));</code>
-  * r <!-- .element: class="fragment fade-in" --> 
+  * r <!-- .element: class="fragment fade-in" -->
 
 ___
 
-## Sprawdzian wiedzy 🤯
+## Sprawdzenie wiedzy 🤯
 
 ```cpp
 template <typename T>
@@ -91,13 +91,13 @@ Co się teraz stanie?
 
 ___
 
-## Odpowiedzi przed testem
+## Odpowiedzi do testu wstępnego
 
 ### Pytanie 1/2
 
-* <!-- .element: class="fragment fade-in" --> "DOBRZE"
-* <!-- .element: class="fragment fade-in" --> "DOBRZE"
-* <!-- .element: class="fragment fade-in" --> "DOBRZE"
+* <!-- .element: class="fragment fade-in" --> "OK"
+* <!-- .element: class="fragment fade-in" --> "OK"
+* <!-- .element: class="fragment fade-in" --> "OK"
 
 ### Pytanie 2/2
 

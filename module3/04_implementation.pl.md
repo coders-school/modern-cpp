@@ -1,4 +1,4 @@
-## Implementacja semantyki ruchu
+## Implementacja semantyki przenoszenia
 
 ```cpp
 class X : public Base {
@@ -15,13 +15,13 @@ class X : public Base {
         return *this;
     }
 
-    void set_to_resourceless_state() { /* reset pointers, handlers, etc. */ }
+    void set_to_resourceless_state() { /* zresetuj wskaźniki, obiekty, itp. */ }
 };
 ```
 
 ___
 
-## Implementacja semantyki ruchu
+## Implementacja semantyki przenoszenia
 
 ### Zwykła implementacja
 
@@ -49,7 +49,7 @@ Spróbujmy online Coding Dojo :)
 
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Klasa szablonu
+* <!-- .element: class="fragment fade-in" --> Klasa szablonowa
 * <!-- .element: class="fragment fade-in" --> RAII
 * <!-- .element: class="fragment fade-in" --> Kopiowanie niedozwolone
 * <!-- .element: class="fragment fade-in" --> Dozwolone operacje przenoszenia

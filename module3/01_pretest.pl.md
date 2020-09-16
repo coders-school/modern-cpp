@@ -1,4 +1,4 @@
-## Wstępny test
+## Test wstępny
 
 ### Pytanie 1/2
 
@@ -25,7 +25,7 @@ Powiedz mi kiedy będziesz gotowy
 
 ___
 
-## Wstępny test
+## Test wstępny
 
 ### Pytanie 2/2
 
@@ -47,4 +47,4 @@ int main() {
 }
 ```
 
-Co zostanie wydrukowane na ekranie? Weź długopis i zanotuj swoje odpowiedzi.
+Co zostanie wypisane na ekranie? Weź długopis i zanotuj swoje odpowiedzi.
