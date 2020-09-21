@@ -128,37 +128,41 @@ struct B : A {
 <!-- .element: class="fragment fade-in" -->
 
 ___
+<!-- .slide: style="font-size: 0.8em" -->
 
 ## słowo kluczowe `override`
 
-<pre style="position: absolute; width: 37%"><code class="cpp" data-trim data-line-numbers>
+```cpp
 struct Base {
     virtual void a();
     virtual void b() const;
     virtual void c();
     void d();
 };
-</code></pre>
+```
 
-<pre class="fragment" style="position: absolute; width: 60%; right: 0"><code class="cpp" data-trim data-line-numbers data-noescape>
+```cpp
 struct WithoutOverride : Base {
-    void a(); <span class="fragment">// przesłania Base::a()</span>
-    void b(); <span class="fragment">// nie przesłania B::b() const</span>
-    virtual void c(); <span class="fragment">// przesłania B::c()</span>
-    void d(); <span class="fragment">// nie przesłania B::d()</span>
+    void a();                  // przesłania Base::a()</span>
+    void b();                  // nie przesłania B::b() const</span>
+    virtual void c();          // przesłania B::c()</span>
+    void d();                  // nie przesłania B::d()</span>
 };
-</code></pre>
+```
+<!-- .element: class="fragment fade-in" -->
 
-<pre class="fragment" style="position: absolute; width: 100%; top: 350px"><code class="cpp" data-trim data-line-numbers>
+```cpp
 struct WithOverride : Base {
-    void a() override; // OK - przesłania Base::a()
-    void b() override; // error - nie przesłania B::b() const
+    void a() override;         // OK - przesłania Base::a()
+    void b() override;         // error - nie przesłania B::b() const
     virtual void c() override; // OK - przesłania B::c(char)
-    void d() override; // error - B::d() nie jest wirtualna
+    void d() override;         // error - B::d() nie jest wirtualna
 };
-</code></pre>
+```
+<!-- .element: class="fragment fade-in" -->
 
-<p class="fragment" style="position: absolute; width: 100%; top: 580px">Deklaracja <code>override</code> wymusza na kompilatorze sprawdzenie, czy dana funkcja wirtualna jest zadeklarowana w taki sam sposób w klasie bazowej. </p>
+Deklaracja <code>override</code> wymusza na kompilatorze sprawdzenie, czy dana funkcja wirtualna jest zadeklarowana w taki sam sposób w klasie bazowej.
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
