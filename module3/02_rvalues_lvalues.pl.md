@@ -53,15 +53,15 @@ A a;                    // l-value
 A{5, 3};                // r-value
 foo();                  // r-value
 
-A & ra = a;             // referencja l-value do l-value, OK
-A & rb = foo();         // referencja l-value do r-value, ERROR
-A const& rc = foo();    // stała referencja l-value do r-value, OK (wyjątek)
+A & ra = a;             // l-value reference to l-value, OK
+A & rb = foo();         // l-value reference to r-value, ERROR
+A const& rc = foo();    // const l-value reference to r-value, OK (exception)
 
-A && rra = a;           // referencja r-value do l-value, ERROR
-A && rrb = foo();       // referencja r-value do r-value, OK
+A && rra = a;           // r-value reference to l-value, ERROR
+A && rrb = foo();       // r-value reference to r-value, OK
 
 A const ca{20, 40};
-A const&& rrc = ca;     // stała referencja r-value do stałej l-value, ERROR
+A const&& rrc = ca;     // const r-value reference to const l-value, ERROR
 ```
 
 ___
@@ -73,7 +73,7 @@ str1 += str2                    <span class="fragment">// l-value</span>
 str1 + str2                     <span class="fragment">// r-value</span>
 [](int x){ return x * x; };     <span class="fragment">// r-value</span>
 std::move(a);                   <span class="fragment">// r-value</span>
-int && a = 4;                   <span class="fragment">// 4 to r-value</span>
+int && a = 4;                   <span class="fragment">// 4 is r-value</span>
 </code></pre>
 
 ___

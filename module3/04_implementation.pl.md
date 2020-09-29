@@ -15,7 +15,7 @@ class X : public Base {
         return *this;
     }
 
-    void set_to_resourceless_state() { /* zresetuj wskaźniki, obiekty, itp. */ }
+    void set_to_resourceless_state() { /* reset pointers, handlers, etc. */ }
 };
 ```
 

@@ -4,13 +4,13 @@ Gdy szablon jest tworzony, może nastąpić "reference collapsing" - zredukowani
 
 ```cpp
 template <typename T>
-void f(T& item) {  // zawsze pobiera wartość jako referencję do l-value
-                    // nieważne co zostanie przekazane
+void f(T& item) {  // takes item always as an l-value reference
+                    // whatever you pass
     // ...
 }
 
-void f(int& & item);   // przekazanie int& jako parametr -> f(int&)
-void f(int&& & item);  // przekazanie int&& jako parametr -> f(int&)
+void f(int& & item);   // passing int& as a param -> f(int&)
+void f(int&& & item);  // passing int&& as a param -> f(int&)
 ```
 
 ### Reguły redukowania referencji: <!-- .element: class="fragment fade-in" -->

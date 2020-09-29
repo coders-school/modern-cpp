@@ -4,21 +4,21 @@
 template <typename T>
 class Container {
 public:
-    void insert(const T& item);  // wstawia kopię elementu
-    void insert(T&& item);       // przenosi element do kontenera
+    void insert(const T& item);  // inserts a copy of item
+    void insert(T&& item);       // moves item into container
 };
 
 Container<std::string> c;
 std::string str = "text";
 
 c.insert(str);              // lvalue -> insert(const std::string&)
-                            // wstawia kopię str, str jest użyte później
+                            // inserts a copy of str, str is used later
 c.insert(str + str);        // rvalue -> insert(string&&)
-                            // przenosi obiekt tymczasowy to kontenera
+                            // moves temporary into container
 c.insert("text");           // rvalue -> insert(string&&)
-                            // przenosi obiekt tymczasowy to kontenera
+                            // moves temporary into container
 c.insert(std::move(str));   // rvalue -> insert(string&&)
-                            // przenosi str do kontenera, str nie jest dłużej używane
+                            // moves str into container, str is no longer used
 ```
 
 ___
@@ -33,7 +33,7 @@ ___
 ```cpp
 std::unique_ptr<int> pointer1{new int{5}};
 std::unique_ptr<int> pointer2 = std::move(pointer1);
-*pointer1 = 4;  // Undefined behavior
+*pointer1 = 4;  // Undefined behavior, pointer1 is in moved-from state
 pointer1.reset(new int{20});    // OK
 ```
 <!-- .element: class="fragment fade-in" -->

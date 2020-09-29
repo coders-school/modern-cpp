@@ -11,8 +11,8 @@ ___
 T f() {
     return T();
 }
-f();             // tylko jedno wywołanie konstruktora domyślnego T
-T x = T(T(f())); // tylko jedno wywołanie konstruktora domyślnego T, aby zainicjować x
+f();             // only one call to default c-tor of T
+T x = T(T(f())); // only one call to default c-tor of T, to initialize x
 ```
 <!-- .element: class="fragment fade-in" -->
 
@@ -46,7 +46,7 @@ T bar()
     T t1{1};
     T t2{2};
     return (std::time(nullptr) % 2) ? t1 : t2;
-}  // nie wiadomo, który obiekt będzie zwrócony
+}  // don't know which object will be elided
 ```
 <!-- .element: class="fragment fade-in" -->
 
