@@ -7,11 +7,11 @@
 ```cpp
 std::map<std::string, float> collection;
 
-decltype(collection) other;              // other jest typu collection
-decltype(collection)::mapped_type value; // value jest typu float
+decltype(collection) other;              // other has type of collection
+decltype(collection)::mapped_type value; // value is float
 
 template <typename T1, typename T2>
-auto add(T1 a, T2 b) -> decltype(a + b)  // od C++14 decltype niepotrzebne
+auto add(T1 a, T2 b) -> decltype(a + b)  // from C++14 decltype not necessary
 {
     return a + b;
 }

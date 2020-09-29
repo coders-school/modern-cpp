@@ -39,7 +39,7 @@ enum class Languages {
 Languages a = Languages::ENGLISH;
 // Languages b = GERMAN;
 // int c = Languages::ENGLISH;
-int d = static_cast<int>(Languages::ENGLISH);   // dozwolona tylko jawna konwersja!
+int d = static_cast<int>(Languages::ENGLISH);   // only explicit cast allowed
 ```
 <!-- .element: class="fragment fade-in" -->
 

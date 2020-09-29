@@ -13,7 +13,7 @@ int* p3 = 0;
 p2 == p1; // true
 p3 == p1; // true
 
-int* p {}; // p ma wartość nullptr
+int* p {}; // p is set to nullptr
 ```
 
 ___
@@ -24,8 +24,8 @@ ___
 ```cpp
 void foo(int);
 
-foo(0);        // wywołuje foo(int)
-foo(NULL);     // wywołuje foo(int)
+foo(0);        // calls foo(int)
+foo(NULL);     // calls foo(int)
 foo(nullptr);  // compile time error
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -35,9 +35,9 @@ void bar(int);
 void bar(void*);
 void bar(std::nullptr_t);
 
-bar(0);        // wywołuje bar(int)
-bar(NULL);     // wywołuje bar(int) jeśli NULL to 0, może być dwuznaczny jeśli NULL to 0L
-bar(nullptr);  // wywołuje bar(std::nullptr_t) jeśli jest zdefiniowane, w przeciwnym przypadku bar(void*)
+bar(0);        // calls bar(int)
+bar(NULL);     // calls bar(int) if NULL is 0, may be ambiguous if NULL is 0L
+bar(nullptr);  // calls bar(std::nullptr_t) if provided, bar(void*) otherwise
 ```
 <!-- .element: class="fragment fade-in" -->
 

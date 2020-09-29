@@ -7,14 +7,14 @@ ___
 
 ```cpp
 typedef std::ios_base::fmtflags Flags;
-using Flags = std::ios_base::fmtflags;  // to samo co wyżej
+using Flags = std::ios_base::fmtflags;  // the same as above
 Flags fl = std::ios_base::dec;
 ```
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
 typedef std::vector<std::shared_ptr<Socket>> SocketContainer;
-std::vector<std::shared_ptr<Socket>> typedef SocketContainer; // poprawnie ;)
+std::vector<std::shared_ptr<Socket>> typedef SocketContainer; // correct ;)
 using SocketContainer = std::vector<std::shared_ptr<Socket>>;
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -54,8 +54,8 @@ struct A {
 };
 
 struct B : A {
-    using A::A;  // niejawna deklaracja B::B(int)
-    B(int, int); // przeciążony odziedziczony konstruktor klasy bazowej
+    using A::A;  // implicit declaration of B::B(int)
+    B(int, int); // overloaded inherited Base ctor
 };
 ```
 

@@ -7,16 +7,16 @@ ___
 
 ```cpp
 auto a;         // error: declaration of ‘auto a’ has no initializer
-auto i = 42;    // i jest typu int
-auto u = 42u;   // u jest typu unsigned
-auto d = 42.0;  // d jest typu double
-auto f = 42.0f; // f jest typu float
+auto i = 42;    // i is int
+auto u = 42u;   // u is unsigned
+auto d = 42.0;  // d is double
+auto f = 42.0f; // f is float
 
 double f();
-auto r1 = f();  // r1 jest typu double
+auto r1 = f();  // r1 is double
 
 std::set<std::string> collection;
-auto it = collection.begin(); // it jest typu std::set<std::string>::iterator
+auto it = collection.begin(); // it is std::set<std::string>::iterator
 ```
 
 Nieważne (ale silnie zdefiniowane) typy, mniej pisania, mniej refaktoryzacji.
@@ -34,11 +34,11 @@ ___
 int func() { return 10; }
 
 int main() {
-    const auto& v1 = func(); // v1 jest typu const int&
-    const auto v2 = func();  // v2 jest typu const int
+    const auto& v1 = func(); // v1 is const int&
+    const auto v2 = func();  // v2 is const int
     // auto& v3 = func();    // error: cannot bind non-const lvalue reference
                              // of type ‘int&’ to an rvalue of type ‘int’
-    auto v4 = func();        // v4 jest typu int
+    auto v4 = func();        // v4 is int
     return 0;
 }
 ```
@@ -59,12 +59,12 @@ auto& c2 = clock;   // c2 : volatile long&
 
 Gadget items[10];
 auto g1 = items;    // g1 : Gadget*
-auto& g2 = items;   // g2 : Gadget(&)[10] - referencja do
-                    // 10. elementu tablicy typu Gadget
+auto& g2 = items;   // g2 : Gadget(&)[10] - a reference to
+                    // the 10-elementh array of Gadgets
 
 int func(double) { return 10; }
 auto f1 = func;     // f1 : int (*)(double)
-auto& f2 = func;    // f2: int (&)(double)
+auto& f2 = func ;   // f2: int (&)(double)
 ```
 
 * <!-- .element: class="fragment fade-in" --> Referencja oznacza ten sam obiekt o takich samych właściwościach

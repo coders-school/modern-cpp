@@ -12,8 +12,8 @@ class AwesomeClass {
 public:
     AwesomeClass(const AwesomeClass&);
     AwesomeClass& operator=(const AwesomeClass&);
-    // operacje kopiowania zdefiniowane przez użytkownika zapobiegają
-    // niejawnego powstawania domyślnych konstruktorów i operacji przenoszenia
+    // user defined copy operations prevents implicit generation
+    // of default c-tor and move operations
 
     AwesomeClass() = default;
     AwesomeClass(AwesomeClass&&) = default;
@@ -81,8 +81,8 @@ void integral_only(double d) = delete;
 
 integral_only(10);  // OK
 short s = 3;
-integral_only(s);   // OK - niejawna konwersja do typu int
-integral_only(3.0); // error - użycie usuniętej funkcji
+integral_only(s);   // OK - implicit conversion to int
+integral_only(3.0); // error - use of deleted function
 ```
 
 ___
@@ -143,20 +143,20 @@ struct Base {
 
 ```cpp
 struct WithoutOverride : Base {
-    void a();                  // przesłania Base::a()</span>
-    void b();                  // nie przesłania B::b() const</span>
-    virtual void c();          // przesłania B::c()</span>
-    void d();                  // nie przesłania B::d()</span>
+    void a();         // overrides Base::a()</span>
+    void b();         // doesn't override B::b() const</span>
+    virtual void c(); // overrides B::c()</span>
+    void d();         // doesn't override B::d()</span>
 };
 ```
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
 struct WithOverride : Base {
-    void a() override;         // OK - przesłania Base::a()
-    void b() override;         // error - nie przesłania B::b() const
-    virtual void c() override; // OK - przesłania B::c(char)
-    void d() override;         // error - B::d() nie jest wirtualna
+    void a() override;         // OK - overrides Base::a()
+    void b() override;         // error - doesn't override B::b() const
+    virtual void c() override; // OK - overrides B::c(char)
+    void d() override;         // error - B::d() is not virtual
 };
 ```
 <!-- .element: class="fragment fade-in" -->
