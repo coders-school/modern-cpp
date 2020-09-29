@@ -40,8 +40,9 @@ std::unordered_map<std::string, int> mapping {
     {"c", 3}
 };
 
+// De-structure by reference.
 for (const auto& [key, value] : mapping) {
-    // Zrób coś z key i value
+    // Do something with key and value
 }
 ```
 <!-- .element: class="fragment fade-in" -->

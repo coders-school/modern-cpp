@@ -13,11 +13,11 @@ Określa, czy funkcja będzie zgłaszać wyjątki, czy nie. Jeśli wyjątek zost
 ```c++
 void bar() noexcept(true) {}
 void baz() noexcept { throw 42; }
-// noexcept - to samo co noexcept(true)
+// noexcept is the same as noexcept(true)
 
 int main() {
-    bar(); // ok
-    baz(); // kompiluje się, ale wywołuje std::terminate
+    bar(); // fine
+    baz(); // compiles, but calls std::terminate
 }
 ```
 <!-- .element: class="fragment fade-in" -->

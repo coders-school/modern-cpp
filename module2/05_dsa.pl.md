@@ -23,12 +23,12 @@ ___
 ### Słowo kluczowe _`alignas`_
 
 ```c++
-// każdy obiekt typu see_t będzie wyrównany do 16-bajtowej granicy
+// every object of type see_t will be aligned to 16-byte boundary
 struct alignas(16) see_t {
     float see_data[4];
 };
 
-// error: żądane wyrównanie nie jest pozytywną potęgą 2
+// error: requested alignment is not a positive power of 2 alignas(129) char cacheline[128];
 alignas(129) char cacheline[128];
 ```
 

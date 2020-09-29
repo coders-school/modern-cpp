@@ -32,8 +32,8 @@ ___
 Z szablonu klasy C++17 można wywnioskować argumenty automatycznie. Automatyczna dedukcja argumentów szablonów była dostępna wcześniej tylko dla funkcji szablonów.
 
 ```c++
-std::pair p(1, 'x'); // C++17: OK, C++14: error: brakuje
-                     // argumentów szablonu przed p
+std::pair p(1, 'x'); // C++17: OK, C++14: error: missing
+                     //template arguments before p
 std::pair<int, std::string> p(1, 'x'); // C++14: OK
 auto p = std::make_pair(1, 'x'); // C++17: OK, C++14: OK
 ```
@@ -50,7 +50,7 @@ ___
 
 ```cpp
 status_code foo() { // C++14
-    { // zakres zmiennej c
+    { //variable c scope
         status_code c = bar();
         if (c != SUCCESS) {
             return c;

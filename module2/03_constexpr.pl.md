@@ -20,14 +20,14 @@ ___
 ## zmienne `constexpr`
 
 ```cpp
-int a = 10;             // zmienna
-const int b = 20;       // stała
-const double c = 20;    // stała
-constexpr int d = 30;   // stała podczas procesu kompilacji
+int a = 10;             // variable
+const int b = 20;       // constant
+const double c = 20;    // constant
+constexpr int d = 30;   // constant at compile-time
 
-constexpr auto e = a;   // error: inicjator nie jest wyrażeniem stałym
-constexpr auto f = b;   // OK dla typu int, wyjątek dla wstecznej kompatybilności z C++03
-constexpr auto g = c;   // error: inicjator nie jest wyrażeniem stałym
+constexpr auto e = a;   // error: initializer is not a constant expression
+constexpr auto f = b;   // OK for integral, C++03 compatibility exception
+constexpr auto g = c;   // error: initializer is not a constant expression
 constexpr auto h = d;   // OK
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -40,7 +40,7 @@ ___
 ## Funkcje `constexpr`
 
 ```cpp
-constexpr int factorial11(int n) {  // kompatybilne z C++11
+constexpr int factorial11(int n) {  // C++11 compatible
 {
     return (n == 0) ? 1 : n * factorial11(n-1);
 }
@@ -98,7 +98,7 @@ ___
 Od C++17 wszystkie funkcje lambda są domyślnie oznaczane niejawnie jako `constexpr`, jeśli to możliwe. Słowo kluczowe `constexpr` może być również użyte jawnie.
 
 ```cpp
-auto squared = [](auto x) {             // niejawny constexpr
+auto squared = [](auto x) {             // implicitly constexpr
     return x * x;
 };
 

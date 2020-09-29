@@ -33,7 +33,7 @@ ___
     if (i > 0) {
         throw "positive";
     }
-    // niezdefiniowane zachowanie, jeśli funkcja wywołana z argumentem <=0
+    // the behavior is undefined if called with argument <=0
 }
 ```
 
@@ -49,11 +49,11 @@ void f(int n){
     case 2:
         g();
         [[fallthrough]];
-    case 3: // brak ostrzeżenia przy przejściu do następnego przypadku
+    case 3: // no warning on fallthrough
         h();
-    case 4: // kompilator może ostrzegać przed przejściem
+    case 4: // compiler may warn on fallthrough
         i();
-        [[fallthrough]]; // źle, brak przypadku za atrybutem
+        [[fallthrough]]; // illformed, not before a case label
     }
 }
 ```
@@ -70,7 +70,7 @@ error_info process(Data*);
 
 void passMessage() {
     auto data = getData();
-    process(data);  // ostrzeżenie kompilatora, ignorowanie zwracanej wartości
+    process(data);  // compiler warning, discarding error_info
 }
 ```
 
@@ -83,9 +83,9 @@ ___
                         [[maybe_unused]] bool thing2)
 {
   [[maybe_unused]] bool b = thing1 && thing2;
-  assert (b); // assert zostaje skompilowane, podczas gdy b nieużyte
-              // brak ostrzeżenia, bo mamy zadeklarowany [[maybe_unused]]
-} // parametry thing1 i thing2 nie są użyte, brak ostrzeżenia
+  assert (b); // in release mode, assert is compiled out, and b is unused
+              // no warning because it is declared [[maybe_unused]]
+} // parameters thing1 and thing2 are not used, no warning
 ```
 
 ___
@@ -101,12 +101,12 @@ enum E {
     foobar = 0,
     boobat [[deprecated]] = foobar
 };
-E e = foobat; // ostrzeżenie kompilatora
+E e = foobat; // Emits warning
 
 namespace [[deprecated]] old_stuff {
     void legacy();
 }
-old_stuff::legacy(); // ostrzeżenie kompilatora
+old_stuff::legacy(); //Emits warning
 ```
 
 ___
