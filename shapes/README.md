@@ -11,7 +11,7 @@ It should be >= 7.0
 > cd build
 > cmake ..
 > make
-> ./modern_cpp
+> ./shapes
 ```
 
 ## Tasks
