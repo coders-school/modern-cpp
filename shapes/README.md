@@ -11,7 +11,7 @@ It should be >= 7.0
 > cd build
 > cmake ..
 > make
-> ./modern_cpp
+> ./shapes
 ```
 
 ## Tasks
@@ -52,7 +52,7 @@ It should be >= 7.0
     Mark all overridden virtual methods. Can you spot the problem?
 9. `constexpr`:
     Write a function that calculates n-th Fibonacci's number. Do not mark it `constexpr`.
-    In the first line of `main()` add computing 45-th Fibonacci's number. Measure the time of program execution (time ./modern_cpp)
+    In the first line of `main()` add computing 45-th Fibonacci's number. Measure the time of program execution (time ./shapes)
     Mark fibonacci function as `constexpr`, compile the program and measure the time of execution once again.
     If you can't see a big difference assign the result to the constexpr variable.
 10. uniform initialization:
