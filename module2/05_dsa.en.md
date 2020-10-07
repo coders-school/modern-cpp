@@ -23,7 +23,7 @@ ___
 ### _`alignas`_ keyword
 
 ```c++
-// every object of type see_t will be alignet to 16-byte boundary
+// every object of type see_t will be aligned to 16-byte boundary
 struct alignas(16) see_t {
     float see_data[4];
 };

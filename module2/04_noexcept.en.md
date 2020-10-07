@@ -5,7 +5,7 @@ ___
 
 ## `noexcept` keyword
 
-**Rationale**: no-throw exception safety guarantee, less code generated for exceptions handling, additional compiler optimisation</p>
+**Rationale**: no-throw exception safety guarantee, less code generated for exceptions handling, additional compiler optimisation.
 
 Specifies whether a function will throw exceptions or not. If an exception is thrown out of a `noexcept` function, `std::terminate` is called.
 <!-- .element: class="fragment fade-in" -->
