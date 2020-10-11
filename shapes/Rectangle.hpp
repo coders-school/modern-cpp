@@ -2,12 +2,11 @@
 
 #include "Shape.hpp"
 
-class Rectangle : public Shape
-{
+class Rectangle : public Shape {
 public:
     using Shape::Shape;
-    Rectangle(double x, double y);
-    Rectangle(const Rectangle & other) = default;
+    Rectangle(double x, double y, Color c = Color::Red);
+    Rectangle(const Rectangle& other) = default;
 
     double getArea() const noexcept override;
     double getPerimeter() const noexcept override;

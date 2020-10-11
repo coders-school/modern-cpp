@@ -6,9 +6,10 @@ enum class Color : unsigned char {
     Black
 };
 
-class Shape
-{
+class Shape {
+private:
     Color color_ = Color::Red;
+
 public:
     explicit Shape(Color);
     Shape() = default;
