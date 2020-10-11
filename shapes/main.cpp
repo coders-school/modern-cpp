@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -14,27 +15,16 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
-    if (first == nullptr || second == nullptr)
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {    if (first == nullptr || second == nullptr)
         return false;
-    return (first->getArea() < second->getArea());
-}
+    return (first->getArea() < second->getArea()); };
 
-// auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {    if (first == nullptr || second == nullptr)
-//         return false;
-//     return (first->getArea() < second->getArea()); };
+auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {if(s){
+        return (s->getPerimeter() > 20); } return false; };
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getPerimeter() > 20);
-    return false;
-}
-
-bool areaLessThan10(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getArea() < 10);
-    return false;
-}
+auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {if(s){
+    return (s->getArea() < x);} 
+    return false; };
 
 void printCollection(const Collection& collection) {
     for (const auto& it : collection)
@@ -49,7 +39,7 @@ void printAreas(const Collection& collection) {
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info) {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
@@ -96,7 +86,7 @@ int main() {
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
     //Exercise 14
     std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
