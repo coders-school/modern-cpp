@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <type_traits>
@@ -55,6 +56,11 @@ void insertToCollection(Collection& collection, std::shared_ptr<T>& shape) {
     collection.push_back(shape);
 }
 
+template <typename DerivedType, typename... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
+}
+
 int main() {
     Collection shapes{
         make_shared<Circle>(2.0),
@@ -98,5 +104,25 @@ int main() {
     //auto testPointer = std::make_shared<int>(15);
     //insertToCollection(shapes, testPointer);
 
+    //Exercise 17:
+    std::map<std::shared_ptr<Shape>, double> shapePerimeter;
+    std::shared_ptr<Shape> circl1 = make_shared<Circle>(3.0);
+    std::shared_ptr<Shape> rectangle1 = make_shared<Rectangle>(3.0, 4.0);
+    std::shared_ptr<Shape> square1 = make_shared<Square>(5.0);
+
+    shapePerimeter.insert({circl1, circl1->getPerimeter()});
+    shapePerimeter.insert({rectangle1, rectangle1->getPerimeter()});
+    shapePerimeter.insert({square1, square1->getPerimeter()});
+
+    std::cout << "\n\n";
+    for (const auto& [key, val] : shapePerimeter) {
+        if (key) {
+            key->print();
+        }
+        std::cout << "Perimeter value == " << val << '\n';
+    }
+
+    auto testShape = make_shape<Circle>(5);
+    testShape->print();
     return 0;
 }
