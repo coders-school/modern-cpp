@@ -2,7 +2,8 @@
 
 #include "Shape.hpp"
 
-class alignas(2) Circle final : public Shape {
+//alignas(2) fails on clang
+class alignas(128) Circle final : public Shape {
 public:
     using Shape::Shape;
     Circle(double r, Color c = Color::Black);
