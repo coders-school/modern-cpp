@@ -6,10 +6,16 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(const Circle & other)
+auto Circle::getRadius() const
 {
-    r_ = other.getRadius();
+    return r_;
 }
+
+double Circle::getPi() const {
+    return 5.0;
+}
+
+static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 
 double Circle::getArea() const
 {
@@ -21,10 +27,7 @@ double Circle::getPerimeter() const
     return 2 * M_PI * r_;
 }
 
-double Circle::getRadius() const
-{
-    return r_;
-}
+
 
 void Circle::print() const
 {

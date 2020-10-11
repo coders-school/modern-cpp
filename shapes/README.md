@@ -60,28 +60,28 @@ It should be >= 7.0
     Add a new constructor to Shape - `Shape(Color c)`. What happens?
     Use constructor inheritance to allow initialization of all shapes providing only a `Color` as a parameter. Create some shapes providing `Color` only param.
     Add in-class field initialization for all shapes to safely use inherited constructor.
-11. SFINAE
+11. SFINAE ✅ (15 XP)
     Write a function that allows inserting only subclasses of Shape to the collection. Other parameter types should not compile. Use SFINAE. Find proper type_traits.
 12. attributes:
     Add a new method `double getPi()` in `Circle` class, which returns a PI number. Mark it as deprecated.
 13. `noexcept`:
     Mark some `getArea()` and `getPerimeter()` methods as `noexcept`
-14. `alignas`, `alignof`
+14. `alignas`, `alignof` ✅ (5 XP)
     Change the alignment of the `Circle` class to 128.
     Print the alignment in `main()` function.
     Change the alignment to 2.
     Print the alignment.
-15. delegating constructors:
+15. delegating constructors: ✅ (5 XP)
     Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for Color.
     Delegate a call in the old constructor to the new one.
-16. lambda functions:
+16. lambda functions: ✅ (5 XP)
     Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
     Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
     Use `std::function` to solve the problem.
-17. structured bindings:
+17. structured bindings: ✅ (5 XP)
     Create an `std::map<shared_ptr<Shape>, double>` that will hold a shape and it's perimeter.
     Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
-18. variadic templates:
+18. variadic templates: ✅ (15 XP)
     Write a factory method which should work like `std::make_shared`.
     It should have below signature:
 
