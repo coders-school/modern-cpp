@@ -20,6 +20,10 @@ bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
     return (first->getArea() < second->getArea());
 }
 
+// auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {    if (first == nullptr || second == nullptr)
+//         return false;
+//     return (first->getArea() < second->getArea()); };
+
 bool perimeterBiggerThan20(shared_ptr<Shape> s) {
     if (s)
         return (s->getPerimeter() > 20);

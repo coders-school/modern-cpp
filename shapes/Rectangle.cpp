@@ -1,8 +1,8 @@
 #include "Rectangle.hpp"
 #include <iostream>
 
-Rectangle::Rectangle(double x, double y, Color c = Color::Red)
-    : x_(x), y_(y), Shape{c} {}
+Rectangle::Rectangle(double x, double y, Color c)
+    : x_(x), y_(y), Shape(c) {}
 
 double Rectangle::getArea() const noexcept {
     return x_ * y_;

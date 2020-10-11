@@ -2,8 +2,8 @@
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r, Color c = Color::Black)
-    : r_(r), Shape{c} {}
+Circle::Circle(double r, Color c)
+    : r_(r), Shape(c) {}
 
 auto Circle::getRadius() const {
     return r_;
