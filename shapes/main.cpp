@@ -57,7 +57,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 }
 
 template <typename T, typename = typename std::enable_if_t<std::is_base_of<Shape, T>::value>>
-void insertToCollection(Collection& collection, std::shared_ptr<T> shape) {
+void insertToCollection(Collection& collection, std::shared_ptr<T>& shape) {
     collection.push_back(shape);
 }
 
