@@ -1,12 +1,14 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
+#include <iostream>
+#include <map>
 #include <memory>
-#include "Shape.hpp"
-#include "Rectangle.hpp"
-#include "Square.hpp"
+#include <vector>
+#include <string>
+
 #include "Circle.hpp"
+#include "Rectangle.hpp"
+#include "Shape.hpp"
+#include "Square.hpp"
 
 using namespace std;
 
