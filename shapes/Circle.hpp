@@ -2,19 +2,22 @@
 
 #include "Shape.hpp"
 
-class Circle : public Shape
+class alignas(128) Circle final : public Shape
+// class alignas(2) Circle final : public Shape  cannot set to less than default
 {
 public:
     Circle(double r);
-    Circle(const Circle & other);
-
-    double getArea() const;
-    double getPerimeter() const;
+    Circle(const Circle & other) = default;
+    
+    [[deprecated("Please use M_PI instead.")]]
+    double getPi() const;
+    double getArea() const override;
+    double getPerimeter() const override;
     double getRadius() const;
-    void print() const;
+    void print() const override;
 
 private:
-    Circle(); // doesn't allow to call default constructor
+    Circle() = delete; // doesn't allow to call default constructor
 
-    double r_;
+    double r_{};
 };

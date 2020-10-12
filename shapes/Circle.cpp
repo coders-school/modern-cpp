@@ -6,9 +6,11 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(const Circle & other)
+static_assert(M_PI != 3.14, "M_PI is estimated value");
+
+double Circle::getPi() const
 {
-    r_ = other.getRadius();
+    return M_PI;
 }
 
 double Circle::getArea() const
