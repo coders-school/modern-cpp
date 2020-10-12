@@ -63,8 +63,15 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+int constexpr fibo(int number)
+{
+    if (number <= 2) { return 1; }
+    else { return fibo(number - 1) + fibo(number - 2); }
+}
+
 int main()
 {
+    // int a = fibo(45);
     Collection shapes;
     shapes.push_back(make_shared<Circle>(2.0));
     shapes.push_back(make_shared<Circle>(3.0));
