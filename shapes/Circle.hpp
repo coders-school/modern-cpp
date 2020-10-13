@@ -6,7 +6,7 @@ class Circle : public Shape
 {
 public:
     Circle(double r);
-    Circle(const Circle & other);
+    Circle(const Circle & other) = default;
 
     double getArea() const;
     double getPerimeter() const;
@@ -14,7 +14,7 @@ public:
     void print() const;
 
 private:
-    Circle(); // doesn't allow to call default constructor
+    Circle() = delete; // doesn't allow to call default constructor
 
     double r_;
 };

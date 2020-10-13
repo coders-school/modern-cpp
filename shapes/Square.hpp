@@ -6,13 +6,13 @@ class Square : public Rectangle
 {
 public:
     Square(double x);
-    Square(const Square & other);
+    Square(const Square & other) = default;
 
     double getArea();
     double getPerimeter();
     void print();
 
 private:
-    double getY(); // should not have Y dimension
+    double getY() = delete; // should not have Y dimension
     Square();
 };
