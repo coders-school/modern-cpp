@@ -13,6 +13,7 @@
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
+using mapCollection = map<shared_ptr<Shape>, double>;
 using shapePtr = shared_ptr<Shape>;
 
 auto sortByArea = [](shapePtr first, shapePtr second) {
@@ -37,9 +38,15 @@ void printCollectionElements(const Collection& collection)
             (it)->print();
 }
 
+void printMapCollectionElements(const mapCollection& collection)
+{
+    for (const auto& [key, value]: collection)
+        if(key)
+            (key)->print();
+}
+
 void printAreas(const Collection& collection)
 {
-    // for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
     for (const auto& it: collection)
         if(it)
             cout << (it)->getArea() << std::endl;
@@ -71,6 +78,18 @@ int main()
 {
     // int a = fibo(45);
     Collection shapes;
+    // shapePtr circle = make_shared<Circle>(2.0);
+    // shapes.insert({circle, circle->getPerimeter()});
+    // circle = make_shared<Circle>(3.0);
+    // shapes.insert({circle, circle->getPerimeter()});
+    // circle = make_shared<Circle>(4.0);
+    // shapes.insert({circle, circle->getPerimeter()});
+    // shapePtr rectangle = make_shared<Rectangle>(10.0, 5.0);
+    // shapes.insert({rectangle, rectangle->getPerimeter()});
+    // shapePtr square = make_shared<Square>(3.0);
+    // shapes.insert({square, square->getPerimeter()});
+    // shapes.insert({circle, circle->getPerimeter()});
+
     shapes.push_back(make_shared<Circle>(2.0));
     shapes.push_back(make_shared<Circle>(3.0));
     shapes.push_back(nullptr);
@@ -79,6 +98,16 @@ int main()
     shapes.push_back(make_shared<Square>(3.0));
     shapes.push_back(make_shared<Circle>(4.0));
     printCollectionElements(shapes);
+
+    mapCollection mapCollect;
+    transform(shapes.begin(), shapes.end(),
+        inserter(mapCollect, mapCollect.begin()),
+        [](const shapePtr& sp) {
+            return sp ? make_pair(sp, sp->getPerimeter()) : make_pair(nullptr, 0.0);
+
+    });
+    cout << "Collection as map: " << std::endl;
+    printMapCollectionElements(mapCollect);
 
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
