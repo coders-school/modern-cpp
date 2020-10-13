@@ -13,40 +13,36 @@
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
+using shapePtr = shared_ptr<Shape>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
-    if(first == nullptr || second == nullptr)
-        return false;
+auto sortByArea = [](shapePtr first, shapePtr second) {
+    if(first == nullptr || second == nullptr) { return false; }
     return (first->getArea() < second->getArea());
-}
+};
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getPerimeter() > 20);
+auto perimeterBiggerThan20 = [](shapePtr s) {
+    if (s) { return (s->getPerimeter() > 20); }
     return false;
-}
+};
 
-bool areaLessThan10(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getArea() < 10);
+auto areaLessThan10 = [](shapePtr s) {
+    if (s) { return s->getArea() < 10; }
     return false;
-}
+};
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
-        if(*it)
-            (*it)->print();
+    for (const auto& it: collection)
+        if(it)
+            (it)->print();
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<shared_ptr<Shape>>::const_iterator it = collection.begin(); it != collection.end(); ++it)
-        if(*it)
-            cout << (*it)->getArea() << std::endl;
+    // for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
+    for (const auto& it: collection)
+        if(it)
+            cout << (it)->getArea() << std::endl;
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
