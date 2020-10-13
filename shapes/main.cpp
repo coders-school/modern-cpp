@@ -81,18 +81,23 @@ void insertToCollection(Collection& collection, std::shared_ptr<T> shape) {
     collection.push_back(shape);
 }
 
+template<class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return make_shared<DerivedType>(decltype(args)(args)...);
+}
+
 int main()
 {
     // int a = fibo(45);
     Collection shapes;
 
-    insertToCollection(shapes, make_shared<Circle>(2.0));
-    shapes.push_back(make_shared<Circle>(3.0));
+    insertToCollection(shapes, make_shape<Circle>(2.0));
+    shapes.push_back(make_shape<Circle>(3.0));
     shapes.push_back(nullptr);
-    shapes.push_back(make_shared<Circle>(4.0));
-    shapes.push_back(make_shared<Rectangle>(10.0, 5.0));
-    shapes.push_back(make_shared<Square>(3.0));
-    shapes.push_back(make_shared<Circle>(4.0));
+    shapes.push_back(make_shape<Circle>(4.0));
+    shapes.push_back(make_shape<Rectangle>(10.0, 5.0));
+    shapes.push_back(make_shape<Square>(3.0));
+    shapes.push_back(make_shape<Circle>(4.0));
     printCollectionElements(shapes);
 
     mapCollection mapCollect;
