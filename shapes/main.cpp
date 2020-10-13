@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -101,6 +102,22 @@ int main() {
     std::cout << "Circle alignment is equal to: " << alignof(Circle) << '\n';
     std::cout << "When alignment was set to alignas(2), Circle object was aligned by 8. VSC showed a warning that "
                  "\"alignment cannot be set to less than the default alignment\"\n";
+
+    std::map<std::shared_ptr<Shape>, double> shapeAndPerimeter;
+    std::shared_ptr<Shape> rectangleShape = make_shared<Rectangle>(1.0, 2.0);
+    std::shared_ptr<Shape> squareShape = make_shared<Square>(3.0);
+    std::shared_ptr<Shape> circleShape = make_shared<Circle>(4.0);
+
+    shapeAndPerimeter.insert({rectangleShape, rectangleShape->getPerimeter()});
+    shapeAndPerimeter.insert({squareShape, squareShape->getPerimeter()});
+    shapeAndPerimeter.insert({circleShape, circleShape->getPerimeter()});
+
+    for (const auto& [key, value] : shapeAndPerimeter) {
+        if (key) {
+            key->print();
+        }
+        std::cout << "Perimeter is equal to " << value << "\n\n";
+    }
 
     return 0;
 }
