@@ -10,7 +10,7 @@
 
 using namespace std;
 
-typedef vector<shared_ptr<Shape>> Collection;
+using Collection = vector<shared_ptr<Shape>>;
 
 bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
 {
