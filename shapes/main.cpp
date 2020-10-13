@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <type_traits>
 
 #include "Circle.hpp"
 #include "Rectangle.hpp"
@@ -75,12 +76,17 @@ int constexpr fibo(int number)
     else { return fibo(number - 1) + fibo(number - 2); }
 }
 
+template <typename T, typename = typename std::enable_if_t<std::is_base_of<Shape, T>::value>>
+void insertToCollection(Collection& collection, std::shared_ptr<T> shape) {
+    collection.push_back(shape);
+}
+
 int main()
 {
     // int a = fibo(45);
     Collection shapes;
 
-    shapes.push_back(make_shared<Circle>(2.0));
+    insertToCollection(shapes, make_shared<Circle>(2.0));
     shapes.push_back(make_shared<Circle>(3.0));
     shapes.push_back(nullptr);
     shapes.push_back(make_shared<Circle>(4.0));
@@ -107,8 +113,7 @@ int main()
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto square = make_shared<Square>(4.0);
-    shapes.push_back(square);
+    insertToCollection(shapes, make_shared<Square>(4.0));
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
