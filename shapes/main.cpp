@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <memory>
@@ -26,7 +27,7 @@ auto perimeterBiggerThan20 = [](shapePtr s) {
     return false;
 };
 
-auto areaLessThan10 = [](shapePtr s) {
+std::function<bool(shapePtr)> areaLessThanX = [x = 10](shapePtr s) {
     if (s) { return s->getArea() < 10; }
     return false;
 };
@@ -53,7 +54,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shapePtr)> predicate,
                                      std::string info)
 {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -78,17 +79,6 @@ int main()
 {
     // int a = fibo(45);
     Collection shapes;
-    // shapePtr circle = make_shared<Circle>(2.0);
-    // shapes.insert({circle, circle->getPerimeter()});
-    // circle = make_shared<Circle>(3.0);
-    // shapes.insert({circle, circle->getPerimeter()});
-    // circle = make_shared<Circle>(4.0);
-    // shapes.insert({circle, circle->getPerimeter()});
-    // shapePtr rectangle = make_shared<Rectangle>(10.0, 5.0);
-    // shapes.insert({rectangle, rectangle->getPerimeter()});
-    // shapePtr square = make_shared<Square>(3.0);
-    // shapes.insert({square, square->getPerimeter()});
-    // shapes.insert({circle, circle->getPerimeter()});
 
     shapes.push_back(make_shared<Circle>(2.0));
     shapes.push_back(make_shared<Circle>(3.0));
@@ -121,7 +111,7 @@ int main()
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
     std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
 
