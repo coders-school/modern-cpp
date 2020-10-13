@@ -2,8 +2,8 @@
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r)
-    : r_(r)
+Circle::Circle(double r, Color c)
+    : r_(r), Shape{c}
 {}
 
 static_assert(M_PI != 3.14, "M_PI is estimated value");

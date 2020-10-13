@@ -6,7 +6,7 @@ class alignas(128) Circle final : public Shape
 // class alignas(2) Circle final : public Shape  cannot set to less than default
 {
 public:
-    Circle(double r);
+    Circle(double r, Color c = Color::BLUE);
     Circle(const Circle & other) = default;
     
     [[deprecated("Please use M_PI instead.")]]
