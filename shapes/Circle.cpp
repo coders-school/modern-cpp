@@ -2,7 +2,7 @@
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r) : r_(r) {}
+Circle::Circle(double r, Color c = Color::Black) : r_(r) {}
 
 auto Circle::getRadius() const {
     return r_;
