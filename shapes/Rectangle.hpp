@@ -5,7 +5,7 @@
 class Rectangle : public Shape
 {
 public:
-    Rectangle(double x, double y);
+    Rectangle(double x, double y, Color c = Color::Red);
     Rectangle(const Rectangle & other) = default;
 
     double getArea() const override;
