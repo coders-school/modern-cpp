@@ -1,14 +1,10 @@
 #pragma once
 
-enum class Color : unsigned char {
-    Red,
-    Green,
-    Black
-};
+enum class Color : unsigned char { Red, Green, Black };
 
-class Shape
-{
+class Shape {
     Color color_ = Color::Red;
+
 public:
     explicit Shape(Color);
     Shape() = default;
