@@ -6,12 +6,20 @@ Circle::Circle(double r, Color c)
     : r_(r), Shape{c}
 {}
 
+
 static_assert(M_PI != 3.14, "M_PI is estimated value");
 
 double Circle::getPi() const
 {
     return M_PI;
 }
+
+double Circle::getRadius() const
+{
+    return r_;
+}
+
+static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 
 double Circle::getArea() const
 {
@@ -21,11 +29,6 @@ double Circle::getArea() const
 double Circle::getPerimeter() const
 {
     return 2 * M_PI * r_;
-}
-
-double Circle::getRadius() const
-{
-    return r_;
 }
 
 void Circle::print() const

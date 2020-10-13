@@ -8,7 +8,6 @@ class alignas(128) Circle final : public Shape
 public:
     Circle(double r, Color c = Color::BLUE);
     Circle(const Circle & other) = default;
-    
     [[deprecated("Please use M_PI instead.")]]
     double getPi() const;
     double getArea() const override;

@@ -18,6 +18,7 @@ using Collection = vector<shared_ptr<Shape>>;
 using mapCollection = map<shared_ptr<Shape>, double>;
 using shapePtr = shared_ptr<Shape>;
 
+
 auto sortByArea = [](shapePtr first, shapePtr second) {
     if(first == nullptr || second == nullptr) { return false; }
     return (first->getArea() < second->getArea());
@@ -58,7 +59,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
                                      std::function<bool(shapePtr)> predicate,
                                      std::string info)
 {
-    Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
+    auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
@@ -100,6 +101,7 @@ int main()
     shapes.push_back(make_shape<Circle>(4.0));
     printCollectionElements(shapes);
 
+
     mapCollection mapCollect;
     transform(shapes.begin(), shapes.end(),
         inserter(mapCollect, mapCollect.begin()),
@@ -127,4 +129,3 @@ int main()
 
     return 0;
 }
-
