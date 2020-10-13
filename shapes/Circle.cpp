@@ -6,10 +6,6 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-Circle::Circle(const Circle & other)
-{
-    r_ = other.getRadius();
-}
 
 static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 
@@ -23,7 +19,7 @@ double Circle::getPerimeter() const
     return 2 * M_PI * r_;
 }
 
-double Circle::getRadius() const
+auto Circle::getRadius() const
 {
     return r_;
 }

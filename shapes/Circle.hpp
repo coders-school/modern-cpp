@@ -10,7 +10,7 @@ public:
 
     double getArea() const;
     double getPerimeter() const;
-    double getRadius() const;
+    auto getRadius() const;
     void print() const;
 
 private:
