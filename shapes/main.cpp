@@ -27,9 +27,7 @@ auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {
 };
 
 std::function<bool(shared_ptr<Shape>)> areaLessThanX{[x{10}](shared_ptr<Shape> s) {
-    if (s)
-        return (s->getArea() < x);
-    return false;
+    return s ? s->getArea() < x : false;
 }};
 
 template <typename T>
@@ -43,21 +41,23 @@ void printShape(T&& shape) {
 
 void printCollectionElements(const Collection& collection) {
     for (const auto& it : collection)
-        if (it)
+        if (it) {
             printShape(*it);
+        }
 }
 
 void printAreas(const Collection& collection) {
     for (const auto& it : collection)
-        if (it)
+        if (it) {
             cout << (it)->getArea() << std::endl;
+        }
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
                                      std::function<bool(shared_ptr<Shape> s)> predicate,
                                      std::string info) {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if (*iter != nullptr) {
+    if (*iter) {
         cout << "First shape matching predicate: " << info << endl;
         (*iter)->print();
     } else {
