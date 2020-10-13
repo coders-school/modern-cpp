@@ -1,0 +1,23 @@
+name: CMake CI
+
+on: [push, pull_request]
+
+jobs:
+  ctest:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Test code
+      uses: actions/checkout@master
+    - name: mkdir build/
+      working-directory: shapes
+      run: mkdir build/
+    - name: Compile
+      working-directory: shapes/build
+      run: |
+        cmake ..
+        make
+    - name: install valgrind
+      working-directory: shapes/build
+      run: |
+        sudo apt-get update && sudo apt-get install valgrind
+        valgrind --leak-check=full ./shapes
