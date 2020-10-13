@@ -59,16 +59,12 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
-constexpr int fibo(int n) {
-    if (n <= 2) {
-        return 1;
-    } else {
-        return fibo(n - 1) + fibo(n - 2);
-    }
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
 }
 
 int main() {
-    constexpr int n = fibo(45);
     Collection shapes{
         make_shared<Circle>(2.0), make_shared<Circle>(3.0),          nullptr,
         make_shared<Circle>(4.0), make_shared<Rectangle>(10.0, 5.0), make_shared<Square>(3.0),
@@ -118,6 +114,9 @@ int main() {
         }
         std::cout << "Perimeter is equal to " << value << "\n\n";
     }
+
+    auto newSquare = make_shape<Square>(1.0);
+    newSquare->print();
 
     return 0;
 }
