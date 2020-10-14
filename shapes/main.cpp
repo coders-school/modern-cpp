@@ -36,23 +36,29 @@ std::function<bool(shapePtr)> areaLessThanX = [x = 10](shapePtr s) {
 
 void printCollectionElements(const Collection& collection)
 {
-    for (const auto& it: collection)
-        if(it)
+    for (const auto& it: collection) {
+        if(it) {
             (it)->print();
+        }
+    }
 }
 
 void printMapCollectionElements(const mapCollection& collection)
 {
-    for (const auto& [key, value]: collection)
-        if(key)
+    for (const auto& [key, value]: collection) {
+        if(key) {
             (key)->print();
+        }
+    }
 }
 
 void printAreas(const Collection& collection)
 {
-    for (const auto& it: collection)
-        if(it)
-            cout << (it)->getArea() << std::endl;
+    for (const auto& it: collection) {
+        if(it) {
+            cout << (it)->getArea() << endl;
+        }
+    }
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
@@ -74,7 +80,7 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 int constexpr fibo(int number)
 {
     if (number <= 2) { return 1; }
-    else { return fibo(number - 1) + fibo(number - 2); }
+    return fibo(number - 1) + fibo(number - 2);
 }
 
 template <typename T, typename = typename std::enable_if_t<std::is_base_of<Shape, T>::value>>
