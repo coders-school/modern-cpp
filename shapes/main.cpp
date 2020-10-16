@@ -94,5 +94,9 @@ int main() {
     //auto test = std::make_shared<int>(10);
     //collectionInsert(shapes, test);
 
+
+//EXERCISE 14 CHECK
+    std::cout << "Circle Align " << alignof(Circle) << '\n';
+
     return 0;
 }

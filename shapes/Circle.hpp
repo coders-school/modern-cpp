@@ -2,7 +2,7 @@
 
 #include "Shape.hpp"
 
-class Circle final : public Shape
+class alignas(128) Circle final : public Shape
 {
 public:
     Circle(double r, Color c = Color::Green);
