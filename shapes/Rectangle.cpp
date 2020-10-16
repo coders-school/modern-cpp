@@ -4,7 +4,7 @@
 Rectangle::Rectangle(double x, double y, Color c)
     : x_(x),
       y_(y),
-      Shape(c) {}
+      Shape(c)  {}
 
 double Rectangle::getArea() const noexcept {
     return x_ * y_;
