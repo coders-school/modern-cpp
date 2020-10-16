@@ -8,6 +8,8 @@ public:
     Circle(double r, Color c = Color::Green);
     Circle(const Circle & other) = default;
 
+    [[deprecated("Please use M_PI instead getPi() method")]]
+    double getPi() const;
     double getArea() const override;
     double getPerimeter() const override;
     auto getRadius() const;

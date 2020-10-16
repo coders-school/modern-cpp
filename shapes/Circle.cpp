@@ -7,6 +7,10 @@ Circle::Circle(double r, Color c)
 {}
 
 
+double Circle::getPi() const{
+    return 5.0;
+}
+
 static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 
 double Circle::getArea() const
