@@ -1,9 +1,12 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
+#include <numeric>
 #include <string>
 #include <type_traits>
+#include <utility>
 #include <vector>
 #include "Circle.hpp"
 #include "Rectangle.hpp"
@@ -26,9 +29,10 @@ auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {
     return false;
 };
 auto areaLessThanX = [x{10}](shared_ptr<Shape> s) {
-    if(s){
-        return (s->getArea() < x);} 
-    return false; 
+    if (s) {
+        return (s->getArea() < x);
+    }
+    return false;
 };
 
 void printCollectionElements(const Collection& collection) {
@@ -96,5 +100,17 @@ int main() {
     //EXERCISE 14 CHECK
     std::cout << "Circle Align " << alignof(Circle) << '\n';
 
+    //EXERCISE 17 CHECK
+    std::map<std::shared_ptr<Shape>, double> shapePerimeters;
+    transform(shapes.begin(), shapes.end(), inserter(shapePerimeters, shapePerimeters.begin()),
+              [](const shared_ptr<Shape>& s) {
+                  return s ? pair{s, s->getPerimeter()} : pair{s, 0.0};
+              });
+    for (const auto& [key, val] : shapePerimeters) {
+        if (key) {
+            key->print();
+        }
+        std::cout << "Perimeter value == " << val << '\n';
+    }
     return 0;
 }
