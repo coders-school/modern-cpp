@@ -2,6 +2,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <type_traits>
 #include <vector>
 #include "Circle.hpp"
 #include "Rectangle.hpp"
@@ -54,6 +55,12 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+template<typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value>>
+void collectionInsert(Collection& collection, std::shared_ptr<T>& shape){
+    collection.emplace_back(shape);
+}
+
+
 int main() {
     Collection shapes;
     shapes.push_back(make_shared<Circle>(2.0));
@@ -78,6 +85,14 @@ int main() {
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+
+//Exercise 11 CHECK
+    auto circleAdd = std::make_shared<Circle>(5);
+    collectionInsert(shapes, circleAdd);
+    printCollectionElements(shapes);
+//Exercise 11 NOT WORKING EXAMPLE
+    //auto test = std::make_shared<int>(10);
+    //collectionInsert(shapes, test);
 
     return 0;
 }
