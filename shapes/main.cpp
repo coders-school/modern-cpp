@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -13,23 +14,22 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
     if (first == nullptr || second == nullptr)
         return false;
     return (first->getArea() < second->getArea());
-}
+};
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s) {
+auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {
     if (s)
         return (s->getPerimeter() > 20);
     return false;
-}
-
-bool areaLessThan10(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getArea() < 10);
-    return false;
-}
+};
+auto areaLessThanX = [x{10}](shared_ptr<Shape> s) {
+    if(s){
+        return (s->getArea() < x);} 
+    return false; 
+};
 
 void printCollectionElements(const Collection& collection) {
     for (const auto& it : collection)
@@ -44,7 +44,7 @@ void printAreas(const Collection& collection) {
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape> s)> predicate,
                                      std::string info) {
     Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
@@ -55,11 +55,10 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
-template<typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value>>
-void collectionInsert(Collection& collection, std::shared_ptr<T>& shape){
+template <typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value>>
+void collectionInsert(Collection& collection, std::shared_ptr<T>& shape) {
     collection.emplace_back(shape);
 }
-
 
 int main() {
     Collection shapes;
@@ -84,18 +83,17 @@ int main() {
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
-//Exercise 11 CHECK
+    //Exercise 11 CHECK
     auto circleAdd = std::make_shared<Circle>(5);
     collectionInsert(shapes, circleAdd);
     printCollectionElements(shapes);
-//Exercise 11 NOT WORKING EXAMPLE
+    //Exercise 11 NOT WORKING EXAMPLE
     //auto test = std::make_shared<int>(10);
     //collectionInsert(shapes, test);
 
-
-//EXERCISE 14 CHECK
+    //EXERCISE 14 CHECK
     std::cout << "Circle Align " << alignof(Circle) << '\n';
 
     return 0;
