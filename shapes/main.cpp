@@ -64,6 +64,11 @@ void collectionInsert(Collection& collection, std::shared_ptr<T>& shape) {
     collection.emplace_back(shape);
 }
 
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
+}
+
 int main() {
     Collection shapes;
     shapes.push_back(make_shared<Circle>(2.0));
@@ -112,5 +117,10 @@ int main() {
         }
         std::cout << "Perimeter value == " << val << '\n';
     }
+
+    //EXERCISE 18 CHECK
+    auto shape = make_shape<Square>(10);
+    shape->print();
+
     return 0;
 }
