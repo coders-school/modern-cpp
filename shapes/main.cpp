@@ -78,11 +78,8 @@ int main() {
     printCollection(shapes);
 
     Circle c1{Color::Green};
-    // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
-    // Square s1{};
     auto values = {1, 2, 3, 4, 5};
-    // std::cout << values[2];
 
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
