@@ -64,11 +64,16 @@ std::shared_ptr<Shape> make_shape(Arguments&&... args) {
     return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
 }
 
+template <typename T, typename = typename std::enable_if_t<std::is_base_of_v<Shape, T>>>
+void insertToShapesCollection(Collection& collection, std::shared_ptr<T>& shape) {
+    collection.emplace_back(shape);
+}
+
 int main() {
     Collection shapes{
-        make_shared<Circle>(2.0), make_shared<Circle>(3.0),          nullptr,
-        make_shared<Circle>(4.0), make_shared<Rectangle>(10.0, 5.0), make_shared<Square>(3.0),
-        make_shared<Circle>(4.0),
+        make_shape<Circle>(2.0), make_shape<Circle>(3.0),          nullptr,
+        make_shape<Circle>(4.0), make_shape<Rectangle>(10.0, 5.0), make_shape<Square>(3.0),
+        make_shape<Circle>(4.0),
     };
     printCollection(shapes);
 
@@ -115,8 +120,16 @@ int main() {
         std::cout << "Perimeter is equal to " << value << "\n\n";
     }
 
-    auto newSquare = make_shape<Square>(1.0);
+    auto newSquare = make_shape<Square>(1234);
     newSquare->print();
+
+    std::cout << "\n\n SFINAE check\n";
+    insertToShapesCollection(shapes, newSquare);
+    printCollection(shapes);
+
+    // std::cout << "\n\n SFINAE not allowed and not working check\n";
+    // auto notAShape = std::make_shared<double>(15.0);
+    // insertToShapesCollection(shapes, notAShape);
 
     return 0;
 }
