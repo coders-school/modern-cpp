@@ -6,6 +6,13 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
+
+
+Circle::Circle(double r, Color c = Color::Green) : r_(r), Shape(c)
+{
+    
+}
+
 auto Circle::getRadius() const
 {
     return r_;
