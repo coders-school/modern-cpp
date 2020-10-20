@@ -19,14 +19,6 @@ void insert(shared_ptr<T>&& arg, Collection& collection)
     collection.push_back(arg);
 }
 
-
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
-    if(first == nullptr || second == nullptr)
-        return false;
-    return (first->getArea() < second->getArea());
-}
-
 bool perimeterBiggerThan20(shared_ptr<Shape> s)
 {
     if(s)
@@ -103,7 +95,16 @@ int main()
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
-    std::sort(shapes.begin(), shapes.end(), sortByArea);
+    std::sort(shapes.begin(), shapes.end(), 
+            [] (shared_ptr<Shape> first, shared_ptr<Shape> second) 
+            { 
+                if(first == nullptr || second == nullptr) 
+                {
+                    return false;
+                }
+                return (first->getArea() < second->getArea()); 
+                
+            });
 
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
