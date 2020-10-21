@@ -8,6 +8,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -128,6 +129,21 @@ int main()
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
     cout << "Alignment of" << '\n' << "Circle: " << alignof(Circle) << '\n';
+
+    map<shared_ptr<Shape>, double> database{};
+    for (const auto shape : shapes)
+    {
+        if (shape)
+        {
+            database.insert(make_pair(shape, shape->getPerimeter()));
+        }
+    }
+    for (const auto& [key, value] : database)
+    {
+        cout << "Shape : ";
+        key->print();
+        cout << "Perimeter : " << value << " \n";
+    }
 
     return 0;
 }
