@@ -1,13 +1,6 @@
 #include "Rectangle.hpp"
 #include <iostream>
 
-
-//Rectangle::Rectangle(double x, double y)
-//    : x_(x),
-//      y_(y)
-//{}
-//
-
 Rectangle::Rectangle(double x, double y, Color c) : x_(x), y_(y),  Shape(c)
 {}
 
