@@ -14,17 +14,18 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
+//11 SFINAE
 template <typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value, T>::type>
 void insert(shared_ptr<T>&& arg, Collection& collection)
 {
     collection.push_back(arg);
 }
 
+//18 variadic templates
 template<class DerivedType, class... Arguments>
 std::shared_ptr<Shape> make_shape(Arguments&&... args)
 {
     return make_shared<DerivedType>(args ...);
-
 }
 
 template<class DerivedType, class... Arguments>
@@ -45,6 +46,7 @@ void printAreas(const Collection& collection)
             cout << it->getArea() << std::endl;
 }
 
+//16 Lambda
 void findFirstShapeMatchingPredicate(const Collection& collection,
                                      std::function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info)
@@ -116,6 +118,7 @@ int main()
     insert(move(square), shapes);
     insert(make_shared<Circle>(4.0), shapes);
 
+    //16 Lambda
     findFirstShapeMatchingPredicate(
         shapes,
         [&](shared_ptr<Shape> s) {
@@ -127,6 +130,7 @@ int main()
         },
         "perimeter bigger than 20");
 
+    //16 Lambda
     auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {
         if (s)
         {
@@ -137,6 +141,7 @@ int main()
 
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
+    //14 Alignof, alignas
     cout << "Alignment of" << '\n' << "Circle: " << alignof(Circle) << '\n';
 
     map<shared_ptr<Shape>, double> database{};
@@ -147,6 +152,7 @@ int main()
             database.insert(make_pair(shape, shape->getPerimeter()));
         }
     }
+    //17 Structured bindings
     for (const auto& [key, value] : database)
     {
         cout << "Shape : ";
