@@ -20,11 +20,16 @@ void insert(shared_ptr<T>&& arg, Collection& collection)
     collection.push_back(arg);
 }
 
-template <typename... Args>
-auto sum2(Args... args)
+template<class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args)
 {
-    return (args + ...);
+    return make_shared<DerivedType>(args ...);
+
 }
+
+template<class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args);
+
 
 void printCollection(const Collection& collection)
 {
@@ -80,6 +85,10 @@ int main()
         make_shared<Square>(3.0),
         make_shared<Circle>(4.0),
     };
+
+    shapes.push_back(make_shape<Circle>(300));
+    shapes.push_back(make_shape<Rectangle>(300, 10));
+
     printCollection(shapes);
 
     Circle c1{Color::Green};
@@ -144,6 +153,7 @@ int main()
         key->print();
         cout << "Perimeter : " << value << " \n";
     }
+
 
     return 0;
 }
