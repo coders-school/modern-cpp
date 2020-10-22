@@ -1,8 +1,17 @@
 #pragma once
 
-class Shape
-{
+enum class Color : unsigned char {
+    Red,
+    Green,
+    Black
+};
+
+class Shape {
+    Color color_{Color::Red};
+
 public:
+    Shape() = default;
+    Shape(Color);
     virtual ~Shape() {}
 
     virtual double getArea() const = 0;
