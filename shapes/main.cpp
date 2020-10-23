@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <memory>
@@ -28,17 +29,28 @@ auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
     return (first->getArea() < second->getArea());
 };
 
+//################# TASK 11 #################
+
+template <typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value>>
+void insertShapesOnly(Collection& collection, std::shared_ptr<T> shape) {
+    collection.emplace_back(shape);
+}
+
 //################# TASK 16 #################
 
 auto perimeterBiggerThan20 = [](shared_ptr<Shape> shape) {
     return (shape) ? (shape->getPerimeter() > 20) : (false);
 };
 
-bool areaLessThan10(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getArea() < 10);
-    return false;
-}
+//bool areaLessThan10(shared_ptr<Shape> s) {
+//    if (s)
+//        return (s->getArea() < 10);
+//    return false;
+//}
+
+auto areaLessThanX = [x{10}](shared_ptr<Shape> shape) {
+    return (shape) ? (shape->getArea() < x) : (false);
+};
 
 //################# TASK 18 #################
 
@@ -46,6 +58,8 @@ template <class DerivedType, class... Arguments>
 std::shared_ptr<Shape> make_shape(Arguments&&... args) {
     return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
 }
+
+//###########################################
 
 void printCollectionElements(const Collection& collection) {
     for (const auto& el : collection)
@@ -60,7 +74,7 @@ void printAreas(const Collection& collection) {
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape> shape)> predicate,
                                      std::string info) {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
@@ -101,6 +115,13 @@ int main() {
 
     //################# TASK 11 #################
 
+    auto shapeType = std::make_shared<Rectangle>(5, 2);  //Ok - compilator allow that type
+    insertShapesOnly(shapes, shapeType);
+
+    //auto otherType = std::make_shared<int>(2);
+    //insertShapesOnly(shapes, otherType);
+    //Wrong - compilator doesnt allow other types than types derived from Shape
+
     //################# TASK 14 #################
 
     std::cout << "Aligment of Circle: " << alignof(Circle) << '\n';
@@ -108,7 +129,7 @@ int main() {
     //################# TASK 16 #################
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
 
     //################# TASK 17 #################
 
