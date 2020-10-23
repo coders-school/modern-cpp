@@ -20,22 +20,31 @@ constexpr int fibonacci(int sequenceNumber) {
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
-    if (first == nullptr || second == nullptr)
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
+    if (first == nullptr || second == nullptr) {
         return false;
-    return (first->getArea() < second->getArea());
-}
+    }
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getPerimeter() > 20);
-    return false;
-}
+    return (first->getArea() < second->getArea());
+};
+
+//################# TASK 16 #################
+
+auto perimeterBiggerThan20 = [](shared_ptr<Shape> shape) {
+    return (shape) ? (shape->getPerimeter() > 20) : (false);
+};
 
 bool areaLessThan10(shared_ptr<Shape> s) {
     if (s)
         return (s->getArea() < 10);
     return false;
+}
+
+//################# TASK 18 #################
+
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return std::make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
 }
 
 void printCollectionElements(const Collection& collection) {
@@ -90,8 +99,18 @@ int main() {
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
+    //################# TASK 11 #################
+
+    //################# TASK 14 #################
+
+    std::cout << "Aligment of Circle: " << alignof(Circle) << '\n';
+
+    //################# TASK 16 #################
+
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+
+    //################# TASK 17 #################
 
     map<shared_ptr<Shape>, double> mapOfShapes{};
     transform(shapes.cbegin(), shapes.cend(), inserter(mapOfShapes, mapOfShapes.begin()),
@@ -102,6 +121,11 @@ int main() {
     for (const auto& [shape, perimeter] : mapOfShapes) {
         (shape) ? (cout << shape->getPerimeter() << '\n') : (cout << "nullptr! " << perimeter << '\n');
     }
+
+    //################# TASK 18 #################
+
+    auto rectangle = make_shape<Rectangle>(3, 5);
+    rectangle->print();
 
     return 0;
 }
