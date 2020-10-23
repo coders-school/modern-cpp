@@ -21,14 +21,6 @@ constexpr int fibonacci(int sequenceNumber) {
 
 using Collection = vector<shared_ptr<Shape>>;
 
-auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
-    if (first == nullptr || second == nullptr) {
-        return false;
-    }
-
-    return (first->getArea() < second->getArea());
-};
-
 //################# TASK 11 #################
 
 template <typename T, typename = typename std::enable_if<std::is_base_of<Shape, T>::value>>
@@ -37,6 +29,14 @@ void insertShapesOnly(Collection& collection, std::shared_ptr<T> shape) {
 }
 
 //################# TASK 16 #################
+
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
+    if (first == nullptr || second == nullptr) {
+        return false;
+    }
+
+    return (first->getArea() < second->getArea());
+};
 
 auto perimeterBiggerThan20 = [](shared_ptr<Shape> shape) {
     return (shape) ? (shape->getPerimeter() > 20) : (false);
