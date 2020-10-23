@@ -4,8 +4,8 @@
 Square::Square(Color c)
     : Rectangle(c) {}
 
-Square::Square(double x)
-    : Rectangle(x, x) {}
+Square::Square(double x, Color color)
+    : Rectangle(x, x, color) {}
 
 double Square::getArea() const noexcept {
     return getX() * getX();

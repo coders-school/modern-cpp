@@ -42,12 +42,6 @@ auto perimeterBiggerThan20 = [](shared_ptr<Shape> shape) {
     return (shape) ? (shape->getPerimeter() > 20) : (false);
 };
 
-//bool areaLessThan10(shared_ptr<Shape> s) {
-//    if (s)
-//        return (s->getArea() < 10);
-//    return false;
-//}
-
 auto areaLessThanX = [x{10}](shared_ptr<Shape> shape) {
     return (shape) ? (shape->getArea() < x) : (false);
 };
@@ -120,11 +114,14 @@ int main() {
 
     //auto otherType = std::make_shared<int>(2);
     //insertShapesOnly(shapes, otherType);
-    //Wrong - compilator doesnt allow other types than types derived from Shape
+    //Wrong - compilator doesnt allow other types than types derived from base class - Shape
 
     //################# TASK 14 #################
 
     std::cout << "Aligment of Circle: " << alignof(Circle) << '\n';
+
+    //################# TASK 15 #################
+    //Inside Rectangle and Square classes
 
     //################# TASK 16 #################
 
