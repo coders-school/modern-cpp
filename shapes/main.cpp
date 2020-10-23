@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -91,6 +92,16 @@ int main() {
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+
+    map<shared_ptr<Shape>, double> mapOfShapes{};
+    transform(shapes.cbegin(), shapes.cend(), inserter(mapOfShapes, mapOfShapes.begin()),
+              [](const shared_ptr<Shape>& shape) {
+                  return (shape) ? pair(shape, shape->getPerimeter()) : pair(shape, 0.0);
+              });
+
+    for (const auto& [shape, perimeter] : mapOfShapes) {
+        (shape) ? (cout << shape->getPerimeter() << '\n') : (cout << "nullptr! " << perimeter << '\n');
+    }
 
     return 0;
 }
