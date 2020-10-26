@@ -1,80 +1,71 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
+#include <iostream>
 #include <memory>
-#include "Shape.hpp"
-#include "Rectangle.hpp"
-#include "Square.hpp"
+#include <string>
+#include <type_traits>
+#include <vector>
 #include "Circle.hpp"
+#include "Rectangle.hpp"
+#include "Shape.hpp"
+#include "Square.hpp"
 
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
-    if(first == nullptr || second == nullptr)
+bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
+    if (first == nullptr || second == nullptr)
         return false;
     return (first->getArea() < second->getArea());
 }
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
-    if(s)
+bool perimeterBiggerThan20(shared_ptr<Shape> s) {
+    if (s)
         return (s->getPerimeter() > 20);
     return false;
 }
 
-bool areaLessThan10(shared_ptr<Shape> s)
-{
-    if(s)
+bool areaLessThan10(shared_ptr<Shape> s) {
+    if (s)
         return (s->getArea() < 10);
     return false;
 }
 
-void printCollection(const Collection& collection)
-{
-    for (const auto & it : collection)
+void printCollection(const Collection& collection) {
+    for (const auto& it : collection)
         if (it)
             it->print();
 }
 
-void printAreas(const Collection& collection)
-{
-    for (const auto & it : collection)
+void printAreas(const Collection& collection) {
+    for (const auto& it : collection)
         if (it)
             cout << it->getArea() << std::endl;
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
                                      bool (*predicate)(shared_ptr<Shape> s),
-                                     std::string info)
-{
+                                     std::string info) {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
-    if(*iter != nullptr)
-    {
+    if (*iter != nullptr) {
         cout << "First shape matching predicate: " << info << endl;
         (*iter)->print();
-    }
-    else
-    {
+    } else {
         cout << "There is no shape matching predicate " << info << endl;
     }
 }
 
 constexpr int fibo(int n) {
-    if (n<=2) {
+    if (n <= 2) {
         return 1;
     } else {
         return fibo(n - 1) + fibo(n - 2);
     }
 }
 
-int main()
-{
+int main() {
     constexpr int n = fibo(45);
-    Collection shapes {
+    Collection shapes{
         make_shared<Circle>(2.0),
         make_shared<Circle>(3.0),
         nullptr,
