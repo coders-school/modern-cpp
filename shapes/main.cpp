@@ -80,6 +80,7 @@ int main() {
         make_shared<Circle>(4.0),
     };
     printCollection(shapes);
+    std::cout << "--- Circle alignment = " << alignof(Circle) << " ---\n";
 
     Circle c1{Color::Green};
     // auto pi = c1.getPi();
