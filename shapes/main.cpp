@@ -13,6 +13,11 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
+template <typename T, typename = typename std::enable_if_t<std::is_base_of<Shape, T>::value>>
+void insertIntoCollection(Collection& shapes, shared_ptr<T>& shape) {
+    shapes.push_back(shape);
+}
+
 bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
     if (first == nullptr || second == nullptr)
         return false;
@@ -92,7 +97,7 @@ int main() {
     printAreas(shapes);
 
     auto square = make_shared<Square>(4.0);
-    shapes.push_back(square);
+    insertIntoCollection(shapes, square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
