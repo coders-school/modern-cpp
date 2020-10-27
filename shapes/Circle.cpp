@@ -7,6 +7,9 @@ static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 Circle::Circle(double r, Color color)
     : Shape(color), r_(r) {}
 
+Circle::Circle(double r)
+    : Circle(r, Color::Green) {}
+
 double Circle::getPI() const {
     return M_PI;
 }
