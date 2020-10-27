@@ -3,23 +3,28 @@
 #include <iostream>
 
 Circle::Circle(double r)
-    : r_(r)
-{}
+    : Circle(r, Color::Green) 
+    {}
 
-auto Circle::getRadius() const
+Circle::Circle(double r, Color color)
+    : Shape(color), r_(r) 
+    {}
+
+double Circle::getRadius() const
 {
     return r_;
 }
 
-double Circle::getPi() const {
-    return 5.0;
+double Circle::getPi() const 
+{
+    return M_PI;
 }
 
 static_assert(M_PI != 3.14, "M_PI is only an estimated value");
 
 double Circle::getArea() const
 {
-    return M_PI * r_ * r_;
+    return getPi() * r_ * r_;
 }
 
 double Circle::getPerimeter() const

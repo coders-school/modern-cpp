@@ -5,8 +5,10 @@
 class Square : public Rectangle
 {
 public:
-    Square(Color c);
-    Square(double x);
+    Square() = default;
+    explicit Square(Color color)
+        : Rectangle(color) {}
+    Square(double x, Color color = Color::Blue);
     Square(const Square & other) = default;
 
     double getArea() const noexcept override;
@@ -15,5 +17,4 @@ public:
 
 private:
     double getY() = delete; // should not have Y dimension
-    Square() = delete;
 };

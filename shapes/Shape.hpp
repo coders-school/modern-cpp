@@ -1,20 +1,24 @@
 #pragma once
 
 enum class Color : unsigned char {
-    Red,
-    Green,
-    Black
+    Red = 'r',
+    Green = 'g',
+    Blue = 'b'
 };
 
 class Shape
 {
-    Color color_ = Color::Red;
 public:
-    explicit Shape(Color);
+    explicit Shape(Color color)
+        : color_(color) {}
     Shape() = default;
     virtual ~Shape() {}
 
-    virtual auto getArea() const -> double = 0;
+    virtual double getArea() const = 0;
     virtual double getPerimeter() const = 0;
     virtual void print() const;
+    virtual Color getColor() const { return color_; }
+
+private:
+    Color color_ = Color::Red;
 };
