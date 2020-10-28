@@ -28,10 +28,6 @@ std::shared_ptr<Shape> make_shape(Arguments&&... args)
     return make_shared<DerivedType>(args ...);
 }
 
-template<class DerivedType, class... Arguments>
-std::shared_ptr<Shape> make_shape(Arguments&&... args);
-
-
 void printCollection(const Collection& collection)
 {
     for (const auto& it : collection)
