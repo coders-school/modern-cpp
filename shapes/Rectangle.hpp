@@ -6,6 +6,8 @@ class Rectangle : public Shape
 {
 public:
     using Shape::Shape;
+    Rectangle();
+    Rectangle(Color c);
     Rectangle(double x, double y, Color c = Color::Black);
     Rectangle(const Rectangle & other) = default;
 
@@ -16,7 +18,7 @@ public:
     void print() const override;
 
 private:
-    Rectangle() = delete;
+    //Rectangle() = delete;
 
     double x_{};
     double y_{};

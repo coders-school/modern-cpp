@@ -8,8 +8,9 @@ enum class Color : unsigned char {
 
 class Shape
 {
-    Color color_ = Color::Red;
 public:
+
+    Color color_ = Color::Red;
     explicit Shape(Color);
     Shape() = default;
     virtual ~Shape() {}
