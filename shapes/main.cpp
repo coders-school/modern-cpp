@@ -61,9 +61,6 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 
 constexpr int fibo(int n)
 {
-    if (n <= 2)
-    {
-        return 1;
     }
     else
     {
