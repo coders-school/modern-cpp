@@ -3,6 +3,8 @@
 
 Square::Square(Color color) : Rectangle(color) {}
 
+Square::Square(double x) : Rectangle(x, x, Color::Black) {}
+
 Square::Square(double x, Color color) : Rectangle(x, x, color) {}
 
 double Square::getArea() const noexcept {
