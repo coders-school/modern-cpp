@@ -18,33 +18,33 @@ using namespace std;
 using Collection = vector<shared_ptr<Shape>>;
 
 auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
-    if (first == nullptr || second == nullptr)
+    if (first == nullptr || second == nullptr) {
         return false;
+    }
     return (first->getArea() < second->getArea());
 };
 
 auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {
-    if (s)
-        return (s->getPerimeter() > 20);
-    return false;
+    return s ? (s->getPerimeter() > 20) : false;
 };
 auto areaLessThanX = [x{10}](shared_ptr<Shape> s) {
-    if (s) {
-        return (s->getArea() < x);
-    }
-    return false;
+    return s ? (s->getArea() < x) : false;
 };
 
 void printCollectionElements(const Collection& collection) {
-    for (const auto& it : collection)
-        if (it)
+    for (const auto& it : collection) {
+        if (it) {
             it->print();
+        }
+    }
 }
 
 void printAreas(const Collection& collection) {
-    for (const auto& it : collection)
-        if (it)
+    for (const auto& it : collection) {
+        if (it) {
             cout << it->getArea() << std::endl;
+        }
+    }
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
