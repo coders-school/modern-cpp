@@ -29,7 +29,7 @@ auto perimeterBiggerThan20 = [](shapePtr s) {
     return false;
 };
 
-std::function<bool(shapePtr)> areaLessThanX = [x = 10](shapePtr s) {
+auto areaLessThanX = [x = 10](shapePtr s) {
     if (s) { return s->getArea() < 10; }
     return false;
 };
