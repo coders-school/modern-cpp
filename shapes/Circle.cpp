@@ -6,19 +6,16 @@ Circle::Circle(double r)
     : r_(r)
 {}
 
-
-
 Circle::Circle(double r, Color c = Color::Green) : r_(r), Shape(c)
-{
-    
-}
+{}
 
 auto Circle::getRadius() const
 {
     return r_;
 }
 
-double Circle::getPi() const {
+double Circle::getPi() const 
+{
     return 5.0;
 }
 
@@ -33,8 +30,6 @@ double Circle::getPerimeter() const
 {
     return 2 * M_PI * r_;
 }
-
-
 
 void Circle::print() const
 {
