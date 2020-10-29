@@ -1,8 +1,11 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <string>
+#include <functional>
+#include <iostream>
+#include <map>
 #include <memory>
+#include <string>
+#include <vector>
+
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
@@ -11,27 +14,6 @@
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
-
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
-    if(first == nullptr || second == nullptr)
-        return false;
-    return (first->getArea() < second->getArea());
-}
-
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getPerimeter() > 20);
-    return false;
-}
-
-bool areaLessThan10(shared_ptr<Shape> s)
-{
-    if(s)
-        return (s->getArea() < 10);
-    return false;
-}
 
 void printCollection(const Collection& collection)
 {
@@ -48,7 +30,7 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info)
 {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
@@ -69,6 +51,17 @@ constexpr int fibo(int n) {
     } else {
         return fibo(n - 1) + fibo(n - 2);
     }
+}
+
+template<class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args)
+{
+    return make_shared<DerivedType>(std::forward<decltype(args)>(args)...);
+}
+
+template <typename T, typename = typename std::enable_if<std::is_base_of_v<Shape, T>>>
+void shapesCollectionInsert(Collection& collection, std::shared_ptr<T>& shape) {
+    collection.emplace_back(shape);
 }
 
 int main()
@@ -92,9 +85,19 @@ int main()
     auto values = {1, 2, 3, 4, 5};
     // std::cout << values[2];
 
+    cout << "Alignment of" << '\n'
+         << "Circle: " << alignof(Circle) << '\n';
+         //When alignas set to 2 then warning appears "alignment cannot be set to less than the default alignment"
+         //and result in 8-alignment
+
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
 
+    auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {
+        if (first == nullptr || second == nullptr)
+            return false;
+        return (first->getArea() < second->getArea());
+    };
     std::sort(shapes.begin(), shapes.end(), sortByArea);
 
     cout << "Areas after sort: " << std::endl;
@@ -103,8 +106,48 @@ int main()
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
+    auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {
+        if (s)
+            return (s->getPerimeter() > 20);
+        return false;
+    };
+
+    auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {
+        if (s)
+            return (s->getArea() < x);
+        return false;
+    };
+
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than 10");
+
+    std::map<shared_ptr<Shape>, double> shapesWithPerimeters;
+    for (auto shape : shapes) {
+        if (shape != nullptr) {
+            shapesWithPerimeters.insert({shape, shape->getPerimeter()});
+        }
+    }
+
+    for (const auto& [shape, perim] : shapesWithPerimeters) {
+        cout << "\n--------------\nPERIMETER: "<< perim << '\n';
+        if (shape) {
+            shape->print();
+        }
+        cout << '\n';
+    }
+
+    auto shape_rec = make_shape<Rectangle>(666, 222);
+    shape_rec->print();
+    auto shape_cir = make_shape<Circle>(555);
+    shape_cir->print();
+
+    std::cout << "\n\n SFINAE - ok\n";
+    shapesCollectionInsert(shapes, shape_rec);
+    printCollection(shapes);
+
+    std::cout << "\n\n SFINAE - nok - not allowed\n";
+    auto invalidShape = std::make_shared<double>(15.0);
+    // shapesCollectionInsert(shapes, invalidShape);
 
     return 0;
 }

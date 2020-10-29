@@ -8,7 +8,7 @@ enum class Color : unsigned char {
 
 class Shape
 {
-    Color color_ = Color::Red;
+    Color color_{Color::Red};
 public:
     explicit Shape(Color);
     Shape() = default;

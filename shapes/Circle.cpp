@@ -3,7 +3,11 @@
 #include <iostream>
 
 Circle::Circle(double r)
-    : r_(r)
+    : Circle(r, Color::Green)
+{}
+
+Circle::Circle(double r, Color color = Color::Black) 
+    : r_(r), Shape(color) 
 {}
 
 auto Circle::getRadius() const
@@ -26,8 +30,6 @@ double Circle::getPerimeter() const
 {
     return 2 * M_PI * r_;
 }
-
-
 
 void Circle::print() const
 {
