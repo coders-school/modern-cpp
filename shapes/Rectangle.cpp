@@ -5,6 +5,10 @@ Rectangle::Rectangle(double x, double y, Color c)
     : x_(x), y_(y), Shape{c}
 {}
 
+Rectangle::Rectangle(double x, double y)
+    : Rectangle(x, y, Color::BLUE)
+{}
+
 double Rectangle::getArea() const noexcept
 {
     return x_ * y_;

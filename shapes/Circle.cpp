@@ -6,6 +6,9 @@ Circle::Circle(double r, Color c)
     : r_(r), Shape{c}
 {}
 
+Circle::Circle(double r)
+    : Circle(r, Color::GREEN)
+{}
 
 static_assert(M_PI != 3.14, "M_PI is estimated value");
 
