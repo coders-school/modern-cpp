@@ -23,9 +23,12 @@ auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) {    if 
 auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) {if(s){
         return (s->getPerimeter() > 20); } return false; };
 
-auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {if(s){
-    return (s->getArea() < x);} 
-    return false; };
+auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {
+    if (s) {
+        return (s->getArea() < x);
+    }
+    return false;
+};
 
 void printCollection(const Collection& collection) {
     for (const auto& it : collection)
