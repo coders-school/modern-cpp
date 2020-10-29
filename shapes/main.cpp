@@ -65,7 +65,7 @@ void insertOnlyShapes(Collection& collection, std::shared_ptr<T> shape) {
 // Task 18 - Variadic template
 template <class DerivedType, class... Arguments>
 std::shared_ptr<Shape> make_shape(Arguments&&... args) {
-    return make_shared<DerivedType>(decltype(args)(args)...);
+    return make_shared<DerivedType>(std::forward<Arguments>(args)...);
 }
 
 int main() {
