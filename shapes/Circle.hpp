@@ -2,19 +2,21 @@
 
 #include "Shape.hpp"
 
-class Circle : public Shape
-{
+class alignas(128) Circle final : public Shape {
 public:
+    using Shape::Shape;
     Circle(double r);
-    Circle(const Circle & other);
+    Circle(double r, Color c);
+    Circle(const Circle& other) = default;
 
-    double getArea() const;
-    double getPerimeter() const;
-    double getRadius() const;
-    void print() const;
+    [[deprecated("Please use M_PI instead.")]] double getPi() const;
+    double getArea() const override;
+    double getPerimeter() const override;
+    auto getRadius() const;
+    void print() const override;
 
 private:
-    Circle(); // doesn't allow to call default constructor
+    Circle() = delete;  // doesn't allow to call default constructor
 
-    double r_;
+    double r_{};
 };

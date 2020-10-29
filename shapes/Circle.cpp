@@ -2,32 +2,32 @@
 #include <math.h>
 #include <iostream>
 
-Circle::Circle(double r)
-    : r_(r)
-{}
+#define M_PI 3.14159265358979323846
 
-Circle::Circle(const Circle & other)
-{
-    r_ = other.getRadius();
-}
+// Task 15 - Delegating constructor
+Circle::Circle(double r) : Circle(r, Color::Red){};
 
-double Circle::getArea() const
-{
-    return M_PI * r_ * r_;
-}
+Circle::Circle(double r, Color c) : r_(r), Shape(c) {}
 
-double Circle::getPerimeter() const
-{
-    return 2 * M_PI * r_;
-}
-
-double Circle::getRadius() const
-{
+auto Circle::getRadius() const {
     return r_;
 }
 
-void Circle::print() const
-{
+double Circle::getPi() const {
+    return 5.0;
+}
+
+static_assert(M_PI != 3.14, "M_PI is only an estimated value");
+
+double Circle::getArea() const {
+    return M_PI * r_ * r_;
+}
+
+double Circle::getPerimeter() const {
+    return 2 * M_PI * r_;
+}
+
+void Circle::print() const {
     std::cout << "Circle: radius: " << getRadius() << std::endl
               << "          area: " << getArea() << std::endl
               << "     perimeter: " << getPerimeter() << std::endl;
