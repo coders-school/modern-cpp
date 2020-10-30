@@ -61,19 +61,8 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
-constexpr int fibo(int n)
-{
-    if (n <= 2) {
-        return 1;
-    }
-    else {
-        return fibo(n - 1) + fibo(n - 2);
-    }
-}
-
 int main()
 {
-    constexpr int n = fibo(45);
     Collection shapes{
         make_shared<Circle>(2.0),
         make_shared<Circle>(3.0),
