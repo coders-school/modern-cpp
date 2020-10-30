@@ -74,6 +74,10 @@ int main()
     };
     printCollection(shapes);
 
+    //Task #14
+    std::cout << "TASK #14\n";
+    std::cout << alignof(Circle) << "\n";
+
     Circle c1{Color::Green};
     // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
