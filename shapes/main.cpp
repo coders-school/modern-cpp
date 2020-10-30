@@ -79,6 +79,25 @@ int main()
     std::cout << alignof(Circle) << "\n";
     //for alignas(128) is set correctly, but when alignas(2), is set as 8 baits -> i think it's because of double r_ class member
 
+    //Task #15
+    std::cout << "TASK #15\n";
+    std::cout << "Rectangle\n";
+    Rectangle randomRectangle(1.0,9.0);
+    randomRectangle.getColor();
+    Rectangle randomRectangle2(1.0,9.0,Color::Green);
+    randomRectangle2.getColor();
+    std::cout << "Square\n";
+    Square randomSquare(88.9);
+    randomSquare.getColor();
+    Square randomSquare2(1.0, Color::Black);
+    randomSquare2.getColor();
+    std::cout << "Circle\n";
+    Circle randomCircle(88.9);
+    randomCircle.getColor();
+    Circle randomCircle2(1.0, Color::Green);
+    randomCircle2.getColor();
+
+
     Circle c1{Color::Green};
     // auto pi = c1.getPi();
     Rectangle r1{Color::Black};

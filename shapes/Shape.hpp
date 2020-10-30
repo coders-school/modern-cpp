@@ -6,9 +6,9 @@ enum class Color : unsigned char {
     Black
 };
 
-class Shape
-{
-    Color color_ = Color::Red;
+class Shape {
+    Color color_;
+
 public:
     explicit Shape(Color);
     Shape() = default;
@@ -17,4 +17,5 @@ public:
     virtual auto getArea() const -> double = 0;
     virtual double getPerimeter() const = 0;
     virtual void print() const;
+    virtual void getColor();
 };
