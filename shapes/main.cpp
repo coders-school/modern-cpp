@@ -125,6 +125,7 @@ int main()
     shapes.push_back(square);
 
     //TASK #16
+    std::cout << "TASK #16\n";
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
 
