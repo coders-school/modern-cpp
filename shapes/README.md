@@ -78,16 +78,16 @@ It should be >= 7.0
         Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
         Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
         Use `std::function` to solve the problem.
-17. structured bindings: ✅ (5 XP)
-    Create an `std::map<shared_ptr<Shape>, double>` that will hold a shape and it's perimeter.
-    Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
-18. variadic templates: ✅ (15 XP)
-    Write a factory method which should work like `std::make_shared`.
-    It should have below signature:
+    17. structured bindings: ✅ (5 XP)
+        Create an `std::map<shared_ptr<Shape>, double>` that will hold a shape and it's perimeter.
+        Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
+    18. variadic templates: ✅ (15 XP)
+        Write a factory method which should work like `std::make_shared`.
+        It should have below signature:
 
-    ```cpp
-    template<class DerivedType, class... Arguments>
-    std::shared_ptr<Shape> make_shape(Arguments&&... args);
-    ```
+        ```cpp
+        template<class DerivedType, class... Arguments>
+        std::shared_ptr<Shape> make_shape(Arguments&&... args);
+        ```
 
-    Inside, it should create a `shared_ptr` to DerivedType and pass all arguments into constructor of DerivedType via perfect forwarding.
+        Inside, it should create a `shared_ptr` to DerivedType and pass all arguments into constructor of DerivedType via perfect forwarding.

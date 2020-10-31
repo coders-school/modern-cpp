@@ -73,10 +73,15 @@ constexpr int fibo(int n) {
     }
 }
 
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return std::shared_ptr<DerivedType>{new DerivedType{std::forward<Arguments>(args)...}};
+};
+
 int main() {
-    auto circleToMap = make_shared<Circle>(4.0);
-    auto rectangleToMap = make_shared<Rectangle>(10.0, 5.0);
-    auto squareToMap = make_shared<Square>(3.0);
+    auto circleToMap = make_shape<Circle>(4.0);
+    auto rectangleToMap = make_shape<Rectangle>(10.0, 5.0);
+    auto squareToMap = make_shape<Square>(3.0);
 
     std::map<shared_ptr<Shape>, double> shapePerimeterMap{
         {circleToMap, circleToMap->getPerimeter()},
@@ -92,13 +97,13 @@ int main() {
 
     constexpr int n = fibo(45);
     Collection shapes{
-        make_shared<Circle>(2.0),
-        make_shared<Circle>(3.0),
+        make_shape<Circle>(2.0),
+        make_shape<Circle>(3.0),
         nullptr,
-        make_shared<Circle>(4.0),
-        make_shared<Rectangle>(10.0, 5.0),
-        make_shared<Square>(3.0),
-        make_shared<Circle>(4.0),
+        make_shape<Circle>(4.0),
+        make_shape<Rectangle>(10.0, 5.0),
+        make_shape<Square>(3.0),
+        make_shape<Circle>(4.0),
     };
     printCollection(shapes);
     std::cout << "--- Circle alignment = " << alignof(Circle) << " ---\n";
@@ -118,7 +123,7 @@ int main() {
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto square = make_shared<Square>(4.0);
+    auto square = make_shape<Square>(4.0);
     insertIntoCollection(shapes, square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
