@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <type_traits>
@@ -73,6 +74,22 @@ constexpr int fibo(int n) {
 }
 
 int main() {
+    auto circleToMap = make_shared<Circle>(4.0);
+    auto rectangleToMap = make_shared<Rectangle>(10.0, 5.0);
+    auto squareToMap = make_shared<Square>(3.0);
+
+    std::map<shared_ptr<Shape>, double> shapePerimeterMap{
+        {circleToMap, circleToMap->getPerimeter()},
+        {rectangleToMap, rectangleToMap->getPerimeter()},
+        {squareToMap, squareToMap->getPerimeter()}};
+
+    for (const auto& [key, value] : shapePerimeterMap) {
+        if (key != nullptr) {
+            key->print();
+        }
+        cout << "Perimeter = " << value << endl;
+    }
+
     constexpr int n = fibo(45);
     Collection shapes{
         make_shared<Circle>(2.0),
