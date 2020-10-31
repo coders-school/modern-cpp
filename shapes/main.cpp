@@ -76,12 +76,12 @@ int main()
     };
     printCollection(shapes);
 
-    //Task #14
+    //TASK #14
     std::cout << "TASK #14\n";
     std::cout << alignof(Circle) << "\n";
     //for alignas(128) is set correctly, but when alignas(2), is set as 8 baits -> i think it's because of double r_ class member
 
-    //Task #15
+    //TASK #15
     std::cout << "TASK #15\n";
     std::cout << "Rectangle\n";
     Rectangle randomRectangle(1.0, 9.0);
@@ -121,7 +121,6 @@ int main()
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
 
     //TASK #17
-
     using ShapesWithPerimeterHolder = std::map<shared_ptr<Shape>, double>;
 
     ShapesWithPerimeterHolder shapesAndPerimeters{};
