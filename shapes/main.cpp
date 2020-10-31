@@ -63,6 +63,13 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
     }
 }
 
+//TASK #18
+template <class DerivedType, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args)
+{
+    return std::make_shared<DerivedType>(std::forward<Arguments>(args)...);
+}
+
 int main()
 {
     Collection shapes{
@@ -121,6 +128,7 @@ int main()
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
 
     //TASK #17
+    std::cout << "TASK #17\n";
     using ShapesWithPerimeterHolder = std::map<shared_ptr<Shape>, double>;
 
     ShapesWithPerimeterHolder shapesAndPerimeters{};
@@ -139,6 +147,15 @@ int main()
         }
         std::cout << perimeter << "\n";
     }
+
+    //TASK #18
+    std::cout << "TASK #18\n";
+    auto fastSquare = make_shape<Square>(20.7);
+    auto fastCircle = make_shape<Circle>(4, Color::Black);
+    auto fastRectangle = make_shape<Rectangle>(44.4, 20.7, Color::Green);
+    fastSquare->getColor();
+    fastCircle->getColor();
+    fastRectangle->getColor();
 
     return 0;
 }
