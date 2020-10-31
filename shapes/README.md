@@ -74,10 +74,10 @@ It should be >= 7.0
     15. delegating constructors: ✅ (5 XP)
         Add a new constructor, which takes also the previously defined Color of a shape. You can use a default parameter for Color.
         Delegate a call in the old constructor to the new one.
-16. lambda functions: ✅ (5 XP)
-    Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
-    Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
-    Use `std::function` to solve the problem.
+    16. lambda functions: ✅ (5 XP)
+        Change functions from `main.cpp` into lambdas (`sortByArea`, `perimeterBiggerThan20`, `areaLessThan10`)
+        Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
+        Use `std::function` to solve the problem.
 17. structured bindings: ✅ (5 XP)
     Create an `std::map<shared_ptr<Shape>, double>` that will hold a shape and it's perimeter.
     Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
