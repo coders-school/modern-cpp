@@ -4,8 +4,7 @@
 
 class Square : public Rectangle {
 public:
-    Square(Color c);
-    Square(double x);
+    explicit Square(double x);
     Square(double x, Color c);
     Square(const Square& other) = default;
 

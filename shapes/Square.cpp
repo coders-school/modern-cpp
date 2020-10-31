@@ -1,9 +1,6 @@
 #include "Square.hpp"
 #include <iostream>
 
-Square::Square(Color c)
-    : Rectangle(c) {}
-
 Square::Square(double x)
     : Rectangle(x, x)
 {

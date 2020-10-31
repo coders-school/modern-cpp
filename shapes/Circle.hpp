@@ -5,8 +5,8 @@
 class alignas(128) Circle final : public Shape {
 public:
     using Shape::Shape;
-    Circle(double r);
-    Circle(double r, [[maybe_unused]] Color c);
+    explicit Circle(double r);
+    Circle(double r, Color c);
     Circle(const Circle& other) = default;
 
     [[deprecated("Please use M_PI instead.")]] double getPi() const;
