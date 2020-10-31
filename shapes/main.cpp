@@ -21,8 +21,8 @@ using Collection = vector<shared_ptr<Shape>>;
 template <class DerivedType>
 using SFINAE = std::enable_if<std::is_base_of<Circle, std::remove_reference_t<DerivedType>>::value>;
 
-template <class T, class = SFINAE<T>>
-auto insertSubclassOfShapes(Collection& collection, std::shared_ptr<T> shape)
+template <class DerivedType, class = SFINAE<DerivedType>>
+auto insertSubclassOfShapes(Collection& collection, std::shared_ptr<DerivedType> shape)
 {
     auto insertPosition = collection.emplace_back(shape);
     return insertPosition;
