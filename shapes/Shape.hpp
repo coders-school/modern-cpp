@@ -17,5 +17,5 @@ public:
     virtual auto getArea() const -> double = 0;
     virtual double getPerimeter() const = 0;
     virtual void print() const;
-    virtual void getColor();
+    virtual void getColor() const;
 };
