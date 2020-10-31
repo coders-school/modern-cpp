@@ -17,6 +17,17 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
+//TASK #11
+template <class DerivedType>
+using SFINAE = std::enable_if<std::is_base_of<Circle, std::remove_reference_t<DerivedType>>::value>;
+
+template <class T, class = SFINAE<T>>
+auto insertSubclassOfShapes(Collection& collection, std::shared_ptr<T> shape)
+{
+    auto insertPosition = collection.emplace_back(shape);
+    return insertPosition;
+}
+
 //TASK #16
 auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) -> bool {
     if (first == nullptr || second == nullptr)
@@ -160,5 +171,9 @@ int main()
     fastCircle->getColor();
     fastRectangle->getColor();
 
+    //TASK #11
+    std::cout << "TASK #11\n";
+    auto insertedIn = insertSubclassOfShapes<Rectangle>(shapes, std::make_shared<Rectangle>(50, 40, Color::Black));
+    insertedIn->getColor();
     return 0;
 }
