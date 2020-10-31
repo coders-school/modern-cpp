@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -26,9 +27,9 @@ auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) -> bool {
     return false;
 };
 
-auto areaLessThan10 = [](shared_ptr<Shape> s) -> bool {
+auto areaLessThanX = [x = 10](shared_ptr<Shape> s) -> bool {
     if (s)
-        return (s->getArea() < 10);
+        return (s->getArea() < x);
     return false;
 };
 
@@ -47,9 +48,10 @@ void printAreas(const Collection& collection)
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info)
 {
+
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
         cout << "First shape matching predicate: " << info << endl;
@@ -115,7 +117,7 @@ int main()
     shapes.push_back(square);
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
 
     return 0;
 }
