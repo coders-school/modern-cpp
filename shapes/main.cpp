@@ -124,6 +124,7 @@ int main()
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
 
+    //TASK #16
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
 
