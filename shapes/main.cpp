@@ -12,26 +12,25 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
-{
+//Task #16
+
+auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) -> bool {
     if (first == nullptr || second == nullptr)
         return false;
     return (first->getArea() < second->getArea());
-}
+};
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s)
-{
+auto perimeterBiggerThan20 = [](shared_ptr<Shape> s) -> bool {
     if (s)
         return (s->getPerimeter() > 20);
     return false;
-}
+};
 
-bool areaLessThan10(shared_ptr<Shape> s)
-{
+auto areaLessThan10 = [](shared_ptr<Shape> s) -> bool {
     if (s)
         return (s->getArea() < 10);
     return false;
-}
+};
 
 void printCollection(const Collection& collection)
 {
@@ -82,9 +81,9 @@ int main()
     //Task #15
     std::cout << "TASK #15\n";
     std::cout << "Rectangle\n";
-    Rectangle randomRectangle(1.0,9.0);
+    Rectangle randomRectangle(1.0, 9.0);
     randomRectangle.getColor();
-    Rectangle randomRectangle2(1.0,9.0,Color::Green);
+    Rectangle randomRectangle2(1.0, 9.0, Color::Green);
     randomRectangle2.getColor();
     std::cout << "Square\n";
     Square randomSquare(88.9);
@@ -96,7 +95,6 @@ int main()
     randomCircle.getColor();
     Circle randomCircle2(1.0, Color::Green);
     randomCircle2.getColor();
-
 
     Circle c1{Color::Green};
     // auto pi = c1.getPi();
