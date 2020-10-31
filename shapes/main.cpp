@@ -1,8 +1,11 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <iterator>
+#include <map>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 #include "Circle.hpp"
 #include "Rectangle.hpp"
@@ -116,6 +119,27 @@ int main()
 
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than x");
+
+    //TASK #17
+
+    using ShapesWithPerimeterHolder = std::map<shared_ptr<Shape>, double>;
+
+    ShapesWithPerimeterHolder shapesAndPerimeters{};
+
+    std::transform(shapes.cbegin(), shapes.cend(), std::inserter(shapesAndPerimeters, shapesAndPerimeters.begin()),
+                   [](const shared_ptr<Shape>& everyShape) {
+                       if (everyShape) {
+                           return std::make_pair(everyShape, everyShape->getPerimeter());
+                       }
+                       return std::make_pair(everyShape, 0.0);
+                   });
+
+    for (const auto& [shape, perimeter] : shapesAndPerimeters) {
+        if (shape) {
+            shape->print();
+        }
+        std::cout << perimeter << "\n";
+    }
 
     return 0;
 }
