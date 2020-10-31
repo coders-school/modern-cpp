@@ -13,8 +13,7 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-//Task #16
-
+//TASK #16
 auto sortByArea = [](shared_ptr<Shape> first, shared_ptr<Shape> second) -> bool {
     if (first == nullptr || second == nullptr)
         return false;
@@ -51,7 +50,6 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
                                      std::function<bool(shared_ptr<Shape>)> predicate,
                                      std::string info)
 {
-
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
         cout << "First shape matching predicate: " << info << endl;
