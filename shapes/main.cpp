@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -12,6 +13,7 @@
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
+using MapCollection = std::map<shared_ptr<Shape>, double>;
 
 auto sortByArea = [](auto first, auto second) {
     if (first == nullptr || second == nullptr) {
@@ -34,6 +36,14 @@ auto areaLessThanX = [x = 10](shared_ptr<Shape> shape) {
     }
     return false;
 };
+
+void printMapCollection(const MapCollection& mapCollection) {
+    for (const auto& [shape, perimeter] : mapCollection) {
+        if (shape) {
+            shape->print();
+        }
+    }
+}
 
 void printCollection(const Collection& collection) {
     for (const auto& it : collection)
@@ -83,10 +93,25 @@ void FillShapesCollection(Collection& shapes) {
     AddShapeToCollection(shapes, make_shared<Square>(4.0));
 }
 
+void FillMapCollection(Collection& shapes, MapCollection& mapCollection) {
+    std::transform(shapes.begin(), shapes.end(), inserter(mapCollection, mapCollection.begin()),
+                   [](const shared_ptr<Shape>& shape) {
+                       if (shape) {
+                           return make_pair(shape, shape->getPerimeter());
+                       }
+                       return make_pair(shape, 0.0);
+                   });
+}
+
 int main() {
     Collection shapes{};
     FillShapesCollection(shapes);
     printCollection(shapes);
+
+    MapCollection mapCollection;
+    FillMapCollection(shapes, mapCollection);
+    printMapCollection(mapCollection);
+
     std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
 
     Circle c1{3.0, Color::Green};
