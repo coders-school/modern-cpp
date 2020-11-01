@@ -80,16 +80,9 @@ void FillShapesCollection(Collection& shapes) {
 
 int main() {
     Collection shapes{};
-    //make_shared<Circle>(2.0),
-    //make_shared<Circle>(3.0),
-    //nullptr,
-    //make_shared<Circle>(4.0),
-    //make_shared<Rectangle>(10.0, 5.0),
-    //make_shared<Square>(3.0),
-    //make_shared<Circle>(4.0),
     FillShapesCollection(shapes);
-
     printCollection(shapes);
+    std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
 
     Circle c1{Color::Green};
     // auto pi = c1.getPi();
