@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -12,23 +13,27 @@ using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
 
-bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second) {
-    if (first == nullptr || second == nullptr)
+auto sortByArea = [](auto first, auto second) {
+    if (first == nullptr || second == nullptr) {
         return false;
+    }
     return (first->getArea() < second->getArea());
-}
+};
 
-bool perimeterBiggerThan20(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getPerimeter() > 20);
+auto perimeterBiggerThan20(shared_ptr<Shape> shape) {
+    if (shape) {
+        return (shape->getPerimeter() > 20);
+    }
     return false;
-}
+};
 
-bool areaLessThan10(shared_ptr<Shape> s) {
-    if (s)
-        return (s->getArea() < 10);
+auto areaLessThanX = [x = 10](shared_ptr<Shape> shape) {
+    if (shape) {
+        std::cout << "\n*** " << x << " ***\n";
+        return shape->getArea() < x;
+    }
     return false;
-}
+};
 
 void printCollection(const Collection& collection) {
     for (const auto& it : collection)
@@ -43,7 +48,7 @@ void printAreas(const Collection& collection) {
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     std::function<bool(std::shared_ptr<Shape>)> predicate,
                                      std::string info) {
     auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if (*iter != nullptr) {
@@ -85,11 +90,8 @@ int main() {
     std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
 
     Circle c1{3.0, Color::Green};
-    // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
-    // Square s1{};
     auto values = {1, 2, 3, 4, 5};
-    // std::cout << values[2];
 
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
@@ -101,9 +103,8 @@ int main() {
 
     auto square = make_shared<Square>(4.0);
     shapes.push_back(square);
-
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
-    findFirstShapeMatchingPredicate(shapes, areaLessThan10, "area less than 10");
+    findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than X");
 
     return 0;
 }
