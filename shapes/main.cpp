@@ -82,15 +82,20 @@ void AddShapeToCollection(Collection& collection, std::shared_ptr<T> shape) {
     collection.emplace_back(shape);
 }
 
+template<class T, class... Arguments>
+std::shared_ptr<Shape> make_shape(Arguments&&... args) {
+    return make_shared<T>(std::forward<Arguments>(args)...);
+}
+
 void FillShapesCollection(Collection& shapes) {
-    AddShapeToCollection(shapes, make_shared<Circle>(2.0));
-    AddShapeToCollection(shapes, make_shared<Circle>(3.0));
+    AddShapeToCollection(shapes, make_shape<Circle>(2.0));
+    AddShapeToCollection(shapes, make_shape<Circle>(3.0));
     //AddShapeToCollection(shapes, nullptr); compile error
     shapes.emplace_back(nullptr);
-    AddShapeToCollection(shapes, make_shared<Circle>(4.0));
-    AddShapeToCollection(shapes, make_shared<Rectangle>(10.0, 5.0));
-    AddShapeToCollection(shapes, make_shared<Square>(3.0));
-    AddShapeToCollection(shapes, make_shared<Square>(4.0));
+    AddShapeToCollection(shapes, make_shape<Circle>(4.0));
+    AddShapeToCollection(shapes, make_shape<Rectangle>(10.0, 5.0));
+    AddShapeToCollection(shapes, make_shape<Square>(3.0));
+    AddShapeToCollection(shapes, make_shape<Square>(4.0));
 }
 
 void FillMapCollection(Collection& shapes, MapCollection& mapCollection) {
@@ -126,7 +131,7 @@ int main() {
     cout << "Areas after sort: " << std::endl;
     printAreas(shapes);
 
-    auto square = make_shared<Square>(4.0);
+    auto square = make_shape<Square>(4.0);
     shapes.push_back(square);
     findFirstShapeMatchingPredicate(shapes, perimeterBiggerThan20, "perimeter bigger than 20");
     findFirstShapeMatchingPredicate(shapes, areaLessThanX, "area less than X");
