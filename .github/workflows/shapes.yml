@@ -1,0 +1,40 @@
+name: CMake CI
+
+on: [push, pull_request]
+
+jobs:
+  shapes_compile_and_run:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Create build folder
+      working-directory: shapes
+      run: mkdir build
+    - name: Compile
+      working-directory: shapes/build
+      run: |
+        cmake ..
+        make
+    - name: Run tests
+      working-directory: shapes/build
+      run: ./shapes
+
+  shapes_valgrind_run:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Check out code
+      uses: actions/checkout@master
+    - name: Install valgrind
+      run: sudo apt-get install valgrind
+    - name: Create build dir
+      run: mkdir shapes/build
+    - name: Compile
+      working-directory: shapes/build
+      run: |
+        cmake ..
+        make
+    - name: Run valgrind
+      working-directory: shapes/build
+      run: valgrind ./shapes
