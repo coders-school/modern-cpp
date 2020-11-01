@@ -82,7 +82,7 @@ void AddShapeToCollection(Collection& collection, std::shared_ptr<T> shape) {
     collection.emplace_back(shape);
 }
 
-template<class T, class... Arguments>
+template <class T, class... Arguments>
 std::shared_ptr<Shape> make_shape(Arguments&&... args) {
     return make_shared<T>(std::forward<Arguments>(args)...);
 }
