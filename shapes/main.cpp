@@ -84,7 +84,7 @@ int main() {
     printCollection(shapes);
     std::cout << "Alignment of Circle " << alignof(Circle) << '\n';
 
-    Circle c1{Color::Green};
+    Circle c1{3.0, Color::Green};
     // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
     // Square s1{};
