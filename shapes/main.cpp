@@ -43,14 +43,16 @@ auto areaLessThanX = [x = 10](shared_ptr<Shape> s) {
 
 void printCollection(const Collection& collection) {
     for (const auto& it : collection)
-        if (it)
+        if (it) {
             it->print();
+        }
 }
 
 void printAreas(const Collection& collection) {
     for (const auto& it : collection)
-        if (it)
+        if (it) {
             cout << it->getArea() << std::endl;
+        }
 }
 
 void findFirstShapeMatchingPredicate(const Collection& collection,
@@ -75,7 +77,7 @@ constexpr int fibo(int n) {
 
 template <class DerivedType, class... Arguments>
 std::shared_ptr<Shape> make_shape(Arguments&&... args) {
-    return std::shared_ptr<DerivedType>{new DerivedType{std::forward<Arguments>(args)...}};
+    return std::make_shared<DerivedType>(std::forward<Arguments>(args)...);
 };
 
 int main() {
