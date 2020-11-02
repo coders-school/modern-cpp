@@ -175,5 +175,9 @@ int main()
     std::cout << "TASK #11\n";
     auto insertedIn = insertSubclassOfShapes<Rectangle>(shapes, std::make_shared<Rectangle>(50, 40, Color::Black));
     insertedIn->getColor();
+    auto insertedIn2 = insertSubclassOfShapes<Square>(shapes, std::make_shared<Square>(1000, Color::Green));
+    insertedIn2->getColor();
+    auto insertedIn3 = insertSubclassOfShapes<Circle>(shapes, std::make_shared<Circle>(2));
+    insertedIn3->getColor();
     return 0;
 }
