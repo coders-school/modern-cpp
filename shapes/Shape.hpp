@@ -10,7 +10,7 @@ class Shape {
     Color color_;
 
 public:
-    explicit Shape(Color c);
+    explicit Shape(Color c = Color::Red);
     Shape() = default;
     virtual ~Shape() {}
 

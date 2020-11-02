@@ -1,7 +1,7 @@
 #include "Shape.hpp"
 #include <iostream>
 
-Shape::Shape(Color c = Color::Red)
+Shape::Shape(Color c)
     : color_(c)
 {
 }
