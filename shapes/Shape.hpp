@@ -10,7 +10,6 @@ class Shape
 {
 public:
 
-    Color color_ = Color::Red;
     explicit Shape(Color);
     Shape() = default;
     virtual ~Shape() {}
@@ -18,4 +17,7 @@ public:
     virtual auto getArea() const -> double = 0;
     virtual double getPerimeter() const = 0;
     virtual void print() const;
+
+private:
+    Color color_ = Color::Red;
 };
