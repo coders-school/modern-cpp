@@ -24,8 +24,8 @@ using SFINAE = std::enable_if<std::is_base_of<Shape, std::remove_reference_t<Der
 template <class DerivedType, class = SFINAE<DerivedType>>
 auto insertSubclassOfShapes(Collection& collection, const std::shared_ptr<DerivedType>& shape)
 {
-    auto insertPosition = collection.emplace_back(shape);
-    return insertPosition;
+    auto whereWasInserted = collection.emplace_back(shape);
+    return whereWasInserted;
 }
 
 //TASK #16
