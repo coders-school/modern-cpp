@@ -19,7 +19,7 @@ using Collection = vector<shared_ptr<Shape>>;
 
 //TASK #11
 template <class DerivedType>
-using SFINAE = std::enable_if<std::is_base_of<Circle, std::remove_reference_t<DerivedType>>::value>;
+using SFINAE = std::enable_if<std::is_base_of<Shape, std::remove_reference_t<DerivedType>>::value>;
 
 template <class DerivedType, class = SFINAE<DerivedType>>
 auto insertSubclassOfShapes(Collection& collection, std::shared_ptr<DerivedType> shape)
