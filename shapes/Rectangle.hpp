@@ -2,7 +2,7 @@
 
 #include "Shape.hpp"
 
-class Rectangle : public Shape
+class alignas(2) Rectangle : public Shape
 {
 public:
     using Shape::Shape;

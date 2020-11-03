@@ -9,8 +9,6 @@
 #include "Square.hpp"
 #include "Circle.hpp"
 
-#include "SFINAE.hpp"
-
 using namespace std;
 
 using Collection = vector<shared_ptr<Shape>>;
@@ -84,6 +82,14 @@ void insertOnlyShapeSubclasses(Collection& collection, const ShapeSubClass& subc
 
 int main()
 {
+    std::string dash(50, '-');
+    std::cout << dash << '\n';
+    std::cout << "Circle alignment: " << alignof(Circle) << '\n';
+    std::cout << dash << '\n';
+    std::cout << dash << '\n';
+    std::cout << "Rectangle alignment: " << alignof(Rectangle) << '\n';
+    std::cout << dash << '\n';
+
     constexpr int n = fibo(45);
     Collection shapes {
         make_shared<Circle>(2.0),
@@ -97,8 +103,9 @@ int main()
 
     insertOnlyShapeSubclasses(shapes, Circle(5.1));
     printCollection(shapes);
-
+    
     Circle c1{Color::Green};
+    Circle c2{5.0, Color::Red};
     // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
     // Square s1{};
