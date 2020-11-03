@@ -2,11 +2,14 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <type_traits>
 #include <memory>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
 #include "Square.hpp"
 #include "Circle.hpp"
+
+#include "SFINAE.hpp"
 
 using namespace std;
 
@@ -71,6 +74,14 @@ constexpr int fibo(int n) {
     }
 }
 
+template <typename ShapeSubClass,
+          std::enable_if_t<std::is_base_of_v<Shape, ShapeSubClass>, int> = 0>
+void insertOnlyShapeSubclasses(Collection& collection, const ShapeSubClass& subclass) {
+    collection.emplace_back(std::make_shared<ShapeSubClass>(subclass));
+}
+
+
+
 int main()
 {
     constexpr int n = fibo(45);
@@ -83,6 +94,8 @@ int main()
         make_shared<Square>(3.0),
         make_shared<Circle>(4.0),
     };
+
+    insertOnlyShapeSubclasses(shapes, Circle(5.1));
     printCollection(shapes);
 
     Circle c1{Color::Green};
