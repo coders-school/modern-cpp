@@ -82,6 +82,11 @@ std::map<std::shared_ptr<Shape>, double> shapePerimeter{
     {std::make_shared<Square>(4.0), std::make_shared<Square>(4.0)->getPerimeter()},
 };
 
+template <typename ShapeSubclass, typename... Args>
+std::shared_ptr<Shape> make_shape(Args&&... args) {
+    return std::make_shared<ShapeSubclass>(std::forward<Args>(args)...);
+}
+
 int main()
 {
     std::string dash(50, '-');
@@ -98,7 +103,9 @@ int main()
     }
     std::cout << dash << '\n';
 
-    constexpr int n = fibo(45);
+    auto CirclePtr = make_shape<Circle>(3.0);
+    auto RedCirclePtr = make_shape<Circle>(3.0, Color::Red);
+
     Collection shapes{
         make_shared<Circle>(2.0),
         make_shared<Circle>(3.0),
@@ -114,11 +121,7 @@ int main()
 
     Circle c1{Color::Green};
     Circle c2{5.0, Color::Red};
-    // auto pi = c1.getPi();
     Rectangle r1{Color::Black};
-    // Square s1{};
-    auto values = {1, 2, 3, 4, 5};
-    // std::cout << values[2];
 
     cout << "Areas before sort: " << std::endl;
     printAreas(shapes);
