@@ -5,7 +5,8 @@
 class Square : public Rectangle {
 public:
     Square(Color c);
-    Square(double x, Color c = Color::Black);
+    Square(double x, Color c);
+    Square(double x);
     Square(const Square& other) = default;
 
     double getArea() const noexcept override;
