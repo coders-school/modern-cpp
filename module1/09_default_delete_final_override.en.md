@@ -127,37 +127,41 @@ struct B : A {
 <!-- .element: class="fragment fade-in" -->
 
 ___
+<!-- .slide: style="font-size: 0.8em" -->
 
 ## `override` keyword
 
-<pre style="position: absolute; width: 37%"><code class="cpp" data-trim data-line-numbers>
+```cpp
 struct Base {
     virtual void a();
     virtual void b() const;
     virtual void c();
     void d();
 };
-</code></pre>
+```
 
-<pre class="fragment" style="position: absolute; width: 60%; right: 0"><code class="cpp" data-trim data-line-numbers data-noescape>
+```cpp
 struct WithoutOverride : Base {
-    void a(); <span class="fragment">// overrides Base::a()</span>
-    void b(); <span class="fragment">// doesn't override B::b() const</span>
-    virtual void c(); <span class="fragment">// overrides B::c()</span>
-    void d(); <span class="fragment">// doesn't override B::d()</span>
+    void a();         // overrides Base::a()</span>
+    void b();         // doesn't override B::b() const</span>
+    virtual void c(); // overrides B::c()</span>
+    void d();         // doesn't override B::d()</span>
 };
-</code></pre>
+```
+<!-- .element: class="fragment fade-in" -->
 
-<pre class="fragment" style="position: absolute; width: 100%; top: 350px"><code class="cpp" data-trim data-line-numbers>
+```cpp
 struct WithOverride : Base {
-    void a() override; // OK - overrides Base::a()
-    void b() override; // error - doesn't override B::b() const
+    void a() override;         // OK - overrides Base::a()
+    void b() override;         // error - doesn't override B::b() const
     virtual void c() override; // OK - overrides B::c(char)
-    void d() override; // error - B::d() is not virtual
+    void d() override;         // error - B::d() is not virtual
 };
-</code></pre>
+```
+<!-- .element: class="fragment fade-in" -->
 
-<p class="fragment" style="position: absolute; width: 100%; top: 580px"><code>override</code> declaration enforces a compiler to check, if given virtual function is declared in the same way in a base class.</p>
+<code>override</code> declaration enforces a compiler to check, if given virtual function is declared in the same way in a base class.
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
