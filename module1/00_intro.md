@@ -58,12 +58,10 @@ ___
 
 ## Contract
 
-<ul>
-    <li class="fragment fade-in">🎰 Vegas rule</li>
-    <li class="fragment fade-in">🗣 Discussion, not a lecture</li>
-    <li class="fragment fade-in">☕️ Additional breaks on demand</li>
-    <li class="fragment fade-in">⌚️ Be on time after breaks</li>
-</ul>
+* <!-- .element: class="fragment fade-in" --> 🎰 Vegas rule
+* <!-- .element: class="fragment fade-in" --> 🗣 Discussion, not a lecture
+* <!-- .element: class="fragment fade-in" --> ☕️ Additional breaks on demand
+* <!-- .element: class="fragment fade-in" --> ⌚️ Be on time
 
 Note:
 Vegas rule: What happens in Vegas, it stays in Vegas.
