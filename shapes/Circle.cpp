@@ -2,17 +2,24 @@
 #include <math.h>
 #include <iostream>
 
+Circle::Circle(double r)
+    : Circle(r, Color::Red)
+{
+}
+
 Circle::Circle(double r, Color c)
     : r_(r),
-    Shape(c)
-{}
+      Shape(c)
+{
+}
 
 auto Circle::getRadius() const
 {
     return r_;
 }
 
-double Circle::getPi() const {
+double Circle::getPi() const
+{
     return 5.0;
 }
 
@@ -27,8 +34,6 @@ double Circle::getPerimeter() const
 {
     return 2 * M_PI * r_;
 }
-
-
 
 void Circle::print() const
 {

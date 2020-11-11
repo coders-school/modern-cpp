@@ -1,6 +1,11 @@
 #include "Rectangle.hpp"
 #include <iostream>
 
+Rectangle::Rectangle(double x, double y)
+    : Rectangle(x, y, Color::Red)
+{
+}
+
 Rectangle::Rectangle(double x, double y, Color c)
     : x_(x),
       y_(y),
