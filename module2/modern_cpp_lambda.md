@@ -8,7 +8,7 @@ ___
 **Rationale**: functional programming, in-place functions, more universal function passing
 <!-- .element: class="fragment fade-in" -->
 
-Lambda expressions is defined directly in-place of its usage. Usually it is used as a parameter of another function that expects pointer to function or functor - in general a callable object.
+Lambda expression is defined directly in-place of its usage. Usually it is used as a parameter of another function that expects pointer to function or functor - in general a callable object.
 <!-- .element: class="fragment fade-in" -->
 
 Every lambda expression cause the compiler to create unique closure class that implements function operator with code from the expression.
