@@ -70,7 +70,7 @@ str1 += str2                    <span class="fragment">// l-value</span>
 str1 + str2                     <span class="fragment">// r-value</span>
 [](int x){ return x * x; };     <span class="fragment">// r-value</span>
 std::move(a);                   <span class="fragment">// r-value</span>
-int && a = 4;                   <span class="fragment">// 4 is r-value</span>
+int && a = 4;                   <span class="fragment">// 4 is an r-value</span>
 </code></pre>
 
 ___

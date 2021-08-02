@@ -1,4 +1,6 @@
-## Implementation of `std::move()` and "universal reference"
+## Implementation of `std::move()`
+
+### "universal reference"
 
 ```cpp
 template <typename T>

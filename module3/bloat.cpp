@@ -16,6 +16,7 @@ void use(T&& t) {
     f(std::forward<T>(t));
 }
 
+
 int main() {
     const Gadget cg;
     Gadget g;

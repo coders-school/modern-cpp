@@ -16,7 +16,7 @@ T x = T(T(f())); // only one call to default c-tor of T, to initialize x
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> in return statement, when the object is temporary (RVO - Return Value Optimisation)
+* <!-- .element: class="fragment fade-in" --> in the <code>return</code> statement, when the object is temporary (RVO - Return Value Optimisation)
 * <!-- .element: class="fragment fade-in" --> in the initialization, when the initializer is of the same class and is temporary
 
 Do not try to "optimize" code by writing `return std::move(sth);`. It may prevent optimizations.

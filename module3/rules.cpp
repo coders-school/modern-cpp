@@ -4,24 +4,30 @@
 template <typename T>
 class X {
     T* ptr {};
+    int a = 4;
+    int b = 10;
 public:
     X(T* p) : ptr(p) {}
-    ~X() { 
+    ~X() {
         delete ptr;
     }
     X(const X & other) : ptr(new T{*other.ptr}) {}
     X& operator=(const X & other) {
-        delete ptr;
-        ptr = new T{*other.ptr};
+        if (&other != this) {
+            delete ptr;
+            ptr = new T{*other.ptr};
+        }
         return *this;
     }
     X(X && other) : ptr(other.ptr) {
         other.ptr = nullptr;
     }
     X& operator=(X && other) {
-        delete ptr;
-        ptr = other.ptr;
-        other.ptr = nullptr;
+        if (&other != this) {
+            delete ptr;
+            ptr = other.ptr;
+            other.ptr = nullptr;
+        }
         return *this;
     }
     T& get() {
@@ -31,6 +37,7 @@ public:
 
 int main() {
     X<int> x{new int{42}};
+    x = x;
     X<int> x2{new int{42}};
     X<int> x3 = x;      // copy constructor
     x2 = x;             // copy assignment

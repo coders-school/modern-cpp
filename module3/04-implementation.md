@@ -1,3 +1,5 @@
+<!-- .slide: style="font-size: 0.9em" -->
+
 ## Implementation of move semantic
 
 ```cpp
@@ -38,14 +40,11 @@ ___
 
 ## Task
 
+Write your implementation of `unique_ptr`
+
 Aim: learn how to implement move semantics with manual resource management
 
-Write your own implementation of `unique_ptr`
-
-Let's try online Coding Dojo :)
-<!-- .element: class="fragment highlight-green" -->
-
-#### Hints
+### Hints
 
 <!-- .element: class="fragment fade-in" -->
 
@@ -54,7 +53,7 @@ Let's try online Coding Dojo :)
 * <!-- .element: class="fragment fade-in" --> Copy operations not allowed
 * <!-- .element: class="fragment fade-in" --> Move operations allowed
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/memory/unique_ptr">Interface functions</a> - at least:
-    * <code>T* get() const noexcept</code>
-    * <code>T& operator*() const</code>
-    * <code>T* operator->() const noexcept</code>
-    * <code>void reset(T* = nullptr) noexcept</code>
+  * <code>T* get() const noexcept</code>
+  * <code>T& operator*() const</code>
+  * <code>T* operator->() const noexcept</code>
+  * <code>void reset(T* = nullptr) noexcept</code>

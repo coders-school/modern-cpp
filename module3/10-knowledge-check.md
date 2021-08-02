@@ -1,3 +1,5 @@
+<!-- .slide: style="font-size: 0.9em" -->
+
 ## Knowledge check 🙂
 
 ### Template type deduction
@@ -37,13 +39,13 @@ int a = 5;
 
 Which of above functions will be called by below snippets?
 
-* <code>foo(4);</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->
-* <code>foo(a);</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(a);</code>
   * l <!-- .element: class="fragment fade-in" -->
-* <code>foo(std::move(a));</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(std::move(a));</code>
   * r <!-- .element: class="fragment fade-in" -->
-* <code>foo(std::move(4));</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(std::move(4));</code>
   * r (move is redundant) <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -62,12 +64,12 @@ int a = 5;
 
 Which of above functions will be called by below snippets?
 
-* <code>foo(4);</code>
-  * r <!-- .element: class="fragment fade-in" --> 
-* <code>foo(a);</code>
-  * l <!-- .element: class="fragment fade-in" --> 
-* <code>foo(std::move(a));</code>
-  * r <!-- .element: class="fragment fade-in" --> 
+* <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
+  * r <!-- .element: class="fragment fade-in" -->
+* <!-- .element: class="fragment fade-in" --> <code>foo(a);</code>
+  * l <!-- .element: class="fragment fade-in" -->
+* <!-- .element: class="fragment fade-in" --> <code>foo(std::move(a));</code>
+  * r <!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -82,25 +84,9 @@ int a = 5;
 
 What will happen now?
 
-* <code>foo(4);</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->
-* <code>foo(a);</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(a);</code>
   * r <!-- .element: class="fragment fade-in" -->
-* <code>foo(std::move(a));</code>
+* <!-- .element: class="fragment fade-in" --> <code>foo(std::move(a));</code>
   * r <!-- .element: class="fragment fade-in" -->
-
-___
-
-## Pre-test answers
-
-### Question 1/2
-
-* <!-- .element: class="fragment fade-in" --> "OK"
-* <!-- .element: class="fragment fade-in" --> "OK"
-* <!-- .element: class="fragment fade-in" --> "OK"
-
-### Question 2/2
-
-* <!-- .element: class="fragment fade-in" --> <code>const Gadget&</code>
-* <!-- .element: class="fragment fade-in" --> <code>Gadget&</code>
-* <!-- .element: class="fragment fade-in" --> <code>Gadget&</code>

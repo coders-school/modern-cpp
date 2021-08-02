@@ -1,6 +1,8 @@
+<!-- .slide: style="font-size: 0.9em" -->
+
 ## Interface bloat
 
-Trying to optimize for every possible use case may lead to an interface bloat
+Trying to optimize for every possible use case may lead to an interface bloat.
 
 ```cpp
 class Gadget;
@@ -20,14 +22,17 @@ int main() {
 }
 ```
 
-Task: Try to improve the `use()` function to catch more types of reference to have less overloads.
+### Task
+
+Improve the `use()` function to catch more types of references to have fewer overloads.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
-## Perfect Forwarding
+## Solution: Perfect Forwarding
 
 Forwarding reference `T&&` + `std::forward()` is a solution to interface bloat.
+<!-- .element: class="fragment fade-in" -->
 
 ```cpp
 class Gadget;
@@ -49,17 +54,18 @@ int main() {
     use(Gadget()); // calls use(Gadget&&) then calls f(Gadget&&)
 }
 ```
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## `std::forward`
 
-Forwarding reference (even bind to r-value) is treated as l-value inside template function
+Forwarding reference (even bind to r-value) is treated as l-value inside a template function.
 
 ```cpp
 template <typename T>
 void use(T&& t) {
-    f(t);                   // t is treated as l-value unconditionally
+    f(t);                   // t treated as l-value unconditionally
 }
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -67,18 +73,18 @@ void use(T&& t) {
 ```cpp
 template <typename T>
 void use(T&& t) {
-    f(std::move(t));        // t is treated as r-value unconditionally
+    f(std::move(t));        // t treated as r-value unconditionally
 }
 ```
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
 template <typename T>
-void use(T&& t) {           // pass t as r-value if r-value was passed,
-    f(std::forward(t));     // pass as l-value otherwise
+void use(T&& t) {           // forwards t as r-value if r-value was passed,
+    f(std::forward(t));     // forwards as l-value otherwise
 }
 ```
 <!-- .element: class="fragment fade-in" -->
 
-In other words: `std::forward()` restores original reference type.
+In other words, `std::forward()` restores the original reference type.
 <!-- .element: class="fragment fade-in" -->

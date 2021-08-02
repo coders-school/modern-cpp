@@ -1,6 +1,6 @@
 ## Recap
 
-Mention as many keywords / topics from this session as you can
+Mention as many keywords/topics from this session as you can
 
 * <!-- .element: class="fragment fade-in" --> r-value and l-value referencesss
 * <!-- .element: class="fragment fade-in" --> Move constructor and move assignment operator
@@ -16,14 +16,18 @@ ___
 
 ## Post-work
 
-If you wish to practice more on move semantics and resource management try to implement `shared_ptr`.
-You can even try to make it thread safe 😊
-You can reach me on Discord if you have any question or if you wish to have a code review.
+If you wish to practice more on move semantics and resource management, try to implement `shared_ptr`.
+You can even try to make it thread-safe 😊
+Send me a link to your repo to <a href="mailto:lukasz@coders.school">lukasz@coders.school</a> if you wish to have a code review.
+
+___
 
 ## Post-test
 
 Please [take this quiz](https://forms.gle/rhGWFrfsDQqbA3kL7) (10-15 min) about 2-5 days after the training.
 It will help you recall this session and make it last a little bit longer in your memory.
+
+___
 
 ## Evaluation
 
