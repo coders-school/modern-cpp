@@ -58,10 +58,6 @@ status_code foo() { // C++14
 }
 ```
 
-___
-
-## `switch (init; condition)`
-
 ```cpp
 status_code foo() { // C++17
     if (status_code c = bar(); c != SUCCESS) {
@@ -73,7 +69,7 @@ status_code foo() { // C++17
 
 ___
 
-## Selection statements with initializer (C++17)
+## `switch (init; condition)`
 
 ```c++
 {
