@@ -68,6 +68,7 @@ ___
 Note:
 Vegas rule: What happens in Vegas, it stays in Vegas.
 If you want to complain about the employer, I won't tell anyone
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
