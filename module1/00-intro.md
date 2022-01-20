@@ -5,7 +5,7 @@
 * Twoje hobby
 
 ___
-<!-- .slide: data-background="../img/lukasz.jpg" -->
+<!-- .slide: data-background="../img/lukin.jpg" -->
 
 <h2 style = "text-shadow: 2px 2px black;"> Łukasz Ziobroń </h2>
 <div class="box fragment" style="width: 45%; left: 0; top: 100px;">
@@ -72,4 +72,4 @@ Jeśli chcesz poskarżyć się na pracodawcę, nikomu nie powiem.
 
 ___
 
-### [Link do prezentacji w GitHub](https://github.com/coders-school/modern-cpp/tree/master/module1)
+### [Link do prezentacji w GitHub](https://github.com/coders-school/modern-cpp/tree/main/module1)

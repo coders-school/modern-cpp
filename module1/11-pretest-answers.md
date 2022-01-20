@@ -47,9 +47,3 @@ ___
 1. <!-- .element: class="fragment highlight-green" --> wolna funkcja
 1. <!-- .element: class="fragment highlight-green" --> metoda klasy
 1. <!-- .element: class="fragment highlight-red" --> pole klasy
-
-___
-
-## Praca domowa
-
-Zajrzyj do pliku `README.md` z repozytorium coders-school/modern-cpp. Wykonaj wszystkie pozostałe zadania :)
