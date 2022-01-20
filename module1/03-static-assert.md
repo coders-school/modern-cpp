@@ -26,7 +26,7 @@ void swap(T& a, T& b)
 Performs compile-time assertion checking. Usually used with `<type_traits>` library.
 <!-- .element: class="fragment fade-in" -->
 
-The message is optional from C++17.
+The message provided as a second parameter is optional from C++17.
 <!-- .element: class="fragment fade-in" -->
 
 ___

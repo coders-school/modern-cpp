@@ -22,7 +22,7 @@ using SocketContainer = std::vector<std::shared_ptr<Socket>>;
 **Rationale**: More intuitive alias creation.
 <!-- .element: class="fragment fade-in" -->
 
-A type alias is a name that refers to a previously defined type. It could be created with typedef.
+A type alias is a name that refers to a previously defined type. It could be created with `typedef`.
 From C++11 type aliases should be created with `using` keyword.
 <!-- .element: class="fragment fade-in" -->
 
@@ -37,7 +37,7 @@ using StrKeyMap = std::map<std::string, T>;
 StrKeyMap<int> my_map; // std::map<std::string, int>
 ```
 
-Type alias can be parametrized with templates. It was impossible with typedef.
+Type alias can be parametrized with templates. It was impossible with `typedef`.
 <!-- .element: class="fragment fade-in" -->
 
 Template aliases cannot be specialized.

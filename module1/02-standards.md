@@ -18,7 +18,8 @@ ___
 * <!-- .element: class="fragment fade-in-then-semi-out"--> 2013 - full version of C++1y draft
 * <!-- .element: class="fragment fade-in-then-semi-out"--> 2014 - C++1y published as C++14
 * <!-- .element: class="fragment fade-in-then-semi-out"--> 2017 - C++1z published as C++17
-* <!-- .element: class="fragment fade-in-then-semi-out"--> 2020 - C++2a should be published as C++20
+* <!-- .element: class="fragment fade-in-then-semi-out"--> 2020 - C++2a published as C++20
+* <!-- .element: class="fragment fade-in-then-semi-out"--> 2023 - C++2b should be published as C++23
 
 ___
 
@@ -26,32 +27,40 @@ ___
 
 ### [GCC](https://gcc.gnu.org/projects/cxx-status.html) - [Clang](https://clang.llvm.org/cxx_status.html)
 
-<div class="box" style="width: 45%; left: 0;">
-    <h3>C++20</h3>
+<div class="box" style="width: 45%; left: 0; top: 200px">
+    <h3>C++23</h3>
     <ul>
         <li>Full support: not implemented yet</li>
-        <li>Compiler flags: -std=c++2a</li>
+        <li>Compiler flags: <code>-std=c++2b</code></li>
     </ul>
 </div>
-<div class="box" style="width: 45%; right: 0;">
+
+<div class="box" style="width: 45%; left: 0; top: 360px">
+    <h3>C++20</h3>
+    <ul>
+        <li>(almost) full support: gcc11, clang14</li>
+        <li>Compiler flags: <code>-std=c++20</code>, <code>-std=c++2a</code></li>
+    </ul>
+</div>
+<div class="box" style="width: 45%; right: 0; top: 360px">
     <h3>C++17</h3>
     <ul>
         <li>Full support: gcc7, clang5</li>
-        <li>Compiler flags: -std=c++17, -std=c++1z</li>
+        <li>Compiler flags: <code>-std=c++17</code>, <code>-std=c++1z</code></li>
     </ul>
 </div>
-<div class="box" style="width: 45%; left: 0; top: 450px">
+<div class="box" style="width: 45%; left: 0; top: 520px">
     <h3>C++14</h3>
     <ul>
         <li>Full support: gcc5, clang3.4</li>
-        <li>Compiler flags: -std=c++14, -std=c++1y</li>
+        <li>Compiler flags: <code>-std=c++14</code>, <code>-std=c++1y</code></li>
         <li><u>Enabled by default since gcc6.1</u></li>
     </ul>
 </div>
-<div class="box" style="width: 45%; right: 0; top: 450px">
+<div class="box" style="width: 45%; right: 0; top: 520px">
     <h3>C++11</h3>
     <ul>
         <li>Full support: gcc4.8.1, clang3.3</li>
-        <li>Compiler flags: -std=c++11, -std=c++0x</li>
+        <li>Compiler flags: <code>-std=c++11</code>, <code>-std=c++0x</code></li>
     </ul>
 </div>

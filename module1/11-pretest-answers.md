@@ -47,27 +47,3 @@ ___
 1. <!-- .element: class="fragment highlight-green" --> free function
 1. <!-- .element: class="fragment highlight-green" --> class method
 1. <!-- .element: class="fragment highlight-red" --> class member object
-
-___
-
-## Post-test
-
-The link to post-test will be sent to you in a next week.
-
-It's better to forget some of the content and refresh your knowledge later.
-
-It enhances knowledge retention :)
-
-___
-
-## Homework
-
-Take a look into `README.md` file from modern_cpp repository. You can complete all tasks and raise a Pull Request if you wish me to check your homework.
-
-___
-
-## Feedback
-
-* What could be improved in this training?
-* What was the most valuable for you?
-* [Training evaluation](https://forms.gle/qEZFvYKdgbxkyxYj7)

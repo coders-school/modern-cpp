@@ -5,7 +5,7 @@
 * Your hobbies
 
 ___
-<!-- .slide: data-background="../img/lukasz.jpg" -->
+<!-- .slide: data-background="../img/lukin.jpg" -->
 
 <h2 style="text-shadow: 2px 2px black;">Łukasz Ziobroń</h2>
 <div class="box fragment" style="width: 45%; left: 0; top: 100px;">
@@ -68,6 +68,7 @@ ___
 Note:
 Vegas rule: What happens in Vegas, it stays in Vegas.
 If you want to complain about the employer, I won't tell anyone
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
