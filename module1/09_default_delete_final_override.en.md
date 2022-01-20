@@ -26,7 +26,7 @@ ___
 ## `default` keyword
 
 * <!-- .element: class="fragment fade-in" --> <code>default</code> declaration enforces a compiler to generate default implicit implementation for marked functions
-* <!-- .element: class="fragment fade-in" --> 6 special functions can be marked as <code>default</code>:
+* <!-- .element: class="fragment fade-in" --> 7 special functions can be marked as <code>default</code>:
   * default c-tor
   * copy c-tor
   * copy assignment operator
@@ -142,10 +142,10 @@ struct Base {
 
 ```cpp
 struct WithoutOverride : Base {
-    void a();         // overrides Base::a()</span>
-    void b();         // doesn't override B::b() const</span>
-    virtual void c(); // overrides B::c()</span>
-    void d();         // doesn't override B::d()</span>
+    void a();         // overrides Base::a()
+    void b();         // doesn't override B::b() const
+    virtual void c(); // overrides B::c()
+    void d();         // doesn't override B::d()
 };
 ```
 <!-- .element: class="fragment fade-in" -->

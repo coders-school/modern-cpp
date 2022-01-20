@@ -18,8 +18,7 @@ int* p {}; // p is set to nullptr
 
 ___
 
-## Overload resolution - wybieranie przeciążonych funkcji
-<!-- nie wiedziałem jak przetłumaczyć to pojęcie, na internecie też niczego nie mogłem znaleźć -->
+## Overload resolution - wybór przeciążenia funkcji
 
 ```cpp
 void foo(int);
@@ -46,6 +45,6 @@ ___
 ## `nullptr`
 
 * <!-- .element: class="fragment fade-in" --> wartość wskaźnika, który na nic nie wskazuje
-* <!-- .element: class="fragment fade-in" --> bardziej wyrazisty i bezpieczniejszy niż stała <code>NULL/0</code>
+* <!-- .element: class="fragment fade-in" --> bardziej ekspresyjny i bezpieczniejszy zapis niż stała <code>NULL/0</code>
 * <!-- .element: class="fragment fade-in" --> ma zdefiniowany typ <code>std::nullptr_t</code>
 * <!-- .element: class="fragment fade-in" --> rozwiązuje problem z przeciążonymi funkcjami, które jako argument przyjmują wskaźnik lub liczbę całkowitą

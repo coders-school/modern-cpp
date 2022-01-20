@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Test wstępny
+# Pre-test
 
 ___
 
@@ -44,4 +44,4 @@ ___
 1. destruktor
 1. wolna funkcja
 1. metoda klasy
-1. obiekt elementu klasy
+1. pole klasy

@@ -156,9 +156,3 @@ ___
 Put auto wherever you think is good.
 
 Use range-based for loops wherever possible.
-
-### Let's have some fun :)
-<!-- .element: class="fragment fade-in" -->
-
-Connect to my VSC and edit my program simultaneously.
-<!-- .element: class="fragment fade-in" -->

@@ -1,8 +1,13 @@
+<!-- .slide: data-background="#111111" -->
+# `decltype`
+
+___
+
 ## `decltype`
 
-**Uzasadnienie**: Dedukcja w kontekstach, w których auto jest niedozwolone.
+**Motywacja**: Dedukcja w kontekstach, w których auto jest niedozwolone.
 
-`decltype` pozwala kompilatorowi wydedukować typ zmiennej lub wyrażenia, np. zwracany typ można wywnioskować z parametrów funkcji.
+`decltype` pozwala kompilatorowi wydedukować typ zmiennej lub wyrażenia, np. gdy zwracany typ można wywnioskować z parametrów funkcji.
 
 ```cpp
 std::map<std::string, float> collection;

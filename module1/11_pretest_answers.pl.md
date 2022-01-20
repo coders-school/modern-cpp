@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Test wstępny
+# Pre-test
 
 ## Odpowiedzi
 
@@ -46,28 +46,10 @@ ___
 1. <!-- .element: class="fragment highlight-green" --> destruktor
 1. <!-- .element: class="fragment highlight-green" --> wolna funkcja
 1. <!-- .element: class="fragment highlight-green" --> metoda klasy
-1. <!-- .element: class="fragment highlight-red" --> obiekt elementu klasy
-
-___
-
-## Po teście
-
-Link do post-testu zostanie wysłany do Ciebie w przyszłym tygodniu.
-
-Lepiej zapomnieć o części treści i odświeżyć swoją wiedzę później.
-
-Zwiększa retencję wiedzy :)
+1. <!-- .element: class="fragment highlight-red" --> pole klasy
 
 ___
 
 ## Praca domowa
 
-Zajrzyj do pliku `README.md` z repozytorium modern_cpp. Możesz wykonać wszystkie zadania i zgłosić pull request, jeśli chcesz, żebym sprawdził twoją pracę domową.
-
-___
-
-## Feedback
-
-* Co można poprawić w tym szkoleniu?
-* Co było dla Ciebie najbardziej wartościowe?
-* [Ocena szkolenia](https://forms.gle/qEZFvYKdgbxkyxYj7)
+Zajrzyj do pliku `README.md` z repozytorium coders-school/modern-cpp. Wykonaj wszystkie pozostałe zadania :)

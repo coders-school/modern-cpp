@@ -19,12 +19,12 @@ std::set<std::string> collection;
 auto it = collection.begin(); // it is std::set<std::string>::iterator
 ```
 
-Nieważne (ale silnie zdefiniowane) typy, mniej pisania, mniej refaktoryzacji.
+**Motywacja**: nieważne (ale silnie zdefiniowane) typy, mniej pisania, mniej refaktoryzacji.
 <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> Kompilator może automatycznie wywnioskować typ zmiennej podczas inicjalizacji
 * <!-- .element: class="fragment fade-in" --> Dedukcja jest dokonywana na podstawie literału, innej zmiennej lub zwracanego typu funkcji
-* <!-- .element: class="fragment fade-in" --> Obowiązują takie same zasady, jak w przypadku dedukcji szablonów
+* <!-- .element: class="fragment fade-in" --> Obowiązują takie same zasady, jak w przypadku dedukcji typów dla szablonów
 
 ___
 
@@ -86,7 +86,7 @@ auto isEven = [](int a) -> bool {
 }
 ```
 
-Wprowadzono, aby umożliwić definicję typu zwracanego z funkcji lambda.
+Wprowadzono ją, aby umożliwić definicję typu zwracanego z funkcji lambda.
 <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -117,7 +117,7 @@ auto factorial(int n) {
 * <!-- .element: class="fragment fade-in" --> Wprowadzony w C++14
 * <!-- .element: class="fragment fade-in" --> Mechanizm dedukcji jest taki sam, jak w przypadku dedukcji typów zmiennych
 * <!-- .element: class="fragment fade-in" --> Wszystkie instrukcje <code>return</code> muszą zwracać ten sam typ
-* <!-- .element: class="fragment fade-in" --> Rekursja jest dozwolona tylko wtedy, gdy rekurencyjne wywołanie funkcji nie jest w pierwszej instrukcji <code>return</code>
+* <!-- .element: class="fragment fade-in" --> Rekursja jest dozwolona tylko wtedy, gdy rekurencyjne wywołanie funkcji nie jest pierwszą instrukcją <code>return</code>
 
 ___
 
@@ -134,7 +134,7 @@ std::cout << '\n';
 
 ___
 
-### Wygenerowany kod na podstawie zakresowej pętli for
+### Kod wygenerowany na podstawie zakresowej pętli for
 
 ```cpp
 {
@@ -149,16 +149,9 @@ ___
 ```
 
 ___
-<!-- .slide: data-background="#cf802a" -->
 
 ## Zadanie
 
-Umieść auto tam, gdzie uważasz, że jest dobre.
+Umieść `auto` tam, gdzie uważasz, powinno się znaleźć.
 
-Tam, gdzie to możliwe, używaj pętli zakresowych.
-
-### Pobawmy się :)
-<!-- .element: class="fragment fade-in" -->
-
-Połącz się z moim VSC i jednocześnie edytuj mój program.
-<!-- .element: class="fragment fade-in" -->
+Tam, gdzie to możliwe, użyj zakresowych pętli `for`.

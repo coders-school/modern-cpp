@@ -1,3 +1,8 @@
+<!-- .slide: data-background="#111111" -->
+# `decltype`
+
+___
+
 ## `decltype`
 
 **Rationale**: Deduction provided in contexts where auto is not allowed.

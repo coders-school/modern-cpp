@@ -1,5 +1,5 @@
 <!-- .slide: data-background="#111111" -->
-# `using` alias typu
+# alias typu `using`
 
 ___
 
@@ -19,11 +19,11 @@ using SocketContainer = std::vector<std::shared_ptr<Socket>>;
 ```
 <!-- .element: class="fragment fade-in" -->
 
-Bardziej intuicyjne tworzenie aliasów.
+**Motywacja**: Bardziej intuicyjne tworzenie aliasów.
 <!-- .element: class="fragment fade-in" -->
 
 Alias to nazwa odnosząca się do wcześniej zdefiniowanego typu. Można go utworzyć za pomocą `typedef`.
-Z C++11 należy tworzyć aliasy typu za pomocą słowa kluczowego `using`.
+Od C++11 należy tworzyć aliasy typu za pomocą słowa kluczowego `using`.
 <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -40,7 +40,7 @@ StrKeyMap<int> my_map; // std::map<std::string, int>
 Alias ​​typu można sparametryzować za pomocą szablonów. Z `typedef` było to niemożliwe.
 <!-- .element: class="fragment fade-in" -->
 
-Aliasy szablonów nie mogą być wyspecjalizowane.
+Nie można tworzyć specjalizacji szablonowych aliasów.
 <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -59,10 +59,12 @@ struct B : A {
 };
 ```
 
-* <!-- .element: class="fragment fade-in" --> Konstruktory klas pochodnych są generowane niejawnie, tylko jeśli są używane
-* <!-- .element: class="fragment fade-in" --> Konstruktory klas pochodnych pobierają te same argumenty, co konstruktory klas bazowych
+Dzięki `using` możemy też "odziedziczyć" konstruktory, które normalnie nie są dziedziczone.
+
+* <!-- .element: class="fragment fade-in" --> Konstruktory klas pochodnych są generowane niejawnie i tylko jeśli są używane
+* <!-- .element: class="fragment fade-in" --> Konstruktory klas pochodnych przyjmują te same argumenty, co konstruktory klas bazowych
 * <!-- .element: class="fragment fade-in" --> Konstruktor klasy pochodnej wywołuje odpowiedni konstruktor klasy bazowej
-* <!-- .element: class="fragment fade-in" --> Dziedziczenie konstruktora w klasie, która dodaje nowe pole, może być ryzykowne - nowe pola mogą być niezainicjowane
+* <!-- .element: class="fragment fade-in" --> Dziedziczenie konstruktora w klasie, która posiada nowe pola, może być ryzykowne - nowe pola mogą być niezainicjowane
 
 ___
 

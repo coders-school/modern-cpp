@@ -27,7 +27,7 @@ names.push_back("Jane");
 
 ___
 
-## C++11 inicjalizacja z {}
+## inicjalizacja w C++11 z użyciem `{}`
 
 <pre><code class="cpp" data-trim data-line-numbers data-noescape>
 int a;          <span class="fragment">// still undefined value</span>
@@ -45,7 +45,7 @@ std::complex&lt;double> c{4.0, 2.0};   <span class="fragment">// brace initializ
 std::vector&lt;std::string> names = { "John", "Jane" };  <span class="fragment">// brace initialization of vector</span>
 </code></pre>
 
-Eliminacja problematycznych przypadków inicjalizacji z C++98, inicjalizacja kontenerów STL, ma jeden uniwersalny sposób inicjalizacji.
+**Motywacja**: wyeliminowanie problematycznych przypadków inicjalizacji z C++98, inicjalizacja kontenerów STL, jeden uniwersalny sposób inicjalizacji.
 <!-- .element: class="fragment fade-in" -->
 
 ___
@@ -80,14 +80,14 @@ std::vector<int> v = {1, 2, -3}; // creates a vector from
 
 * <!-- .element: class="fragment fade-in" --> Zdefiniowany w nagłówku <code>initializer_list</code>
 * <!-- .element: class="fragment fade-in" --> Elementy są przechowywane w tablicy
-* <!-- .element: class="fragment fade-in" --> Elementy są niezmienne
+* <!-- .element: class="fragment fade-in" --> Elementy są niezmienne (immutable)
 * <!-- .element: class="fragment fade-in" --> Elementy muszą być kopiowalne
-* <!-- .element: class="fragment fade-in" --> Mają ograniczony interfejs i dostęp przez iteratory - <code>begin()</code>, <code>end()</code>, <code>size()</code>
+* <!-- .element: class="fragment fade-in" --> Ma ograniczony interfejs, ma dostęp przez iteratory - <code>begin()</code>, <code>end()</code>, <code>size()</code>
 * <!-- .element: class="fragment fade-in" --> Powinien być przekazywany do funkcji przez wartość
 
 ___
 
-## Priorytet konstruktora
+## Priorytety konstruktorów
 
 <pre><code class="cpp" data-trim data-line-numbers data-noescape>
 template&lt;class Type>
@@ -109,14 +109,14 @@ public:
 <span class="fragment">// error - std::unique_ptr is non-copyable</span>
 </code></pre>
 
-Konstruktor z <code>std::initializer_list</code> ma większy priorytet, nawet jeśli inne elementy są zgodne.
+Konstruktor z <code>std::initializer_list</code> ma większy priorytet, nawet jeśli inne konstruktory pasują lepiej.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## Zadanie
 
-Zastosuj `initializer_list`, aby zainicjować kolekcję.
+Zastosuj `initializer_list`, aby zainicjować kolekcję `shapes`.
 
 Dodaj nowy konstruktor do Shape - `Shape(Color c)`. Co się dzieje?
 
@@ -124,4 +124,4 @@ Użyj dziedziczenia konstruktora, aby umożliwić inicjalizację wszystkich kszt
 
 Utwórz kilka kształtów, podając tylko parametr `Color`.
 
-Dodaj inicjalizację pola w klasie dla wszystkich kształtów, aby bezpiecznie używać konstruktora dziedziczonego.
+Dodaj inicjalizację pola w klasie dla wszystkich kształtów, aby bezpiecznie używać odziedziczonego konstruktora.
