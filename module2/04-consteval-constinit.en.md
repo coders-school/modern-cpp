@@ -3,11 +3,11 @@
 
 ___
 
-## Słowo kluczowe `consteval`
+## `consteval` keyword
 
-Od C++20 możemy używać `consteval` dla funkcji (tylko).
+From C++20 we can use `consteval` for functions (only).
 
-Oznacza to gwarancję wykonania na etapie kompilacji. `constexpr` mogło się wykonać także w czasie działania programu.
+`consteval` guarantees, that the function will be evaluated at the compile time. `constexpr` means that the function can also be executed at runtime.
 
 ```cpp
 consteval int sqr(int n) {
@@ -22,13 +22,13 @@ int r2 = sqr(x);            // Error: Call does not produce a constant
 
 ___
 
-## Słowo kluczowe `constinit`
+## `constinit` keyword
 
-Od C++20 można używać `constinit` dla zmiennych statycznych lub `thread_local` (tylko).
+From C++20 we can use `constinit` for static or `thread_local` varaibles (tylko).
 
-Oznacza to gwarancję, że zmienna na pewno będzie statycznie zainicjalizowana, czyli będzie zainicjalizowana zerami lub wartością stałą znaną na etapie kompilacji. Wyklucza to posiadanie niezainicjalizowanej zmiennej.
+`constinit` guarantees that the variable will have static initialization, that is either zero initialization or constant initialization.
 
-Wprowadzone tylko po to, aby uniknąć problemu zwanego Static Initialization Order Fiasco.
+This eliminates the problem known as Static Initialization Order Fiasco.
 
 ```cpp
 const char *g() { return "dynamic initialization"; }
