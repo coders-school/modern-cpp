@@ -9,11 +9,13 @@ ___
 
 `constexpr` is an expression that can be evaluated at compile time and can appear in [constant expressions](https://en.cppreference.com/w/cpp/language/constant_expression). We can have:
 
-* <!-- .element: class="fragment fade-in" --> constexpr variable
-* <!-- .element: class="fragment fade-in" --> constexpr function
-* <!-- .element: class="fragment fade-in" --> constexpr constructor
-* <!-- .element: class="fragment fade-in" --> constexpr lambda (default from C++17)
-* <!-- .element: class="fragment fade-in" --> constexpr if (until C++17)
+* <!-- .element: class="fragment fade-in" --> constexpr variables
+* <!-- .element: class="fragment fade-in" --> constexpr functions
+  * <!-- .element: class="fragment fade-in" --> normal constexpr functions
+  * <!-- .element: class="fragment fade-in" --> constexpr constructors
+  * <!-- .element: class="fragment fade-in" --> constexpr lambdas (default from C++17)
+  * <!-- .element: class="fragment fade-in" --> constexpr destructor (from C++20)
+* <!-- .element: class="fragment fade-in" --> constexpr if (from C++17)
 
 ___
 
@@ -54,22 +56,24 @@ constexpr int factorial14(int n) {  // C++14
 }
 ```
 
-`constexpr` function can be evaluated in both compile time and runtime. Evaluation at compile time can occur when the result is assigned to `constexpr` variable and arguments can be evaluated at compile time.
+`constexpr` function can be evaluated in both compile time and runtime. Evaluation at compile time must occur when the result is assigned to `constexpr` variable. Arguments must be known at compile time.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## `constexpr` functions restrictions
 
-In C++11 `constexpr` functions were very restricted - only 1 return instruction (not returning void). From C++14 the only restrictions are, that function must not:
+In C++11 `constexpr` functions were very restricted - only 1 return instruction (not returning void). From C++17 the only restrictions are, that function must not:
 
 * <!-- .element: class="fragment fade-in" --> contain <code>static</code> or <code>thread_local</code> variables
 * <!-- .element: class="fragment fade-in" --> contain uninitialized variables
 * <!-- .element: class="fragment fade-in" --> call non <code>constexpr</code> function
-* <!-- .element: class="fragment fade-in" --> use non-literal types
 * <!-- .element: class="fragment fade-in" --> be virtual (until C++20)
-* <!-- .element: class="fragment fade-in" --> use asm code blocks (until C++20)
-* <!-- .element: class="fragment fade-in" --> have try-catch block or throw exceptions (until C++20)
+* <!-- .element: class="fragment fade-in" --> have try-catch block (until C++20)
+* <!-- .element: class="fragment fade-in" --> be a coroutine (from C++20)
+
+More info on [cppreference.com](https://en.cppreference.com/w/cpp/language/constexpr).
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -89,7 +93,9 @@ struct Point
 constexpr Point a = { 1, 2 };
 ```
 
-Class `Point` can be used in `constexpr` computations, eg in `constexpr` functions. It is a literal type. `constexpr` constructor has the same restrictions as a `constexpr` function and a class cannot have a virtual base class.
+Class `Point` can be used in `constexpr` computations, eg in `constexpr` functions.
+
+`constexpr` constructor has the same restrictions as a `constexpr` function and a class cannot have a virtual base class.
 
 ___
 

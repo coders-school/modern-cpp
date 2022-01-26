@@ -2,11 +2,11 @@
 
 # Pre-test
 
-## Answers
+## Odpowiedzi
 
 ___
 
-## Which lambda functions will compile?
+## Które funkcja lambda się skompilują?
 
 1. <!-- .element: class="fragment highlight-green" --> <code>[]() -> int { return 4; };</code>
 1. <!-- .element: class="fragment highlight-red" --> <code>int [](){ return 4; };</code>

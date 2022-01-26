@@ -5,16 +5,13 @@ ___
 
 ## Structured bindings
 
-Inicjalizacja rozkładająca struktury, która umożliwia pisanie:
-<!-- Ciężko mi znaleźć odpowiednik do de-structuring -->
+Inicjalizacja kilku elementów jednocześnie, poprzez rozłożenie struktur lub tablic na ich składowe.
 
 ```cpp
 auto [ x, y, z ] = expr;
 ```
 
- gdzie typ `expr` to obiekty podobne do krotek, których elementy byłyby powiązane ze zmiennymi `x`, `y` i `z` (które deklaruje ta konstrukcja).
-
- Typem `expr` mogą być: `std::tuple`, `std::pair`, `std::array` i agregaty.
+Typem `expr` mogą być: `std::tuple`, `std::pair`, `std::array` i struktury agregujące.
 
 ___
 <!-- .slide: style="font-size: 0.95em" -->
@@ -42,7 +39,7 @@ std::unordered_map<std::string, int> mapping {
 
 // De-structure by reference.
 for (const auto& [key, value] : mapping) {
-    // Do something with key and value
+    std::cout << key << " | " << value << '\n';
 }
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -51,6 +48,6 @@ ___
 
 ## Zadanie
 
-Stworzyć `std::map<shared_ptr<Shape>, double>` który zapamięta kształt i jego obwód.
+Stwórz `std::map<shared_ptr<Shape>, double>` który zapamięta kształt i jego obwód.
 
-Użyj structured bindings, aby iterować po tej kolekcji i wyświetlić informacje o kształcie (wywołaj funkcję `print()`) oraz obwodzie.
+Użyj structured bindings, aby przeiterować po tej kolekcji i wyświetlić informacje o kształcie (wywołaj metodę `print()`) oraz obwodzie.

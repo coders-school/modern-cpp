@@ -4,14 +4,14 @@
 
 ___
 
-## Which lambda function is valid?
+## Which lambda functions will compile?
 
 1. `[]() -> int { return 4; };`
 1. `int [](){ return 4; };`
 1. `auto [](){ return 4; };`
 1. `[]() -> auto {return 4; };`
 1. `[](){ return 4; };`
-1. `[] { return 4; }`
-1. `[] mutable { return 4; }`
-1. `[] -> int { return 4; }`
-1. `int []{ return 4; }`
+1. `[] { return 4; };`
+1. `[] mutable { return 4; };`
+1. `[] -> int { return 4; };`
+1. `int []{ return 4; };`

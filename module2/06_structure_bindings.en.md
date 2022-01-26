@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 # Structured bindings
-<!-- I haven't found enything in presentation you've send me with e-mail, so I've searched in repo from C++ course I was participating in, and put those informations here. If I missed something in your's presentatnion in PDF than, please, tell me witch slides to put here or if I should leave it blank. -->
+<!-- I haven't found anything in presentation you've send me with e-mail, so I've searched in repo from C++ course I was participating in, and put those informations here. If I missed something in your's presentatnion in PDF than, please, tell me witch slides to put here or if I should leave it blank. -->
 ___
 
 ## Structured bindings
@@ -41,7 +41,7 @@ std::unordered_map<std::string, int> mapping {
 
 // De-structure by reference.
 for (const auto& [key, value] : mapping) {
-    // Do something with key and value
+    std::cout << key << " | " << value << '\n';
 }
 ```
 <!-- .element: class="fragment fade-in" -->

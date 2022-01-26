@@ -1,11 +1,11 @@
 <!-- .slide: data-background="#111111" -->
-# Other useful features
+# Inne przydatne nowości
 
 ___
 
-## Nested namespace definitions
+## Zagnieżdżone definicje przestrzeni nazw
 
-From C++17 you can nest namespaces like this:
+Od C++17 można zagnieżdżać przestrzenie nazw w następujący sposób:
 
 ```c++
 namespace A::B::C {
@@ -13,7 +13,7 @@ namespace A::B::C {
 }
 ```
 
-Instead of this:
+Zamiast tego:
 
 ```c++
 namespace A {
@@ -24,12 +24,12 @@ namespace A {
   }
 }
 ```
-<!-- Sentence which was here befor haven't felt right for me, so I've changed it. -->
+
 ___
 
-## Class template argument deduction
+## Dedukcja typów szablonu klasy (C++17)
 
-From C++17 class template arguments can be deduced automatically. Automatic template argument deduction was available earlier only for template functions.
+Od C++17 typy szablonów klas mogą być wydedukowane automatycznie na podstawie argumentów przekazanych do konstruktora. Do C++17 automatyczna dedukcja typów szablonów była dostępna tylko dla szablonów funkcji.
 
 ```c++
 std::pair p{1, 'x'}; // C++17: OK, C++14: error: missing
@@ -42,13 +42,13 @@ std::vector v = {1, 2, 3, 4}; // C++17: OK, std::vector<int>
 
 ___
 
-## Selection statements with initializer
+## Instrukcje warunkowe z inicjatorem
 
-From C++17 there are new versions of the `if` and `switch` statements.
+Od C++17 są nowe wersje instrukcji `if` i `switch`.
 
 ___
 
-### `if (init; condition)`
+## `if (init; condition)`
 
 ```cpp
 status_code foo() { // C++17
@@ -98,6 +98,6 @@ switch (Foo gadget(args); auto s = gadget.status()) { // C++17
 
 ___
 
-## Overview
+## Przegląd
 
-[Overview of modern C++ features](https://github.com/AnthonyCalandra/modern-cpp-features)
+[Przegląd funkcjonalności nowoczesnego C++](https://github.com/AnthonyCalandra/modern-cpp-features)
