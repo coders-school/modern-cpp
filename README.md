@@ -56,7 +56,7 @@ ___
 
 ### [Pre-test answers](module1/11_pretest_answers.en.md)
 
-## [Moduł 2](module2/)
+## [Module 2](module2/index.en.html)
 
 ### [Pre-test](module2/pretest.en.md)
 
@@ -78,7 +78,7 @@ ___
 
 ### [Pre-test answers](module2/pretest_answers.en.md)
 
-## [Moduł 3](module3/)
+## [Module 3](module3/index.en.html)
 
 ### [Pre-test](module3/move_semantics_pretest.en.md)
 
