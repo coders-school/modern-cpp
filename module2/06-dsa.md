@@ -1,9 +1,27 @@
 <!-- .slide: data-background="#111111" -->
-# Data structure alignment (`alignas`, `alignof`)
+# Data structure alignment
+
+## `alignas`, `alignof`
 
 ___
 
-### _`alignas`_ keyword
+## `alignas` keyword
+
+```c++
+alignas(int) char variable;
+
+// every object of type see_t will be aligned to 16-byte boundary
+struct alignas(16) see_t {
+    float see_data[4];
+};
+
+// error: requested alignment is not a positive power of 2
+alignas(129) char cacheline[128];
+```
+
+___
+
+## `alignas` keyword
 
 The `alignas` specifier may be applied to:
 
@@ -11,36 +29,26 @@ The `alignas` specifier may be applied to:
 - the declaration or definition of a class/struct/union or enumeration
 
 `alignas(expression)` - expression needs to be positive power of 2.
+<!-- .element: class="fragment fade-in" -->
 
 `alignas(type-id)` - equivalent to `alignas(alignof(type-id))`
+<!-- .element: class="fragment fade-in" -->
 
 `alignas(0)` - has no effect
+<!-- .element: class="fragment fade-in" -->
 
-**Exception:** if `alignas` would weaken the alignment the type have had without this `alignas`, it will not be applied. <!-- bolded "exceptions" to make it stand out more -->
-
-___
-
-### _`alignas`_ keyword
-
-```c++
-// every object of type see_t will be alignet to 16-byte boundary
-struct alignas(16) see_t {
-    float see_data[4];
-};
-
-// error: requested alignment is not a positive power of 2 alignas(129) char cacheline[128];
-alignas(129) char cacheline[128];
-```
+If `alignas` would weaken the alignment the type have had without this `alignas`, it will not be applied.
+<!-- .element: class="fragment fade-in" -->
 
 ___
-
-##### _`alignof`_ keyword
+<!-- .slide: style="font-size: 0.8em" -->
+## `alignof` keyword
 
 The `alignof` specifier returns a value of type `std::size_t`, which is alignment in bytes. If the type is reference type, the operator returns the alignment of referenced type; if the type is array type, alignment requirement of the element type is returned.
 
 <div style="display: flex;">
 
-<div>
+<div style="width: 420px" class="fragment fade-in">
 
 ```c++
 #include <iostream>
@@ -60,7 +68,7 @@ struct alignas(1) Double {
 
 </div>
 
-<div>
+<div style="width: 750px" class="fragment fade-in">
 
 ```c++
 

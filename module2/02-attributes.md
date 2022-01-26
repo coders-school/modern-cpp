@@ -18,8 +18,8 @@ such as the GNU and IBM language extensions `__attribute__((...))`, Microsoft ex
 * <!-- .element: class="fragment fade-in" --> <code>[[fallthrough]]</code> (C++17) - in <code>switch</code> statement, indicated that fall through is intentional
 * <!-- .element: class="fragment fade-in" --> <code>[[nodiscard]]</code> (C++17) - you cannot ignore value returned from function
 * <!-- .element: class="fragment fade-in" --> <code>[[maybe_unused]]</code> (C++17) - suppress compiler warning on unused class, typedef, variable, function, etc.
+* <!-- .element: class="fragment fade-in" --> <code>[[likely]]</code>, <code>[[unlikely]]</code> (C++20) - optimize for the case where paths of execution more or less likely than any alternative path of execution
 
-<!-- Problem with backticks if fadeing inplemented like this -->
 ___
 
 ## `[[noreturn]]` attribute
@@ -84,7 +84,7 @@ ___
                         [[maybe_unused]] bool thing2)
 {
   [[maybe_unused]] bool b = thing1 && thing2;
-  assert (b); // in release mode, assert is compiled out, and b is unused
+  assert(b);  // in release mode, assert is compiled out, and b is unused
               // no warning because it is declared [[maybe_unused]]
 } // parameters thing1 and thing2 are not used, no warning
 ```
@@ -112,6 +112,22 @@ old_stuff::legacy(); //Emits warning
 
 ___
 
+## `[[likely]]`, `[[unlikely]]` attributes
+
+```c++
+constexpr double pow(double x, long long n) noexcept {
+    if (n > 0) [[likely]] {
+        return x * pow(x, n - 1);
+    } else [[unlikely]] {
+        return 1;
+    }
+}
+```
+
+___
+
 ## Exercise
 
 Add a new method `double getPi()` in `Circle` class, which returns a PI number. Mark it as deprecated.
+
+PS. In C++20 you can use `<numbers>` header. It has mathematical constants defined inside.

@@ -1,21 +1,7 @@
 <!-- .slide: data-background="#111111" -->
-# Lambda expressions in short
+# Lambda expressions
 
-___
-
-## Lambda expressions
-
-**Rationale**: functional programming, in-place functions, more universal function passing
-<!-- .element: class="fragment fade-in" -->
-
-Lambda expression is defined directly in-place of its usage. Usually it is used as a parameter of another function that expects pointer to function or functor - in general a callable object.
-<!-- .element: class="fragment fade-in" -->
-
-Every lambda expression cause the compiler to create unique closure class that implements function operator with code from the expression.
-<!-- .element: class="fragment fade-in" -->
-
-Closure is an object of closure class. According to way of capture type this object keeps references or copies of local variables.
-<!-- .element: class="fragment fade-in" -->
+## (in short)
 
 ___
 
@@ -28,6 +14,22 @@ ___
 auto l = [] (int x, int y) { return x + y; };
 auto result = l(2, 3); // result = 5
 ```
+
+___
+
+## Lambda expressions
+
+**Rationale**: functional programming, in-place functions, more universal function passing
+<!-- .element: class="fragment fade-in" -->
+
+Lambda expression is defined directly in-place of its usage. Usually it is used as a parameter of another function that expects a pointer to function or a functor - in general a callable object.
+<!-- .element: class="fragment fade-in" -->
+
+Every lambda expression cause the compiler to create unique closure class that implements function call operator with the code from the expression.
+<!-- .element: class="fragment fade-in" -->
+
+The closure is an object of a closure class. According to the way of capture type this object keeps references or copies of local variables.
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -69,26 +71,6 @@ Output: `0.4, -1.4, 4.0, 5.0, 7.9, -8.22`
 <!-- .element: class="fragment fade-in" -->
 
 ___
-<!-- .slide: style="font-size: 0.9em" -->
-
-## Capture list
-
-Inside `[]` brackets we can include elements that the lambda should capture from the scope in which it is created. Also, the way how they are captured can be specified.
-
-* <!-- .element: class="fragment fade-in" --> <code>[]</code> empty brackets means that inside the lambda no variable from outer scope can be used.
-* <!-- .element: class="fragment fade-in" --> <code>[&]</code> means that every variable from outer scope is captured by reference, including `this` pointer.
-  * Functor created by lambda expression can read and write to any captured variable and all of them are kept inside by lambda reference.
-* <!-- .element: class="fragment fade-in" --> <code>[=]</code> means that every variable from outer scope is capture by value, including `this` pointer.
-  * All used variables from the outer scope are copied to lambda expression and can be read only except for `this` pointer.
-  * `this` pointer when copied allows lambda to modify all variables it points to.
-  * You need a `mutable` keyword to modify values captured by `=`.
-* <!-- .element: class="fragment fade-in" --> <code>[capture-list]</code> allows to explicitly capture variable from the outer scope by mentioning their names on the list.
-  * By default all elements are captured by value.
-  * If variable should be captured by reference it should be precided by `&` whitch means capturing by reference.
-  * Example: `[a, &b]`
-* <!-- .element: class="fragment fade-in" --> <code>[*this]</code> (C++17) captures this pointer by value (creates a copy of this object).
-
-___
 
 ## Capture list
 
@@ -111,19 +93,45 @@ cout << "There are " << even_count
 ```
 
 ___
+<!-- .slide: style="font-size: 0.9em" -->
+
+## Capture list
+
+Inside `[]` brackets we can include elements that the lambda should capture from the scope in which it is created. Also, the way how they are captured can be specified.
+
+* <!-- .element: class="fragment fade-in" --> <code>[]</code> empty brackets means that inside the lambda no variable from outer scope can be used.
+* <!-- .element: class="fragment fade-in" --> <code>[&]</code> means that every variable from outer scope is captured by reference, including `this` pointer.
+  * Functor created by lambda expression can read and write to any captured variable and all of them are kept inside by lambda reference.
+* <!-- .element: class="fragment fade-in" --> <code>[=]</code> means that every variable from outer scope is capture by value, including `this` pointer.
+  * All used variables from the outer scope are copied to lambda expression and can be read only except for `this` pointer.
+  * `this` pointer when copied allows lambda to modify all variables it points to.
+  * You need a `mutable` keyword to modify values captured by `=`.
+* <!-- .element: class="fragment fade-in" --> <code>[capture-list]</code> allows to explicitly capture variable from the outer scope by mentioning their names on the list.
+  * By default all elements are captured by value.
+  * If variable should be captured by reference it should be precided by `&` whitch means capturing by reference.
+  * Example: `[a, &b]`
+* <!-- .element: class="fragment fade-in" --> <code>[*this]</code> (C++17) captures this pointer by value (creates a copy of this object).
+
+___
 <!-- .slide: style="font-size: 0.95em" -->
 
 ## Generic lambdas (C++14)
 
 In C++11 parameters of lambda expression must be declared with use of specific type.
+<!-- .element: class="fragment fade-in" -->
 
 C++14 allows to declare parameter as `auto`.
-
-This allows a compiler to deduce the type of lambda parameter in the same way parameters of the templates are deduced. In result compiler generates a code equivalent to closure class given below:
+<!-- .element: class="fragment fade-in" -->
 
 ```c++
 auto lambda = [](auto x, auto y) { return x + y; }
+```
+<!-- .element: class="fragment fade-in" -->
 
+In result compiler generates a code equivalent to closure class given below:
+<!-- .element: class="fragment fade-in" -->
+
+```c++
 struct UnnamedClosureClass {// code generated by the compiler for above 1 line
     template <typename T1, typename T2>
     auto operator()(T1 x, T2 y) const {
