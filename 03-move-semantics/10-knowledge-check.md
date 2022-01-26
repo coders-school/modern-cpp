@@ -1,8 +1,8 @@
 <!-- .slide: style="font-size: 0.9em" -->
 
-## Knowledge check 🙂
+## Sprawdźmy wiedzę 🙂
 
-### Template type deduction
+### Dedukcja typów szablonowych
 
 <pre><code class="cpp" data-trim data-noescape>
 template &lt;typename T&gt;
@@ -28,7 +28,7 @@ int main() {
 
 ___
 
-## Knowledge check 🤯
+## Sprawdźmy wiedzę 🤯
 
 ```cpp
 void foo(int && a);         // r
@@ -37,7 +37,7 @@ void foo(int & a);          // l
 int a = 5;
 ```
 
-Which of above functions will be called by below snippets?
+Które z powyższych funkcji zostaną wywołane przez poniższe fragmenty kodu?
 
 * <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->
@@ -50,7 +50,7 @@ Which of above functions will be called by below snippets?
 
 ___
 
-## Knowledge check 🤯
+## Sprawdźmy wiedzę 🤯
 
 ```cpp
 template <typename T>
@@ -62,7 +62,7 @@ void foo(T & a);          // l
 int a = 5;
 ```
 
-Which of above functions will be called by below snippets?
+Które z powyższych funkcji zostaną wywołane przez poniższe fragmenty kodu?
 
 * <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->
@@ -73,7 +73,7 @@ Which of above functions will be called by below snippets?
 
 ___
 
-## Knowledge check 🤯
+## Sprawdźmy wiedzę 🤯
 
 ```cpp
 template <typename T>
@@ -82,7 +82,7 @@ void foo(T && a);         // r
 int a = 5;
 ```
 
-What will happen now?
+Co się stanie teraz?
 
 * <!-- .element: class="fragment fade-in" --> <code>foo(4);</code>
   * r <!-- .element: class="fragment fade-in" -->

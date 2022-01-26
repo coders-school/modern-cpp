@@ -1,11 +1,13 @@
-## Pre-test answers 📝
+## Pre-test 📝
+
+### Odpowiedzi
 
 ___
 
-### Question 1/2
+### Pytanie 1/2
 
-We have only the below template function defined.
-What will happen in each case? Which example will compile and display "OK"?
+Mamy zdefiniowaną tylko poniższą funkcję szablonową.
+Co się stanie w każdym z poniższych przypadków? Który z nich się skompiluje i wyświetli "OK"?
 
 ```cpp
 template <typename T>
@@ -24,9 +26,9 @@ int a = 5;
 ___
 <!-- .slide: style="font-size: 0.9em" -->
 
-### Question 2/2
+### Pytanie 2/2
 
-What will be printed on the screen?
+Co wyświetli się na ekranie?
 
 ```cpp
 class Gadget {};

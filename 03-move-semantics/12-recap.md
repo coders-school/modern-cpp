@@ -1,12 +1,12 @@
-## Recap
+## Powtórka
 
-Mention as many keywords/topics from this session as you can
+Wymień jak najwięcej haseł z tematu semantyki przenoszenia
 
-* <!-- .element: class="fragment fade-in" --> r-value and l-value referencesss
-* <!-- .element: class="fragment fade-in" --> Move constructor and move assignment operator
+* <!-- .element: class="fragment fade-in" --> Referencje do r-value i l-value
+* <!-- .element: class="fragment fade-in" --> Konstruktor przenoszący i przenoszący operator przypisania
 * <!-- .element: class="fragment fade-in" --> RAII
 * <!-- .element: class="fragment fade-in" --> Rule of 0, 3, 5
-* <!-- .element: class="fragment fade-in" --> <code>std::move()</code> and <code>std::forward()</code>
+* <!-- .element: class="fragment fade-in" --> <code>std::move()</code> i <code>std::forward()</code>
 * <!-- .element: class="fragment fade-in" --> Forwarding reference
 * <!-- .element: class="fragment fade-in" --> Reference collapsing
 * <!-- .element: class="fragment fade-in" --> Perfect forwarding
@@ -16,9 +16,7 @@ ___
 
 ## Post-work
 
-If you wish to practice more on move semantics and resource management, try to implement `shared_ptr`.
-You can even try to make it thread-safe 😊
-Send me a link to your repo to <a href="mailto:lukasz@coders.school">lukasz@coders.school</a> if you wish to have a code review.
+Aby przećwiczyć semantykę przenoszenia oraz cały temat zarządzania zasobami zaimplementuj `shared_ptr`.
 
 ___
 

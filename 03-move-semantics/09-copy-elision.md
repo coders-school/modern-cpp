@@ -1,25 +1,29 @@
 ## Copy elision
 
-* <!-- .element: class="fragment fade-in" --> omits copy and move constructors
-* <!-- .element: class="fragment fade-in" --> results in zero-copy pass-by-value semantics
+Unikanie zbędnych kopii
+
+* <!-- .element: class="fragment fade-in" --> omijamy konstruktory kopiujące i przenoszące
+* <!-- .element: class="fragment fade-in" --> otrzymujemy brak kopii przy przekazywaniu przez wartość
 
 ___
 
-## Mandatory copy elision from C++17
+## Obowiązkowe copy elision od C++17
+
+### RVO (Return Value Optimization)
 
 ```cpp
 T f() {
     return T();
 }
 f();             // only one call to default c-tor of T
-T x = T(T(f())); // only one call to default c-tor of T, to initialize x
+T x = T{T{f()}}; // only one call to default c-tor of T, to initialize x
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> in the <code>return</code> statement, when the object is temporary (RVO - Return Value Optimisation)
-* <!-- .element: class="fragment fade-in" --> in the initialization, when the initializer is of the same class and is temporary
+* <!-- .element: class="fragment fade-in" --> w klauzuli <code>return</code>, kiedy obiekt jest tymczasowy (RVO - Return Value Optimization)
+* <!-- .element: class="fragment fade-in" --> podczas inicjalizacji, kiedy inicjalizujemy tymczasowym obiektem tego samego typu
 
-Do not try to "optimize" code by writing `return std::move(sth);`. It may prevent optimizations.
+Nie próbuj optymalizować kodu dopisując `return std::move(sth);`. To może zapobiec optymalizacjom.
 <!-- .element: class="fragment fade-in" -->
 
 [Copy elision on cppreference.com](https://en.cppreference.com/w/cpp/language/copy_elision)
@@ -38,7 +42,8 @@ T f() {
 <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> NRVO = Named RVO
-* <!-- .element: class="fragment fade-in" --> RVO is mandatory from C++17, NRVO not
+* <!-- .element: class="fragment fade-in" --> RVO jest obowiązkowe od C++17, NRVO nie
+* <!-- .element: class="fragment fade-in" --> ale niektóre kompilatory i tak przeprowadzają NRVO 🙂
 
 ```cpp
 T bar()

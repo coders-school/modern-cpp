@@ -1,13 +1,13 @@
-## Move semantics
+# Semantyka przenoszenia
 
-### Rationale
+## Motywacja
 
-* Better optimization by avoiding redundant copies
-* improved safety by keeping only one instance
+* Lepsza optymalizacja przez unikanie zbędnych kopii
+* Ulepszone bezpieczeństwo poprzez zapewnienie tylko jednej instancji obiektu
 
 ___
 
-## New syntax elements
+## Nowe elementy składni
 
 * <!-- .element: class="fragment fade-in" --> <code>auto && value</code> - r-value reference
 * <!-- .element: class="fragment fade-in" --> <code>Class(Class &&)</code> - move constructor
@@ -17,7 +17,7 @@ ___
 
 ___
 
-## r-value and l-value
+## r-value, l-value
 
 ```cpp
 struct A { int a, b; };
@@ -31,12 +31,12 @@ foo();                  // r-value
 
 ___
 
-## r-value and l-value
+## r-value, l-value
 
-* <!-- .element: class="fragment fade-in" --> l-value object has a name and address
-* <!-- .element: class="fragment fade-in" --> l-value object is persistent, in the next line it can be accessed by name
-* <!-- .element: class="fragment fade-in" --> r-value object does not have a name (usually) or address
-* <!-- .element: class="fragment fade-in" --> r-value object is temporary, in the next line it will not be accessible
+* <!-- .element: class="fragment fade-in" --> obiekty l-value mają nazwę i adres
+* <!-- .element: class="fragment fade-in" --> obiekty l-value są trwałe, w kolejnej linii kodu można się do nich odwołać
+* <!-- .element: class="fragment fade-in" --> obiekty r-value nie mają nazwy (zazwyczaj) ani adresu
+* <!-- .element: class="fragment fade-in" --> obiekty r-value są tymczasowe, w kolejnej linii kodu nie można się do nich odwołać
 
 ___
 
@@ -57,32 +57,33 @@ A const& rc = foo();    // const l-value reference to r-value, OK (exception)
 A && rra = a;           // r-value reference to l-value, ERROR
 A && rrb = foo();       // r-value reference to r-value, OK
 
-A const ca{20, 40};
-A const&& rrc = ca;     // const r-value reference to const l-value, ERROR
+A ca{20, 40};
+A const&& rrc = ca;     // const r-value reference to l-value, ERROR
 ```
+<!-- .element: style="font-size: 0.58em" -->
 
 ___
 
-## r-value or l-value?
+## r-value czy l-value?
 
 <pre><code class="cpp" data-trim data-noescape>
-str1 += str2                    <span class="fragment">// l-value</span>
 str1 + str2                     <span class="fragment">// r-value</span>
+str1 += str2                    <span class="fragment">// l-value</span>
 [](int x){ return x * x; };     <span class="fragment">// r-value</span>
 std::move(a);                   <span class="fragment">// r-value</span>
-int && a = 4;                   <span class="fragment">// 4 is an r-value</span>
+int && a = 4;                   <span class="fragment">// 4 is an r-value, a is an l-value</span>
 </code></pre>
 
 ___
 
-## r-value reference is... l-value?
+## referencja do r-value to... l-value?
 
 ### `int && a = 4;`
 
-* <!-- .element: class="fragment fade-in" --> <code>4</code> is r-value
-* <!-- .element: class="fragment fade-in" --> <code>a</code> is r-value reference
-* <!-- .element: class="fragment fade-in" --> name <code>a</code> itself is an l-value (has an address, can be referenced lated)
-* <!-- .element: class="fragment fade-in" --> but let's not think about it now 😉
+* <!-- .element: class="fragment fade-in" --> <code>4</code> to r-value
+* <!-- .element: class="fragment fade-in" --> <code>a</code> to referencja do r-value
+* <!-- .element: class="fragment fade-in" --> samo <code>a</code> jest jednak l-value - ma adres i nazwę, można się później do niego odnosić
+* <!-- .element: class="fragment fade-in" --> ale na razie o tym nie myśl 😉
 
 ___
 

@@ -1,58 +1,58 @@
 ## Rule of 3
 
-If you define at least one of:
+Jeśli zdefiniujesz przynajmniej jedną z poniższych funkcji:
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> destructor
-* <!-- .element: class="fragment fade-in" --> copy constructor
-* <!-- .element: class="fragment fade-in" --> copy assignment operator
+* <!-- .element: class="fragment fade-in" --> destruktor
+* <!-- .element: class="fragment fade-in" --> konstruktor kopiujący
+* <!-- .element: class="fragment fade-in" --> kopiujący operator przypisania
 
-it means that you are manually managing resources and <span class="fragment highlight-red">you should implement them all</span>.
+to znaczy, że ręcznie zarządzasz zasobami i <span class="fragment highlight-red">należy zaimplementować je wszystkie</span>.
 <!-- .element: class="fragment fade-in" -->
 
-It will ensure correctness in every context.
+To zapewni poprawność w każdym kontekście użycia.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## Rule of 5
 
-Rule of 5 = Rule of 3 + optimizations
+Rule of 5 = Rule of 3 + optymalizacje
 
-* destructor
-* copy constructor
-* copy assignment operator
-* <!-- .element: class="fragment highlight-green" --> move constructor
-* <!-- .element: class="fragment highlight-green" --> move assignment operator
+* destruktor
+* konstruktor kopiujący
+* kopiujący operator przypisania
+* <!-- .element: class="fragment highlight-green" --> konstruktor przenoszący
+* <!-- .element: class="fragment highlight-green" --> przenoszący operator przypisania
 
-From C++11 use Rule of 5.
+Od C++11 zawsze stosujemy Rule of 5 zamiast Rule of 3.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## Rule of 0
 
-Do not implement any of Rule of 5 functions 😎
+Nie implementuj żadnej z funkcji z Rule of 5 😎
 <!-- .element: class="fragment highlight-green" -->
 
-If you use RAII handlers (like smart pointers), all the copy and move operations will be generated (or deleted) implicitly.
+Jeśli używasz klas RAII (jak smart pointery), to wszystkie operacje kopiowania i przenoszenia zostaną wygenerowane automatycznie (lub usunięte) przez kompilator .
 <!-- .element: class="fragment fade-in" -->
 
-For example, when you have a `unique_ptr` as your class member, copy operations of your class will be automatically blocked, but move operations will be supported.
+Na przykład, jeśli trzymasz w swojej klasie `unique_ptr`, to kopiowanie obiektów twojej klasy zostanie automatycznie zablokowane, ale dostępne będzie ich przenoszenie.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
-## Task
+## Zadanie
 
-Aim: learn how to refactor code to use RAII and Rule of 0
+Cel: refaktoryzacja kodu w celu użycia RAII i Rule of 0
 
-Write a template class that holds a pointer
+Napisz klasę szablonową, która trzyma wskaźnik.
 
-* <!-- .element: class="fragment fade-in" --> use a raw pointer to manage the resource of a template type
-* <!-- .element: class="fragment fade-in" --> implement constructor to acquire a resource
-* <!-- .element: class="fragment fade-in" --> implement the Rule of 3
-* <!-- .element: class="fragment fade-in" --> implement the Rule of 5
-* <!-- .element: class="fragment fade-in" --> implement the Rule of 0
-  * use a roper smart pointer instead of the raw pointer
+* <!-- .element: class="fragment fade-in" --> użyj zwykłego wskaźnika, aby zarządzać pamięcią do typu szablonowego
+* <!-- .element: class="fragment fade-in" --> zaimplementuj konstruktor, w którym pozyskasz zasób
+* <!-- .element: class="fragment fade-in" --> zaimplementuj Rule of 3
+* <!-- .element: class="fragment fade-in" --> zaimplementuj Rule of 5
+* <!-- .element: class="fragment fade-in" --> zaimplementuj Rule of 0
+  * użyj odpowiedniego smart pointera zamiast zwykłego wskaźnika
   <!-- .element: class="fragment fade-in" -->

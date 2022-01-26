@@ -1,8 +1,8 @@
 <!-- .slide: style="font-size: 0.9em" -->
 
-## Interface bloat
+## Zaśmiecanie interfejsów
 
-Trying to optimize for every possible use case may lead to an interface bloat.
+Gdy chcemy napisać kod, który jest optymalny dla każdego przypadku, trzeba napisać kilka przeciążeń do każdej funkcji.
 
 ```cpp
 class Gadget;
@@ -21,17 +21,23 @@ int main() {
     use(Gadget()); // calls use(Gadget&&) then calls f(Gadget&&)
 }
 ```
+<!-- .element: class="fragment fade-in" -->
 
-### Task
+### Czy można tego uniknąć?
+<!-- .element: class="fragment fade-in" -->
 
-Improve the `use()` function to catch more types of references to have fewer overloads.
+___
+
+### Zadanie
+
+Ulepsz funkcję `use()`, aby mogła przechwycić różne rodzaje referencji i aby nie tworzyć aż tylu przeciążeń.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 
 ## Solution: Perfect Forwarding
 
-Forwarding reference `T&&` + `std::forward()` is a solution to interface bloat.
+`T&&` + `std::forward()` to rozwiązanie na zbytni rozrost interfejsów.
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
@@ -60,7 +66,7 @@ ___
 
 ## `std::forward`
 
-Forwarding reference (even bind to r-value) is treated as l-value inside a template function.
+Referencja przekazująca (forwarding reference), nawet do r-value, jest traktowana jako l-value wewnątrz funkcji szablonowych.
 
 ```cpp
 template <typename T>
@@ -81,10 +87,10 @@ void use(T&& t) {
 ```cpp
 template <typename T>
 void use(T&& t) {           // forwards t as r-value if r-value was passed,
-    f(std::forward(t));     // forwards as l-value otherwise
+    f(std::forward<T>(t));  // forwards as l-value otherwise
 }
 ```
 <!-- .element: class="fragment fade-in" -->
 
-In other words, `std::forward()` restores the original reference type.
+Innymi słowy, `std::forward()` przywraca oryginalny typ referencji.
 <!-- .element: class="fragment fade-in" -->

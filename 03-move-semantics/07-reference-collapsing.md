@@ -9,7 +9,7 @@ ___
 
 ## Reference collapsing
 
-When a template is being instantiated reference collapsing may occur
+Zwijanie referencji odbywa się gdy kompilator generuje instancje szablonów
 
 ```cpp
 template <typename T>

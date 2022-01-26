@@ -1,8 +1,9 @@
 <!-- .slide: style="font-size: 0.9em" -->
 
-## Implementation of move semantic
+## Implementacja semantyki przenoszenia
 
 ```cpp
+// concept only!
 class X : public Base {
     Member m_;
 
@@ -23,9 +24,9 @@ class X : public Base {
 
 ___
 
-## Implementation of move semantic
+## Implementacja semantyki przenoszenia
 
-### Usual implementation
+### Standardowa implementacja
 
 ```cpp
 class X : public Base {
@@ -35,25 +36,3 @@ class X : public Base {
     X& operator=(X&& x) = default;
 };
 ```
-
-___
-
-## Task
-
-Write your implementation of `unique_ptr`
-
-Aim: learn how to implement move semantics with manual resource management
-
-### Hints
-
-<!-- .element: class="fragment fade-in" -->
-
-* <!-- .element: class="fragment fade-in" --> Template class
-* <!-- .element: class="fragment fade-in" --> RAII
-* <!-- .element: class="fragment fade-in" --> Copy operations not allowed
-* <!-- .element: class="fragment fade-in" --> Move operations allowed
-* <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/memory/unique_ptr">Interface functions</a> - at least:
-  * <code>T* get() const noexcept</code>
-  * <code>T& operator*() const</code>
-  * <code>T* operator->() const noexcept</code>
-  * <code>void reset(T* = nullptr) noexcept</code>
