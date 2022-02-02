@@ -105,7 +105,7 @@ public:
 <span class="fragment">Bar&lt;int> g(1, 2);</span>             <span class="fragment">// calls Bar(Type a, Type b) c-tor</span>
 <span class="fragment">Bar&lt;int> h = {};</span>              <span class="fragment">// calls std::initializer_list c-tor</span>
                               <span class="fragment">// or default c-tor if exists</span>
-<span class="fragment">Bar&lt;std::unique_ptr<int>> c = {new int{1}, new int{2}};</span>
+<span class="fragment">Bar&lt;std::unique_ptr&lt;int>> c = {new int{1}, new int{2}};</span>
 <span class="fragment">// error - std::unique_ptr is non-copyable</span>
 </code></pre>
 

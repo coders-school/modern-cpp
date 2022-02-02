@@ -4,7 +4,7 @@
 ___
 <!-- .element style="font-size: 0.9em"-->
 
-## Co pamiętasz z dzisiejszej sesji?
+## Co pamiętasz z Nowoczesnego C++?
 
 1. <!-- .element: class="fragment fade-in" --> <code>static_assert</code>
 2. <!-- .element: class="fragment fade-in" --> <code>nullptr</code>
