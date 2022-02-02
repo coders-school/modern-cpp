@@ -143,9 +143,9 @@ struct Base {
 ```cpp
 struct WithoutOverride : Base {
     void a();         // overrides Base::a()
-    void b();         // doesn't override B::b() const
-    virtual void c(); // overrides B::c()
-    void d();         // doesn't override B::d()
+    void b();         // doesn't override Base::b() const
+    virtual void c(); // overrides Base::c()
+    void d();         // doesn't override Base::d()
 };
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -153,9 +153,9 @@ struct WithoutOverride : Base {
 ```cpp
 struct WithOverride : Base {
     void a() override;         // OK - overrides Base::a()
-    void b() override;         // error - doesn't override B::b() const
-    virtual void c() override; // OK - overrides B::c(char)
-    void d() override;         // error - B::d() is not virtual
+    void b() override;         // error - doesn't override Base::b() const
+    virtual void c() override; // OK - overrides Base::c()
+    void d() override;         // error - Base::d() is not virtual
 };
 ```
 <!-- .element: class="fragment fade-in" -->
