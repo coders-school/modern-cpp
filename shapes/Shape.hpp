@@ -1,7 +1,6 @@
 #pragma once
 
-class Shape
-{
+class Shape {
 public:
     virtual ~Shape() {}
 

@@ -2,11 +2,10 @@
 
 #include "Shape.hpp"
 
-class Circle : public Shape
-{
+class Circle : public Shape {
 public:
     Circle(double r);
-    Circle(const Circle & other);
+    Circle(const Circle& other);
 
     double getArea() const;
     double getPerimeter() const;
@@ -14,7 +13,7 @@ public:
     void print() const;
 
 private:
-    Circle(); // doesn't allow to call default constructor
+    Circle();  // doesn't allow to call default constructor
 
     double r_;
 };
