@@ -1,0 +1,19 @@
+name: Shapes task
+on: [push, pull_request]
+
+jobs:
+  build_task:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create build directory
+        working-directory: shapes
+        run: mkdir build
+      - name: Build task
+        working-directory: shapes/build
+        run: |
+            cmake ..
+            make
+      - name: Run task
+        working-directory: shapes/build
+        run: ./shapes
