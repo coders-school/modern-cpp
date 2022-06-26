@@ -26,3 +26,11 @@ jobs:
       uses: coders-school/github-actions/clang-format-check@main
       with:
         check_path: shapes
+
+  check-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check tasks
+        working-directory: .github/scripts
+        run: ./check_tasks.sh
