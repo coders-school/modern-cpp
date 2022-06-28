@@ -24,7 +24,7 @@ ___
 
 ## `constinit` keyword
 
-From C++20 we can use `constinit` for static or `thread_local` varaibles (tylko).
+From C++20 we can use `constinit` for static or `thread_local` varaibles (only).
 
 `constinit` guarantees that the variable will have static initialization, that is either zero initialization or constant initialization.
 

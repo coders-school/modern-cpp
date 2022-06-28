@@ -72,7 +72,6 @@ ___
 * <!-- .element: class="fragment fade-in" --> Marking function as <code>noexcept</code> does not mean that you can't handle exceptions inside.
 * <!-- .element: class="fragment fade-in" --> <code>noexcept</code> means, that from this function no exception can be thrown (either directly by <code>throw</code> or indirectly when the exception is propagated).
 * <!-- .element: class="fragment fade-in" --> Inside <code>noexcept</code> functions you can freely use <code>try-catch</code> blocks to handle exceptions and not let them propagate outside.
-* <!-- .element: class="fragment fade-in" --> Using <code>catch(...)</code> is useless.
 * <!-- .element: class="fragment fade-in" --> Thanks to <code>noexcept</code> we can know what kind of exception occurred, because the binary will be terminated. We can handle this situation more properly rather than just ignoring the exception.
 
 ___

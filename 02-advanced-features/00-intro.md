@@ -1,8 +1,7 @@
 ## Let's get to know each other
 
-* Your name and programming experience
-* What you don't like in C++?
-* Your hobbies
+* What other programming languages do you use?
+* Which C++ standard do you use/know?
 
 ___
 <!-- .slide: data-background="../img/lukin.jpg" -->
@@ -12,8 +11,8 @@ ___
 
 ### Not only a programming XP
 
-* Entrepreneur & CEO @ Coders School
-* C++ and Python developer @ Nokia & Credit Suisse
+* Entrepreneur & Trainer @ Coders School
+* C++ and Python developer @ Nokia, Credit Suisse, siili_auto
 * Team leader & Trainer @ Nokia
 * Scrum Master @ Nokia & Credit Suisse
 * Code Reviewer @ Nokia
@@ -64,3 +63,7 @@ ___
     <li class="fragment fade-in">☕️ Additional breaks on demand</li>
     <li class="fragment fade-in">⌚️ Be on time</li>
 </ul>
+
+___
+
+### [Link to the presentation](https://github.com/coders-school/modern-cpp/raw/main/02-advanced-features/modern_cpp_advanced_features.pdf)

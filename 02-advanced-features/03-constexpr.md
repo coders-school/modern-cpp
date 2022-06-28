@@ -166,7 +166,7 @@ ___
 
 Write a function that calculates n-th Fibonacci's number. Do not mark it `constexpr`.
 
-In the first line of `main()` add computing 45-th Fibonacci's number. Measure the time of program execution (`time ./modern_cpp`)
+In the first line of `main()` add computing 45-th Fibonacci's number. Measure the time of program execution (`time ./shapes`)
 
 Mark fibonacci function as `constexpr`, compile the program and measure the time of execution once again.
 
