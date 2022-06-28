@@ -13,7 +13,7 @@ ___
 ### Not only a programming XP
 
 * Frontend dev & DevOps @ Coders School
-* C++ and Python developer @ Nokia & Credit Suisse
+* C++ and Python developer @ Nokia, Credit Suisse, siili_auto
 * Team leader & Trainer @ Nokia
 * Scrum Master @ Nokia & Credit Suisse
 * Code Reviewer @ Nokia
@@ -72,4 +72,4 @@ If you want to complain about the employer, I won't tell anyone
 
 ___
 
-### [Link to presentation on GitHub](https://github.com/coders-school/modern-cpp/tree/master/module1)
+### [Link to the presentation](https://github.com/coders-school/modern-cpp/raw/main/01-basic-features/modern_cpp_basic_features.pdf)

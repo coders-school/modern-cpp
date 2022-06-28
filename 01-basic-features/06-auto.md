@@ -149,7 +149,6 @@ ___
 ```
 
 ___
-<!-- .slide: data-background="#cf802a" -->
 
 ## Exercise
 

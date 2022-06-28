@@ -82,11 +82,11 @@ ___
 
 ## `enum` size
 
-* <!-- .element: class="fragment fade-in" --> Default enum size is <code>sizeof(int)</code>
+* <!-- .element: class="fragment fade-in" --> The default enum size is <code>sizeof(int)</code>
 * <!-- .element: class="fragment fade-in" --> <code>enum</code> underlying type is extended automatically if values greater than <code>int</code> are provided
 * <!-- .element: class="fragment fade-in" --> To save some memory we can define the underlying type using inheritance
 * <!-- .element: class="fragment fade-in" --> A compiler will not allow defining value greater than the defined base can hold
-* <!-- .element: class="fragment fade-in" --> Inheritance work on both <code>enum</code> and <code>enum class</code>
+* <!-- .element: class="fragment fade-in" --> Inheritance works on both <code>enum</code> and <code>enum class</code>
 
 ___
 
