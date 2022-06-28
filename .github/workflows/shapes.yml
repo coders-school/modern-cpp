@@ -34,3 +34,13 @@ jobs:
       - name: Check tasks
         working-directory: .github/scripts
         run: ./check_tasks.sh
+
+  shapes_tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests and sanitizer
+      uses: coders-school/github-actions/run-tests@main
+      with:
+        task_name: shapes
+        test_file: ../tests/shapes_tests.cpp
