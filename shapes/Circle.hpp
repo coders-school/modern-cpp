@@ -2,7 +2,7 @@
 
 #include "Shape.hpp"
 
-class Circle final : public Shape
+class alignas(2) Circle final : public Shape
 {
 public:
     using Shape::Shape;
@@ -15,6 +15,9 @@ public:
     double getPerimeter() const override;
     double getRadius() const;
     void print() const override;
+
+    [[deprecated("Please use M_PI instead")]]
+    double getPi() const;
 
 private:
     double r_ = 1.0;

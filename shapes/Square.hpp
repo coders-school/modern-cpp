@@ -11,9 +11,11 @@ public:
     Square(const Square & other) = default;
     Square& operator=(const Square &other) = default;
 
-    double getArea() const override;
-    double getPerimeter() const override;
+    double getArea() const noexcept override;
+    double getPerimeter() const noexcept override;
     void print() const override;
 
     double getY() = delete; // should not have Y dimension
+
+    // double (*ptr)() noexcept = getArea;
 };

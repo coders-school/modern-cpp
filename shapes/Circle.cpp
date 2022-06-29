@@ -8,6 +8,11 @@ Circle::Circle(double r)
 
 static_assert(M_PI != 3.14, "M_PI is 3.14");
 
+double Circle::getPi() const
+{
+    return 3.14;
+}
+
 double Circle::getArea() const
 {
     return M_PI * r_ * r_;
