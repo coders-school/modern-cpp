@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <functional>
 #include <memory>
 #include "Shape.hpp"
 #include "Rectangle.hpp"
@@ -10,7 +11,7 @@
 
 using namespace std;
 
-typedef vector<shared_ptr<Shape>> Collection;
+using Collection = vector<shared_ptr<Shape>>;
 
 bool sortByArea(shared_ptr<Shape> first, shared_ptr<Shape> second)
 {
@@ -35,23 +36,25 @@ bool areaLessThan10(shared_ptr<Shape> s)
 
 void printCollectionElements(const Collection& collection)
 {
-    for(Collection::const_iterator it = collection.begin(); it != collection.end(); ++it)
-        if(*it)
-            (*it)->print();
+    for (auto&& it : collection)
+        if (it)
+            it->print();
 }
 
 void printAreas(const Collection& collection)
 {
-    for(vector<shared_ptr<Shape>>::const_iterator it = collection.begin(); it != collection.end(); ++it)
-        if(*it)
-            cout << (*it)->getArea() << std::endl;
+    for (const auto& it : collection)
+        if (it)
+            cout << it->getArea() << std::endl;
 }
 
+using Predicate = bool (*)(shared_ptr<Shape>);
+
 void findFirstShapeMatchingPredicate(const Collection& collection,
-                                     bool (*predicate)(shared_ptr<Shape> s),
+                                     Predicate predicate,
                                      std::string info)
 {
-    Collection::const_iterator iter = std::find_if(collection.begin(), collection.end(), predicate);
+    auto iter = std::find_if(collection.begin(), collection.end(), predicate);
     if(*iter != nullptr)
     {
         cout << "First shape matching predicate: " << info << endl;
@@ -65,14 +68,22 @@ void findFirstShapeMatchingPredicate(const Collection& collection,
 
 int main()
 {
-    Collection shapes;
-    shapes.push_back(make_shared<Circle>(2.0));
-    shapes.push_back(make_shared<Circle>(3.0));
-    shapes.push_back(nullptr);
-    shapes.push_back(make_shared<Circle>(4.0));
-    shapes.push_back(make_shared<Rectangle>(10.0, 5.0));
-    shapes.push_back(make_shared<Square>(3.0));
-    shapes.push_back(make_shared<Circle>(4.0));
+    auto circle = make_shared<Circle>(Color::Yellow);
+    auto rect = make_shared<Rectangle>(Color::Green);
+    auto sq = make_shared<Square>(Color::Yellow);
+    
+    Collection shapes {
+        make_shared<Circle>(3.0),
+        make_shared<Circle>(2.0),
+        nullptr,
+        make_shared<Circle>(4.0),
+        make_shared<Rectangle>(10.0, 5.0),
+        make_shared<Square>(3.0),
+        make_shared<Circle>(4.0),
+        circle, 
+        rect,
+        sq
+    };
     printCollectionElements(shapes);
 
     cout << "Areas before sort: " << std::endl;
