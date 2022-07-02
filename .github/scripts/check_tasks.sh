@@ -1,0 +1,25 @@
+#!/bin/bash
+
+source functions.sh
+
+check_static_assert
+check_using_alias
+check_enum
+check_for_loop
+check_auto
+check_default
+check_delete
+check_final
+check_override
+check_fibonacci
+check_initializer_list
+check_color_ctor
+check_attributes
+check_noexcept
+check_alignment
+check_delegating_ctors
+check_lambda
+check_structured_binding
+check_variadic
+
+summary
