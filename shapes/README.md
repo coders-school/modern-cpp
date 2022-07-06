@@ -48,11 +48,19 @@ It should be >= 7.0
     Use constructor inheritance to allow initialization of all shapes providing only a `Color` as a parameter. Create some shapes providing `Color` only param.
     Add in-class field initialization for all shapes to safely use inherited constructor.
 9.  SFINAE
-    Write a function that allows inserting only subclasses of Shape to the collection. Other parameter types should not compile. Use SFINAE. Find proper type_traits.
+    Write a function that allows inserting only subclasses of Shape to the collection.
+    Other parameter types should not compile.
+    Function should be implemented in `addShape.hpp` file.
+    Function should be named `addShape` and take 2 parameters:
+    * shape to be inserted to the collection
+    * collection itself
+
+    Use SFINAE.
+    Find proper type_traits.
 10. attributes:
     Add a new method `double getPi()` in `Circle` class, which returns a PI number. Mark it as deprecated.
 11. `noexcept`:
-    Mark some `getArea()` and `getPerimeter()` methods as `noexcept`
+    Mark `getArea()` and `getPerimeter()` methods as `noexcept`
 12. `alignas`, `alignof`
     Change the alignment of the `Circle` class to 128.
     Print the alignment in `main()` function.
@@ -70,6 +78,8 @@ It should be >= 7.0
     Use structured bindings to iterate over this collection and display shape info (call `print()` member function) and a perimeter.
 16. variadic templates:
     Write a factory method which should work like `std::make_shared`.
+    Function should be implemented in `make_shape.hpp` file.
+    Include `make_shape.hpp` file in `main.cpp`.
     It should have below signature:
 
     ```cpp
