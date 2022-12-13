@@ -66,4 +66,4 @@ ___
 
 ___
 
-### [Link to the presentation](https://github.com/coders-school/modern-cpp/raw/main/02-advanced-features/modern_cpp_advanced_features.pdf)
+### [Link to the presentation](https://github.com/coders-school/modern-cpp/raw/english/02-advanced-features/modern_cpp_advanced_features.pdf)

@@ -1,8 +1,7 @@
 ## Let's get to know each other
 
 * Your name and programming experience
-* What you do not like in C++?
-* Your hobbies
+* What do you not like in C++?
 
 ___
 <!-- .slide: data-background="../img/lukin.jpg" -->
@@ -72,4 +71,21 @@ If you want to complain about the employer, I won't tell anyone
 
 ___
 
-### [Link to the presentation](https://github.com/coders-school/modern-cpp/raw/main/01-basic-features/modern_cpp_basic_features.pdf)
+### [Download the presentation](https://github.com/coders-school/modern-cpp/raw/english/01-basic-features/modern_cpp_basic_features.pdf)
+
+### Download the repo
+
+```sh
+git clone https://github.com/coders-school/modern-cpp.git
+cd modern-cpp
+git checkout english
+```
+
+### Build the project
+
+```sh
+cd shapes
+mkdir build && cd build
+cmake ..
+make
+```
