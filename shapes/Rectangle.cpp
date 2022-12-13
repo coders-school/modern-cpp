@@ -6,12 +6,6 @@ Rectangle::Rectangle(double x, double y)
       y_(y)
 {}
 
-Rectangle::Rectangle(const Rectangle &other)
-{
-    x_ = other.getX();
-    y_ = other.getY();
-}
-
 double Rectangle::getArea() const
 {
     return x_ * y_;
@@ -37,5 +31,6 @@ void Rectangle::print() const
     std::cout << "Rectangle:   x: " << getX() << std::endl
               << "             y: " << getY() << std::endl
               << "          area: " << getArea() << std::endl
-              << "     perimeter: " << getPerimeter() << std::endl;
+              << "     perimeter: " << getPerimeter() << std::endl
+              << "         color: " << getColor() << std::endl;
 }
