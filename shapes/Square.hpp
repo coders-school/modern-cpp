@@ -10,8 +10,8 @@ public:
     Square(const Square & other) = default;
     using Rectangle::Rectangle;
 
-    double getArea() const override;
-    double getPerimeter() const override;
+    double getArea() const noexcept override;
+    double getPerimeter() const noexcept override;
     void print() const override;
     // double getX() const { return 1.0;}
 

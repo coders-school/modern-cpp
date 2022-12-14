@@ -14,6 +14,11 @@ double Circle::getArea() const
     return M_PI * r_ * r_;
 }
 
+double Circle::getPi() const
+{
+    return 5;
+}
+
 double Circle::getPerimeter() const
 {
     return 2 * M_PI * r_;
